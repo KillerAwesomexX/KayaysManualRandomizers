@@ -1,0 +1,6 @@
+SystemID N64
+0D1110	d	u	1	RDRAM	1st Player Coins
+0D1148	d	u	1	RDRAM	2nd Player Coins
+0D1180	d	u	1	RDRAM	3rd Player Coins
+0D11B8	d	u	1	RDRAM	4th Player Coins
+
