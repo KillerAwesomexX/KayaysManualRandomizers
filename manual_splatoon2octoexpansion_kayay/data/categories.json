@@ -1,0 +1,9 @@
+{
+    "Inner Agent 3": {
+		"hidden": true,
+        "yaml_option": ["include_inner_agent"]
+    },
+	"Escape Phase": {
+        "yaml_option": ["include_escape"]
+    }
+}

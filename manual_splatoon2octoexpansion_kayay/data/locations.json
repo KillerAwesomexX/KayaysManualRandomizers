@@ -1,0 +1,677 @@
+[
+
+    {
+        "name": "A01/G06 - Gnarly Rails Station",
+        "category": [
+            "Line A",
+            "Line G"
+        ],
+        "requires": "(|Line A| OR |Line G|) AND |Dualies License|"
+    },
+    {
+        "name": "A02 - Far-Out Station",
+        "category": [
+            "Line A"
+        ],
+        "requires": "(|Line A|) AND (|Shooter License| OR |Roller License| OR |Brella License|)"
+    },
+    {
+        "name": "A03/B01 - Wassup 8-Ball Station",
+        "category": [
+            "Line A",
+            "Line B"
+        ],
+        "requires": "(|Line A| OR |Line B|) AND |8-Ball License| AND |Shooter License|"
+    },
+    {
+        "name": "A04 - Roll Out Station",
+        "category": [
+            "Line A"
+        ],
+        "requires": "(|Line A|) AND |Baller License|"
+    },
+    {
+        "name": "A05 - Fake Plastic Station",
+        "category": [
+            "Line A"
+        ],
+        "requires": "(|Line A|) AND |Shooter License|"
+    },
+    {
+        "name": "A06 - Bounce With Me Station",
+        "category": [
+            "Line A"
+        ],
+        "requires": "(|Line A|) AND |Blaster License|"
+    },
+    {
+        "name": "A07 - Maverick Station",
+        "category": [
+            "Line A"
+        ],
+        "requires": "(|Line A|) AND |Inkjet License|"
+    },
+    {
+        "name": "A08/C03 - Bumpin 8-Ball Station",
+        "category": [
+            "Line A"
+        ],
+        "requires": "(|Line A|) AND |8-Ball License| AND (|Shooter License| OR |Slosher License| OR |Charger License|)"
+    },
+    {
+        "name": "B02/I09 - Poppin' Fresh Station",
+        "category": [
+            "Line B",
+            "Line I"
+        ],
+        "requires": "(|Line B| OR |Line I|) AND (|Shooter License| OR |Charger License|)"
+    },
+    {
+        "name": "B03 - Spin Docto Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND (|Shooter License| OR |Blaster License| OR |Roller License|)"
+    },
+    {
+        "name": "B04 - Rad Ride Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND (|Splatling License| OR |Shooter License| OR |Blaster License|)"
+    },
+    {
+        "name": "B05/G09 - Wack 8-Ball Station",
+        "category": [
+            "Line B",
+            "Line G"
+        ],
+        "requires": "(|Line B| OR |Line G|) AND |8-Ball License| AND (|Blaster License| OR |Shooter License| OR |Brush License|)"
+    },
+    {
+        "name": "B06 - Notorious Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND |Sub Weapon License|"
+    },
+    {
+        "name": "B07 - Fly 8-Ball Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND |8-Ball License|"
+    },
+    {
+        "name": "B08/I05 - Righteous Rails Station",
+        "category": [
+            "Line B",
+            "Line I"
+        ],
+        "requires": "(|Line B| OR |Line I|) AND (|Shooter License| OR |Charger License|)"
+    },
+    {
+        "name": "B09 - Grab and Go Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND |Shooter License|"
+    },
+    {
+        "name": "B10/G04 - Ink 'n' Slide Station",
+        "category": [
+            "Line B",
+            "Line G"
+        ],
+        "requires": "(|Line B| OR |Line G|) AND (|Charger License| OR |Shooter License| OR |Roller License|)"
+    },
+    {
+        "name": "B11 - Tubular 8-Ball Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND |8-Ball License| AND |Shooter License|"
+    },
+    {
+        "name": "B12 - Brute Rollup Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND (|Roller License| OR |Brush License|)"
+    },
+    {
+        "name": "B13 - Phat Splatz Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND (|Shooter License| OR |Roller License| OR |Brush License|)"
+    },
+    {
+        "name": "B14 - Breakdance Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND (|Slosher License| OR |Roller License|)"
+    },
+    {
+        "name": "B15/D01 - Ink From Above Station",
+        "category": [
+            "Line B",
+            "Line D"
+        ],
+        "requires": "(|Line B| OR |Line D|) AND |Dualies License|"
+    },
+    {
+        "name": "B16 - Pop Rock Station",
+        "category": [
+            "Line B"
+        ],
+        "requires": "(|Line B|) AND (|Blaster License| OR |Slosher License| OR |Shooter License|)"
+    },
+    {
+        "name": "C01/D06 - Radical Rails Station",
+        "category": [
+            "Line C",
+            "Line D"
+        ],
+        "requires": "(|Line C| OR |Line D|) AND (|Shooter License| OR |Slosher License|)"
+    },
+    {
+        "name": "C02 - Shrinky Ink Station",
+        "category": [
+            "Line C"
+        ],
+        "requires": "(|Line C|) AND |Shooter License|"
+    },
+    {
+        "name": "C04 - Move It Move It Station",
+        "category": [
+            "Line C"
+        ],
+        "requires": "(|Line C|)"
+    },
+    {
+        "name": "C05/F04 - Stamped-Up Station",
+        "category": [
+            "Line C",
+            "Line F"
+        ],
+        "requires": "(|Line C| OR |Line F|) AND |Sub Weapon License| AND |Shooter License|"
+    },
+    {
+        "name": "C06 - Bust 'n' Move Station",
+        "category": [
+            "Line C"
+        ],
+        "requires": "(|Line C|) AND (|Slosher License| OR |Shooter License| OR |Charger License|)"
+    },
+    {
+        "name": "C07 - Totally 8-Ball Station",
+        "category": [
+            "Line C"
+        ],
+        "requires": "(|Line C|) AND |8-Ball License| AND (|Shooter License| OR |Brush License|)"
+    },
+    {
+        "name": "C08 - Right Round Station",
+        "category": [
+            "Line C"
+        ],
+        "requires": "(|Line C|) AND (|Charger License| OR |Splatling License| OR |Blaster License|)"
+    },
+    {
+        "name": "C09 - Bodacious 8-Ball Station",
+        "category": [
+            "Line C"
+        ],
+        "requires": "(|Line C|) AND |8-Ball License| AND |Blaster License|"
+    },
+    {
+        "name": "C10 - McFly Station",
+        "category": [
+            "Line C"
+        ],
+        "requires": "(|Line C|) AND |Inkjet License|"
+    },
+    {
+        "name": "C11 - Abracadabra Station",
+        "category": [
+            "Line C"
+        ],
+        "requires": "(|Line C|) AND (|Splatling License| OR |Charger License|)"
+    },
+    {
+        "name": "C12/F07 - Matchmaker Station",
+        "category": [
+            "Line C",
+            "Line F"
+        ],
+        "requires": "(|Line C| OR |Line F|) AND (|Shooter License| OR |Charger License|)"
+    },
+    {
+        "name": "C13 - Smash and Dash Station",
+        "category": [
+            "Line C"
+        ],
+        "requires": "(|Line C|) AND |Shooter License|"
+    },
+    {
+        "name": "C14/J05 - Stick 'n' Move Station",
+        "category": [
+            "Line C",
+            "Line J"
+        ],
+        "requires": "(|Line C| OR |Line J|) AND |Dualies License|"
+    },
+    {
+        "name": "D02 - One-Shot Station",
+        "category": [
+            "Line D"
+        ],
+        "requires": "(|Line D|) AND |Charger License|"
+    },
+    {
+        "name": "D03/H01 - Slap Bracelet Station",
+        "category": [
+            "Line D",
+            "Line H"
+        ],
+        "requires": "(|Line D| OR |Line H|) AND |Sub Weapon License| AND |Charger License|"
+    },
+    {
+        "name": "D04 - Mad Props Station",
+        "category": [
+            "Line D"
+        ],
+        "requires": "(|Line D|) AND |Charger License|"
+    },
+    {
+        "name": "D05 - All That 8-Ball Station",
+        "category": [
+            "Line D"
+        ],
+        "requires": "(|Line D|) AND |8-Ball License| AND |Charger License|"
+    },
+    {
+        "name": "D07 - Targetbuster Station",
+        "category": [
+            "Line D"
+        ],
+        "requires": "(|Line D|) AND ((|Brush License|) OR (|Roller License| AND |Sub Weapon License|))"
+    },
+    {
+        "name": "D08/J03 - Girl Power Station",
+        "category": [
+            "Line D",
+            "Line J"
+        ],
+        "requires": "(|Line D| OR |Line J|) AND (|Inkjet License| OR |Baller License| OR |Splashdown License|)"
+    },
+    {
+        "name": "D09 - Goose Station",
+        "category": [
+            "Line D"
+        ],
+        "requires": "(|Line D|) AND |Inkjet License|"
+    },
+    {
+        "name": "D10 - Labyrinth Station",
+        "category": [
+            "Line D"
+        ],
+        "requires": "(|Line D|) AND (|Dualies License| OR |Brella License| OR |Charger License|)"
+    },
+    {
+        "name": "D11/J06 - Ink and Watch Station",
+        "category": [
+            "Line D",
+            "Line J"
+        ],
+        "requires": "(|Line D| OR |Line J|) AND (|Blaster License| OR |Slosher License| OR |Roller License|)"
+    },
+    {
+        "name": "E01 - No Whammy Station",
+        "category": [
+            "Line E",
+            "Line I"
+        ],
+        "requires": "(|Line E| OR |Line I|)"
+    },
+    {
+        "name": "E02 - Bust and Run Station",
+        "category": [
+            "Line E"
+        ],
+        "requires": "(|Line E|) AND |Shooter License|"
+    },
+    {
+        "name": "E03 - Don't Ralph Station",
+        "category": [
+            "Line E"
+        ],
+        "requires": "(|Line E|) AND |Shooter License|"
+    },
+    {
+        "name": "E04 - Heinous 8-Ball Station",
+        "category": [
+            "Line E"
+        ],
+        "requires": "(|Line E|) AND |8-Ball License| AND (|Splatling License| OR |Charger License|)"
+    },
+    {
+        "name": "E05 - Hypercolor Station",
+        "category": [
+            "Line E"
+        ],
+        "requires": "(|Line E|) AND (|Roller License| OR |Shooter License|)"
+    },
+    {
+        "name": "E06 - Swass 8-Ball Station",
+        "category": [
+            "Line E"
+        ],
+        "requires": "(|Line E|) AND |8-Ball License|"
+    },
+    {
+        "name": "E07/G10 - Iceman Station",
+        "category": [
+            "Line E",
+            "Line G"
+        ],
+        "requires": "(|Line E| OR |Line G|) AND |Inkjet License|"
+    },
+    {
+        "name": "E08 - Da Bomb Station",
+        "category": [
+            "Line E"
+        ],
+        "requires": "(|Line E|) AND |Sub Weapon License|"
+    },
+    {
+        "name": "E09 - Squee-G Funk Station",
+        "category": [
+            "Line E"
+        ],
+        "requires": "(|Line E|) AND (|Blaster License| OR |Sub Weapon License|)"
+    },
+    {
+        "name": "E10 - Cratebuster Station",
+        "category": [
+            "Line E"
+        ],
+        "requires": "(|Line E|) AND |Splashdown License| AND (|Brush License| OR |Charger License|)"
+    },
+    {
+        "name": "E11 - Bodacious Rotation Station",
+        "category": [
+            "Line E"
+        ],
+        "requires": "(|Line E|) AND (|Slosher License| OR |Roller License| OR |Splatling License|)"
+    },
+    {
+        "name": "E12/F01 - Drop the Bass Station",
+        "category": [
+            "Line E",
+            "Line F"
+        ],
+        "requires": "(|Line E| OR |Line F|) AND (|Dualies License| OR |Charger License| OR |Shooter License|)"
+    },
+    {
+        "name": "F02 - Slow Ride Station",
+        "category": [
+            "Line F"
+        ],
+        "requires": "(|Line F|) AND (|Charger License| OR |Sub Weapon License|)"
+    },
+    {
+        "name": "F03 - Pop Star Station",
+        "category": [
+            "Line F"
+        ],
+        "requires": "(|Line F|) AND (|Shooter License| OR |Blaster License| OR |Charger License|)"
+    },
+    {
+        "name": "F05 - Popalicious Station",
+        "category": [
+            "Line F"
+        ],
+        "requires": "(|Line F|) AND (|Shooter License| OR |Blaster License|)"
+    },
+    {
+        "name": "F06 - Duh-Oh Station",
+        "category": [
+            "Line F"
+        ],
+        "requires": "(|Line F|) AND (|Blaster License| OR |Charger License| OR |Splatling License|)"
+    },
+    {
+        "name": "F08 - Jump Station",
+        "category": [
+            "Line F"
+        ],
+        "requires": "(|Line F|) AND |Blaster License|"
+    },
+    {
+        "name": "F09 - Bring It Station",
+        "category": [
+            "Line F"
+        ],
+        "requires": "(|Line F|) AND (|Shooter License| OR |Slosher License| OR |Dualies License|)"
+    },
+    {
+        "name": "F10 - Cubular Station",
+        "category": [
+            "Line F"
+        ],
+        "requires": "(|Line F|) AND |Shooter License|"
+    },
+    {
+        "name": "F11/J08 - Whack-Fu Station",
+        "category": [
+            "Line F",
+            "Line J"
+        ],
+        "requires": "(|Line F| OR |Line J|) AND |Baller License|"
+    },
+    {
+        "name": "G01/I01 - Toastmaster Station",
+        "category": [
+            "Line G",
+            "Line I"
+        ],
+        "requires": "(|Line G| OR |Line I|) AND (|Shooter License| OR |Blaster License| OR |Brush License|)"
+    },
+    {
+        "name": "G02 - Hasta La Vista Station",
+        "category": [
+            "Line G"
+        ],
+        "requires": "(|Line G|) AND (|Blaster License| OR |Splatling License| OR |Roller License|)"
+    },
+    {
+        "name": "G03 - House Party Station",
+        "category": [
+            "Line G"
+        ],
+        "requires": "(|Line G|) AND |Charger License|"
+    },
+    {
+        "name": "G05 - Bustalicious Station",
+        "category": [
+            "Line G"
+        ],
+        "requires": "(|Line G|) AND (|Charger License| OR |Shooter License|)"
+    },
+    {
+        "name": "G07/I07 - Ride With Me Station",
+        "category": [
+            "Line G",
+            "Line I"
+        ],
+        "requires": "(|Line G| OR |Line I|) AND (|Shooter License| OR |Brush License| OR |Blaster License|)"
+    },
+    {
+        "name": "G08 - Freakazoid Station",
+        "category": [
+            "Line G"
+        ],
+        "requires": "(|Line G|) AND |Charger License|"
+    },
+    {
+        "name": "H02 - Ballercise Station",
+        "category": [
+            "Line H"
+        ],
+        "requires": "(|Line H|) AND |Baller License|"
+    },
+    {
+        "name": "H03 - Sweet Ride Station",
+        "category": [
+            "Line H"
+        ],
+        "requires": "(|Line H|) AND (|Shooter License| OR |Blaster License| OR |Brella License|)"
+    },
+    {
+        "name": "H04 - Shooter Mc Station",
+        "category": [
+            "Line H"
+        ],
+        "requires": "(|Line H|) AND (|Blaster License| OR |Charger License|)"
+    },
+    {
+        "name": "H05 - Ink It Station",
+        "category": [
+            "Line H"
+        ],
+        "requires": "(|Line H|) AND |Splatling License|"
+    },
+    {
+        "name": "H06 - Break and Bounce Station",
+        "category": [
+            "Line H"
+        ],
+        "requires": "(|Line H|) AND |Shooter License|"
+    },
+    {
+        "name": "H07/J01 - Cool Your Jets Station",
+        "category": [
+            "Line H",
+            "Line J"
+        ],
+        "requires": "(|Line H| OR |Line J|) AND |Inkjet License|"
+    },
+    {
+        "name": "I02 - Dinky Ink Station",
+        "category": [
+            "Line I"
+        ],
+        "requires": "(|Line I|) AND (|Shooter License| OR |Blaster License|)"
+    },
+    {
+        "name": "I04 - Can't Touch This Station",
+        "category": [
+            "Line I"
+        ],
+        "requires": "(|Line I|) AND (|Charger License| OR |Brella License| OR |Roller License|)"
+    },
+    {
+        "name": "I06 - All Eyez Station",
+        "category": [
+            "Line I"
+        ],
+        "requires": "(|Line I|) AND (|Charger License| OR |Shooter License|)"
+    },
+    {
+        "name": "I08 - Radio Station",
+        "category": [
+            "Line I"
+        ],
+        "requires": "(|Line I|) AND (|Slosher License| OR |Brella License| OR |Dualies License|)"
+    },
+    {
+        "name": "J02 - Matchmaster Station",
+        "category": [
+            "Line J"
+        ],
+        "requires": "(|Line J|) AND (|Shooter License| OR |Charger License| OR |Blaster License|)"
+    },
+    {
+        "name": "J04 - Footloose Station",
+        "category": [
+            "Line J"
+        ],
+        "requires": "(|Line J|) AND (|Brella License| OR |Blaster License| OR |Brush License|)"
+    },
+    {
+        "name": "J07 - Outrageous Station",
+        "category": [
+            "Line J"
+        ],
+        "requires": "(|Line J|) AND (|Brella License| OR |Slosher License| OR |Blaster License|)"
+    },
+	{
+        "name": "EP01 - Coccyx Phase",
+        "category": [
+            "Escape Phase"
+        ],
+        "requires": ""
+    },
+	{
+        "name": "EP02 - Villi Phase",
+        "category": [
+            "Escape Phase"
+        ],
+        "requires": "|Shooter License| AND |Sub Weapon License|"
+    },
+	{
+        "name": "EP03 - Belly Phase",
+        "category": [
+            "Escape Phase"
+        ],
+        "requires": "|Shooter License| AND |Sub Weapon License|"
+    },
+	{
+        "name": "EP04 - Intestinal Phase",
+        "category": [
+            "Escape Phase"
+        ],
+        "requires": "|Shooter License| AND |Sub Weapon License|"
+    },
+	{
+        "name": "EP05 - Diaphram Phase",
+        "category": [
+            "Escape Phase"
+        ],
+        "requires": "|Shooter License| AND |Sub Weapon License| AND |Inkjet License|"
+    },
+	{
+        "name": "EP06 - Peristalsis Phase",
+        "category": [
+            "Escape Phase"
+        ],
+        "requires": "|Shooter License| AND |Sub Weapon License| AND |Inkjet License|"
+    },
+	{
+        "name": "EP07 - Spinal Phase",
+        "category": [
+            "Escape Phase"
+        ],
+        "requires": "|Shooter License| AND |Sub Weapon License| AND |Inkjet License|"
+    },
+	{
+        "name": "EP08 - Commander Tartar",
+        "category": [
+            "Escape Phase"
+        ],
+		"victory": true,
+        "requires": "|Shooter License| AND |Sub Weapon License| AND |Inkjet License|"
+    },
+	{
+        "name": "A00 - Inner Agent 3",
+        "category": [
+            "Inner Agent 3",
+			"Line A"
+        ],
+		"requires": "|Shooter License| AND |Sub Weapon License| AND |Locker Key|"
+    }
+]

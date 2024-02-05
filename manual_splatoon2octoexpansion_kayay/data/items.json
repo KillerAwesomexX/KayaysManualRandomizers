@@ -1,0 +1,224 @@
+[
+	{
+		"name": "Line A",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Line B",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Line C",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Line D",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Line E",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Line F",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Line G",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Line H",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Line I",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Line J",
+		"count":1,
+		"category": ["Rail Line"],
+		"progression": true
+	},
+	{
+		"name": "Sub Weapon License",
+		"count":1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "8-Ball License",
+		"count":1,
+		"category": ["Special Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Baller License",
+		"count":1,
+		"category": ["Special Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Inkjet License",
+		"count":1,
+		"category": ["Special Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Control Thang",
+		"count":1,
+		"category": ["Thangs"],
+		"progression": true
+	},
+	{
+		"name": "Pointy Thang",
+		"count": 1,
+		"category": ["Thangs"],
+		"progression": true
+	},
+	{
+		"name": "Container Thang",
+		"count": 1,
+		"category": ["Thangs"],
+		"progression": true
+	},
+	{
+		"name": "Lid Thang",
+		"count":1,
+		"category": ["Thangs"],
+		"progression": true
+	},
+	{
+		"name": "Shooter License",
+		"count":1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Roller License",
+		"count":1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Charger License",
+		"count":1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Slosher License",
+		"count":1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Splatling License",
+		"count": 1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Dualies License",
+		"count":1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Brella License",
+		"count":1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Blaster License",
+		"count":1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Brush License",
+		"count":1,
+		"category": ["Weapon Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Splashdown License",
+		"count":1,
+		"category": ["Special Licenses"],
+		"progression": true
+	},
+	{
+		"name": "Weapon Malfunction",
+		"count": 5,
+		"category": ["Traps"],
+		"trap": true
+	},
+	{
+		"name": "Mem Cake",
+		"count": 40,
+		"category": ["Mem Cake Collection"],
+		"filler": true
+	},
+	{
+		"name": "Unidentified Tram Pass",
+		"count": 5,
+		"category": [],
+		"filler": true
+	},
+	{
+		"name": "Bomb Launcher License",
+		"count":1,
+		"category": ["Special Licenses"],
+		"filler": true
+	},
+	{
+		"name": "Sting Ray License",
+		"count":1,
+		"category": ["Special Licenses"],
+		"filler": true
+	},
+	{
+		"name": "Ink Armor License",
+		"count":1,
+		"category": ["Special Licenses"],
+		"filler": true
+	},
+	{
+		"name": "Bubble Blower License",
+		"count":1,
+		"category": ["Special Licenses"],
+		"filler": true
+	},
+	{
+		"name": "Tenta Missile License",
+		"count":1,
+		"category": ["Special Licenses"],
+		"filler": true
+	},
+	{
+		"name": "Locker Key",
+		"count":1,
+		"category": ["Inner Agent 3"],
+		"progression": true
+	}
+]

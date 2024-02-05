@@ -1,0 +1,18 @@
+{
+    "game": "Splatoon2OctoExpansion",
+    "creator": "Kayay",
+    "filler_item_name": "CQ's Admiration",
+    "starting_items": [
+        {
+            "items": [
+                "Shooter License"
+            ]
+        },
+		{
+			"items": [
+                "Line C", "Line D", "Line E", "Line F", "Line G"
+            ],
+			"random":1
+		}	
+    ]
+}
