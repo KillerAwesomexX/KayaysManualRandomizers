@@ -1,0 +1,58 @@
+Total locations: 100
+Total songs: 50
+Amount of Progressive Flow: 20
+
+Song List: 
+Hole in One - Row 1
+Screwbot Factory - Row 1
+See-Saw - Row 1
+Double Date - Row 1
+Remix 1 - Row 1
+Fork Lifter - Row 2
+Tambourine - Row 2
+Board Meeting - Row 2
+Monkey Watch - Row 2
+Remix 2 - Row 2
+Working Dough - Row 3
+Built to Scale - Row 3
+Air Rally - Row 3
+Figure Fighter - Row 3
+Remix 3 - Row 3
+Ringside - Row 4
+Packing Pests - Row 4
+Micro-Row - Row 4
+Samurai Slice - Row 4
+Remix 4 - Row 4
+Catch of the Day - Row 5
+Flipper-Flop - Row 5
+Exhibition Match - Row 5
+Flock Step - Row 5
+Remix 5 - Row 5
+Launch Party - Row 6
+Donk-Donk - Row 6
+Bossa Nova - Row 6
+Love Rap - Row 6
+Remix 6 - Row 6
+Tap Troupe - Row 7
+Shrimp Shuffle - Row 7
+Cheer Readers - Row 7
+Karate Man - Row 7
+Remix 7 - Row 7
+Samurai Slice 2 - Row 8
+Working Dough 2 - Row 8
+Built to Scale 2 - Row 8
+Double Date 2 - Row 8
+Remix 8 - Row 8
+Love Rap 2 - Row 9
+Cheer Readers 2 - Row 9
+Hole in One 2 - Row 9
+Screwbot Factory 2 - Row 9
+Remix 9 - Row 9
+Figure Fighter 2 - Row 10
+Micro-Row 2 - Row 10
+Packing Pests 2 - Row 10
+Karate Man 2 - Row 10
+Remix 10 - Row 10
+
+
+['Hole in One|Row 1', 'Screwbot Factory|Row 1', 'See-Saw|Row 1', 'Double Date|Row 1', 'Remix 1|Row 1', 'Fork Lifter|Row 2', 'Tambourine|Row 2', 'Board Meeting|Row 2', 'Monkey Watch|Row 2', 'Remix 2|Row 2', 'Working Dough|Row 3', 'Built to Scale|Row 3', 'Air Rally|Row 3', 'Figure Fighter|Row 3', 'Remix 3|Row 3', 'Ringside|Row 4', 'Packing Pests|Row 4', 'Micro-Row|Row 4', 'Samurai Slice|Row 4', 'Remix 4|Row 4', 'Catch of the Day|Row 5', 'Flipper-Flop|Row 5', 'Exhibition Match|Row 5', 'Flock Step|Row 5', 'Remix 5|Row 5', 'Launch Party|Row 6', 'Donk-Donk|Row 6', 'Bossa Nova|Row 6', 'Love Rap|Row 6', 'Remix 6|Row 6', 'Tap Troupe|Row 7', 'Shrimp Shuffle|Row 7', 'Cheer Readers|Row 7', 'Karate Man|Row 7', 'Remix 7|Row 7', 'Samurai Slice 2|Row 8', 'Working Dough 2|Row 8', 'Built to Scale 2|Row 8', 'Double Date 2|Row 8', 'Remix 8|Row 8', 'Love Rap 2|Row 9', 'Cheer Readers 2|Row 9', 'Hole in One 2|Row 9', 'Screwbot Factory 2|Row 9', 'Remix 9|Row 9', 'Figure Fighter 2|Row 10', 'Micro-Row 2|Row 10', 'Packing Pests 2|Row 10', 'Karate Man 2|Row 10', 'Remix 10|Row 10']

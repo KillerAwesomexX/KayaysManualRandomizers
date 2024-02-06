@@ -1,0 +1,416 @@
+[
+    {
+        "count": 16,
+        "name": "Progressive Flow",
+        "category": [
+            "Progressive Flow"
+        ],
+        "progression_skip_balancing": true
+    },
+    {
+        "name": "Hole in One",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Screwbot Factory",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "See-Saw",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Double Date",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 1",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Fork Lifter",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Tambourine",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Board Meeting",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Monkey Watch",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Working Dough",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Built to Scale",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Air Rally",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Figure Fighter",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 3",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Ringside",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Packing Pests",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Micro-Row",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Samurai Slice",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 4",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Catch of the Day",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Flipper-Flop",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Exhibition Match",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Flock Step",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 5",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Launch Party",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Donk-Donk",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Bossa Nova",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Love Rap",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 6",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Tap Troupe",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Shrimp Shuffle",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Cheer Readers",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Karate Man",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 7",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Samurai Slice 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Working Dough 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Built to Scale 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Double Date 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 8",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Love Rap 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Cheer Readers 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Hole in One 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Screwbot Factory 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 9",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Figure Fighter 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Micro-Row 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Packing Pests 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Karate Man 2",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "name": "Remix 10",
+        "count": 1,
+        "category": [
+            "Songs"
+        ],
+        "progression": true
+    },
+    {
+        "count": 1,
+        "name": "Goal Song",
+        "category": "",
+        "filler": true
+    }
+]

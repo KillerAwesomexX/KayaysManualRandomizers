@@ -1,0 +1,79 @@
+#Any "comment" in these files start with #.
+#Items here must be on a new line.
+#List: Rhythm Heaven Fever Main Games - Created By: Kayay
+
+#$game=Rhythm Heaven Fever
+#$creator=Kayay
+#$filler_item_name=Cafe Break
+#$musicSheet=Progressive Flow
+
+
+##Row 1
+Hole in One
+Screwbot Factory
+See-Saw
+Double Date
+Remix 1
+
+##Row 2
+Fork Lifter
+Tambourine
+Board Meeting
+Monkey Watch
+Remix 2
+
+##Row 3
+Working Dough
+Built to Scale
+Air Rally
+Figure Fighter
+Remix 3
+
+##Row 4
+Ringside
+Packing Pests
+Micro-Row
+Samurai Slice
+Remix 4
+
+##Row 5
+Catch of the Day
+Flipper-Flop
+Exhibition Match
+Flock Step
+Remix 5
+
+##Row 6
+Launch Party
+Donk-Donk
+Bossa Nova
+Love Rap
+Remix 6
+
+##Row 7
+Tap Troupe
+Shrimp Shuffle
+Cheer Readers
+Karate Man
+Remix 7
+
+##Row 8
+Samurai Slice 2
+Working Dough 2
+Built to Scale 2
+Double Date 2
+Remix 8
+
+##Row 9
+Love Rap 2
+Cheer Readers 2
+Hole in One 2
+Screwbot Factory 2
+Remix 9
+
+##Row 10
+Figure Fighter 2
+Micro-Row 2
+Packing Pests 2
+Karate Man 2
+Remix 10
