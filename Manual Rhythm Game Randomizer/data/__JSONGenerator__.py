@@ -143,6 +143,13 @@ def addItems(songList,musicSheet,config):
         "filler": True
     }
     addItem.append(dictJSON)
+    dictJSON = {
+        "count": 1,
+        "name": "Goal Amount",
+        "category": "",
+        "filler": True
+    }
+    addItem.append(dictJSON)
     #dump to JSON
     jsonOutput=dumps(addItem, indent=4)
     itemFile.write(jsonOutput)
