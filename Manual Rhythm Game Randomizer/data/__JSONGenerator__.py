@@ -80,25 +80,14 @@ def addLocations(songList: list[str], musicSheet, config: dict[str,str]):
     #Generate generic total sheet locations.
     if (config.get("sheetAmount")):
         sheets = int(config.get("sheetAmount"))
-        for i in range(1,sheets+1):
-            dictJSON = {
-                "name": musicSheet + "s Needed - " + str(i),
-                "category": ["Start"],
-            }
-            addLocate.append(dictJSON)
     else:
-        sheets =(floor(len(songList)/3)+1)
-        if (sheets > 75):
-            sheets = 75
-            print ("There's a lot of locations in the world! In order to reduce file size,")
-            print ("the amount of sheet locations will be set to 75.")
-            print ("Put in a custom sheetAmount value in your file if you wish to change this.")
-        for i in range(1,sheets):
-            dictJSON = {
-                "name": musicSheet + "s Needed: " + str(i),
-                "category": ["Start"],
-            }
-            addLocate.append(dictJSON)
+        sheets = (floor(len(songList)/3)+1)
+    for i in range(1,sheets):
+        dictJSON = {
+            "name": musicSheet + "s Needed - " + str(i),
+            "category": ["Start"],
+        }
+        addLocate.append(dictJSON)
     
     itemFile = open("locations.json", "w")
     jsonOutput=dumps(addLocate, indent=4)
@@ -136,17 +125,18 @@ def addItems(songList,musicSheet,config):
             }
         addItem.append(dictJSON)
         y = y+1
+    #Generate generic Goal items to help the player find information about their world
     dictJSON = {
         "count": 1,
         "name": "Goal Song",
-        "category": "",
+        "category": ["Goal Information Item"],
         "filler": True
     }
     addItem.append(dictJSON)
     dictJSON = {
         "count": 1,
         "name": "Goal Amount",
-        "category": "",
+        "category": ["Goal Information Item"],
         "filler": True
     }
     addItem.append(dictJSON)
@@ -278,6 +268,7 @@ if (config.get("debug")):
     newFile.write("\n\n")
     newFile.write(str(songListFile))
     newFile.close()
+    print (str(songListFile))
 
 print ("\nAll finished!")
 exitProg()
