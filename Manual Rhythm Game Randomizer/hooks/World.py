@@ -129,10 +129,10 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
         for i in range(startAmt+1,11):
             locationNamesToRemove.append("Starting Song " + str(i))
     
-    #addchance baby!
+    #Rolls for the chance an additional location gets removed.
     addChance = get_option_value(multiworld, player, "extra_locations")
     for song in songList:
-        if (randint(0,100) < addChance):
+        if (randint(0,100) > addChance):
             locationNamesToRemove.append(song + " - 1")
 
 
