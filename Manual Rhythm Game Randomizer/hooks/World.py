@@ -73,6 +73,7 @@ def after_set_rules(world: World, multiworld: MultiWorld, player: int):
 # The complete item pool prior to being set for generation is provided here, in case you want to make changes to it
 def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
     from random import shuffle, randint
+    
     # Use this hook to remove items from the item pool
     #init most variables
     itemNamesToRemove = [] # List of item names
@@ -82,19 +83,29 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     #setup song list and sheetname
     songList = []
     for item in item_table:
-        if item["name"] != "Goal Song":
-            songList.append(item["name"])
-    songList.pop(-1)
+        songList.append(item["name"])
     
+    #the old code DID NOT remove goal song and goal amount. so go go gadget repeating code it is.
+    songList.pop(-1) #removes the manual defined filler item.
+    songList.pop(-1) #removes Goal Amount from the song list.
+    songList.pop(-1) #removes Goal Song from the song list.
+    
+    print (str(songList))
+    #this should find the goal lock item as long as its the first in the json. only way this should not be the case
+    #is if the JSON Generator has been tampered with.
     sheetName = songList[0]
     songList.pop(0)
     
+    #get the total amount of sheets needed for the goal. shouldn't need the for item in item_table, but it should guarantee finding it.
     sheetAmt = get_option_value(multiworld, player, "music_sheets")
     for item in item_table:
         if item["name"] == sheetName:
             sheetTotal = item["count"]
-    
     sheetAmt = (floor((sheetAmt/100)*(sheetTotal)))
+    if (sheetAmt == 0):
+        sheetAmt = 1
+    
+    #final prep before removing anything
     songAmt = len(songList)
     shuffle(songList)
     
@@ -102,44 +113,70 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     for i in range(1,sheetTotal+1):
         if (i != sheetAmt):
             locationNamesToRemove.append(sheetName + "s Needed - " + str(i))
+            
+    #Set the generic Location with a custom item to not mess with the multiworld as much
+    for l in multiworld.get_unfilled_locations(player=player):
+        if (l.name == (sheetName + "s Needed - " + str(sheetAmt))):
+                location = l
+                break
+    for i in item_pool:
+            if (i.name == "Goal Amount"):
+                item_to_place = i
+                break
+    location.place_locked_item(item_to_place)
+    item_pool.remove(item_to_place)
 
-    #figure out our goal song, and remove the first location. we don't need it.
+    #since we shuffled the list, we can take the first result from the song list for it to be random.
+    #the first location will help with telling the player what song is their goal.
+    #NOTE: this only works if a starting hint is applied (which it should be in the YAML)
     goalSong = songList[0]
     songList.pop(0)
     itemNamesToRemove.append(goalSong)
     locationNamesToRemove.append(goalSong + " - 1")
 
-    #Set the goal song's location to have a generic item for tracking it, as well as changing the requirements. 
-    location = next(l for l in multiworld.get_unfilled_locations(player=player) if l.name == (str(goalSong)+" - 0"))
-    item_to_place = next(i for i in item_pool if i.name == ("Goal Song"))
+    #Set the goal song's location to have a generic item for tracking it, as well as changing the requirements since we removed the item. 
+    for l in multiworld.get_unfilled_locations(player=player):
+            if (l.name == (goalSong + " - 0")):
+                location = l
+                break
+    for i in item_pool:
+            if (i.name == "Goal Song"):
+                item_to_place = i
+                break
     location.place_locked_item(item_to_place)
     item_pool.remove(item_to_place)
     location.access_rule = lambda state: state.has(sheetName, player, sheetAmt)
 
-    #Make sure the victory location is set to the same stuff.
+    #Make sure the victory location is set up.
     victory_location = multiworld.get_location("__Manual Game Complete__", player)
     victory_location.access_rule = lambda state: state.has(sheetName, player, sheetAmt)
 
-    #find our starting songs. If we don't have the max amount of starting songs, remove them.
+    #apply the (X) amount of starting songs to the list.
     startAmt = get_option_value(multiworld, player, "start_total")
     for i in range(1,startAmt+1):
-        startingSongs.append(songList[1])
+        startingSongs.append(songList[0])
         songList.pop(0)
     if (startAmt != 10):
         for i in range(startAmt+1,11):
             locationNamesToRemove.append("Starting Song " + str(i))
     
-    #Rolls for the chance an additional location gets removed.
+    #Only remove the extra location if the amount rolled is higher.
+    #80 > 75 would get it removed.
     addChance = get_option_value(multiworld, player, "extra_locations")
     for song in songList:
         if (randint(0,100) > addChance):
             locationNamesToRemove.append(song + " - 1")
 
-
     #place all of the starting songs
     for x in range(1, startAmt+1):
-        location = next(l for l in multiworld.get_unfilled_locations(player=player) if l.name == ("Starting Song " + str(x)))
-        item_to_place = next(i for i in item_pool if i.name == (startingSongs[x-1]))
+        for l in multiworld.get_unfilled_locations(player=player):
+            if (l.name == ("Starting Song " + str(x))):
+                location = l
+                break
+        for i in item_pool:
+            if (i.name == (startingSongs[x-1])):
+                item_to_place = i
+                break
         location.place_locked_item(item_to_place)
         item_pool.remove(item_to_place)
 
@@ -150,14 +187,14 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
             locationNamesToRemove.append(songList[i-1]+ " - 0")
             locationNamesToRemove.append(songList[i-1]+ " - 1")
     
-
     # Use this hook to remove items from the world
     for itemName in itemNamesToRemove:
-        item = next(i for i in item_pool if i.name == itemName)
-        item_pool.remove(item)
+        for i in item_pool:
+            if (i.name == itemName):
+                item_pool.remove(i)
+                break
     
     # Use this hook to remove locations from the world
-    
     for region in multiworld.regions:
         if region.player == player:
             for location in list(region.locations):
@@ -171,6 +208,7 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     # Some other useful hook options:
     
     ## Place an item at a specific location
+    #previously used these but they break generation too often for me. could be my small brain but i've had this error way too many times for me to use it.
     #location = next(l for l in multiworld.get_unfilled_locations(player=player) if l.name == "Location Name")
     #item_to_place = next(i for i in item_pool if i.name == "Item Name")
     #location.place_locked_item(item_to_place)
