@@ -1,0 +1,91 @@
+#Any "comment" in these files start with #.
+#Items here must be on a new line.
+#Since I'm using two different games for songs, I've set the game name to something unique.
+#List: Collection of Mario Kart tracks on the Nintendo Switch Online's Expansion Pass - Created By: Kayay
+
+#$game=Mario Kart Collection
+#$creator=Kayay
+#$filler_item_name=Item Box
+#$musicSheet=Gold Star
+
+##Super Mario Kart Mushroom Cup
+SNES Mario Circuit 1
+SNES Donut Plains 1
+SNES Ghost Valley 1
+SNES Bowser Castle 1
+SNES Mario Circuit 2
+
+##Super Mario Kart Flower Cup
+SNES Choco Island 1
+SNES Ghost Valley 2
+SNES Donut Plains 2
+SNES Bowser Castle 2
+SNES Mario Circuit 3
+
+##Super Mario Kart Star Cup
+SNES Koopa Beach 1
+SNES Choco Island 2
+SNES Vanilla Lake 1
+SNES Bowser Castle 3
+SNES Mario Circuit 4
+
+##Super Mario Kart Special Cup
+SNES Donut Plains 3
+SNES Koopa Beach 2
+SNES Ghost Valley 3
+SNES Vanilla Lake 2
+SNES Rainbow Road
+
+##Mario Kart 64 Mushroom Cup
+64 Luigi Raceway
+64 Moo Moo Farm
+64 Koopa Troopa Beach
+64 Kalimari Desert
+
+##Mario Kart 64 Flower Cup
+64 Toads Turnpike
+64 Frappe Snowland
+64 Choco Mountain
+64 Mario Raceway
+
+##Mario Kart 64 Star Cup
+64 Wario Stadium
+64 Sherbet Land
+64 Royal Raceway
+64 Bowsers Castle
+
+##Mario Kart 64 Special Cup
+64 DKs Jungle Parkway
+64 Yoshi Valley
+64 Banshee Boardwalk
+64 Rainbow Road
+
+##Mario Kart Super Circuit Mushroom Cup
+GBA Peach Circuit
+GBA Shy Guy Beach
+GBA Riverside Park
+GBA Bowser Castle 1
+
+##Mario Kart Super Circuit Flower Cup
+GBA Mario Circuit
+GBA Boo Lake
+GBA Cheese Land
+GBA Bowser Castle 2
+
+##Mario Kart Super Circuit Thunder Cup
+GBA Luigi Circuit
+GBA Sky Garden
+GBA Cheep-Cheep Island
+GBA Sunset Wilds
+
+##Mario Kart Super Circuit Star Cup
+GBA Snow Land
+GBA Ribbon Road
+GBA Yoshi Desert
+GBA Bowser Castle 3
+
+##Mario Kart Super Circuit Special Cup
+GBA Lakeside Park
+GBA Broken Pier
+GBA Bowser Castle 4
+GBA Rainbow Road

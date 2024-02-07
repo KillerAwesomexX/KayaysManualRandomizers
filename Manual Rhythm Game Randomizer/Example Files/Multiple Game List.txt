@@ -1,0 +1,46 @@
+#Any "comment" in these files start with #.
+#While not REQUIRED, please specify a format list for which game is which otherwise you may get lost!
+#Since I'm using two different games for songs, I've set the game name to something unique.
+#List: F.I.S.H. and Rhythm Doctor 1-4 Daytime - Created By: Kayay
+
+#$game=Double Duty Rhythm
+#$creator=Kayay
+#$filler_item_name=Fifteen Minute Break
+#$musicSheet=Progressive Promotion
+
+##Rhythm Doctor
+RD Samurai Techno
+RD Intimate
+RD Battleworn Insomniac
+RD Lo-fi Hip-Hop Beats To Treat Patients To
+RD Supraventricular Tachycardia
+RD Puff Piece
+RD Song of the Sea
+RD All The Times
+RD Sleepy Garden
+RD Classy
+RD Distant Duet
+RD One Shift More
+RD Training Doctor's Train Ride Performance
+RD Invisible
+RD Steinway
+RD Know You
+
+##FISH
+FISH Tuna Training
+FISH Upstream Underpass
+FISH Barracuda
+FISH Exit 404
+FISH Onion Canion
+FISH Quiet!
+FISH Swordfish-Sailfish Speedway
+FISH Traingle Tunnel
+FISH L
+FISH Exit 87
+FISH 1 Tuna
+FISH Barra2da
+FISH Um...
+FISH Quiet! 2
+FISH Starfish
+FISH Spaghetti Speedway
+FISH Upstream Overpass
