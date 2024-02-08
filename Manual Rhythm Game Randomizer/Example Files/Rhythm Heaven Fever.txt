@@ -6,6 +6,7 @@
 #$creator=Kayay
 #$filler_item_name=Cafe Break
 #$musicSheet=Progressive Flow
+#$traps=Go For A Perfect! Trap, Blindfold Trap
 
 ##Row 1
 Hole in One

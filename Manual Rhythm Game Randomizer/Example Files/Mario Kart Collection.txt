@@ -1,12 +1,13 @@
 #Any "comment" in these files start with #.
 #Items here must be on a new line.
-#Since I'm using two different games for songs, I've set the game name to something unique.
+#Since I'm using different games for tracks, I've set the game name to something unique.
 #List: Collection of Mario Kart tracks on the Nintendo Switch Online's Expansion Pass - Created By: Kayay
 
 #$game=Mario Kart Collection
 #$creator=Kayay
 #$filler_item_name=Item Box
 #$musicSheet=Gold Star
+#$traps=Item Malfunction, Max CC
 
 ##Super Mario Kart Mushroom Cup
 SNES Mario Circuit 1
