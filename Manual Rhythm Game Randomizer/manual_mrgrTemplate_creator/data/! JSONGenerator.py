@@ -12,7 +12,7 @@
 #Added support for category headers with ## before the category name
 #Added support for blank lines in song.txt
 
-#Version 2.0.0
+#Version Pre 2.0.0
 #Changelog
 
 #Converted the original Randomizer into the JSONGenerator
@@ -22,6 +22,7 @@
 #New song.txt options, including a debug (now that APWorldGoal.txt has been removed), and sheetAmount
 #If song.txt is missing, it will now ask for a file - Originally done by superriderth for the
 #previous version of this, I figured I'd add that same functionality for this version
+#song.txt now allows Trap definition! Go crazy if you want.
 
 #Replaced options from the original Randomizer into YAML options.
 #These are: Extra Location Percent, Sheet Amount Percent, Song Amount, and Starting Songs
@@ -30,7 +31,7 @@
 #Sheets and Goal song are now set and told to the player through the multiworld
 ##While this needs two items, they're set as filler so it shouldn't mess around with it too much
 #Redid the item removal hook since the next() method had me running into errors left and right.
-
+#Additional song items have been removed until I can get it working.
 
 from json import dumps
 from math import floor
@@ -126,6 +127,18 @@ def addItems(songList,musicSheet,config):
     }
     addItem.append(dictJSON)
 
+    #add traps next
+    traps = (config.get("traps").split(", "))
+    if (traps):
+        for t in traps:
+            dictJSON = {
+                "count": 1,
+                "name": t,
+                "category": ["(Traps)"],
+                "trap": True
+            }
+            addItem.append(dictJSON)
+
     #generate songs
     y = 0
     itemFile = open("items.json", "w")
@@ -144,14 +157,14 @@ def addItems(songList,musicSheet,config):
     dictJSON = {
         "count": 1,
         "name": "Goal Song",
-        "category": ["Goal Information Item"],
+        "category": ["(Goal Information Item)"],
         "filler": True
     }
     addItem.append(dictJSON)
     dictJSON = {
         "count": 1,
         "name": "Goal Amount",
-        "category": ["Goal Information Item"],
+        "category": ["(Goal Information Item)"],
         "filler": True
     }
     addItem.append(dictJSON)
@@ -202,6 +215,7 @@ config = {
     "creator": "",
     "musicSheet": "",
     "filler_item_name": "",
+    "traps":[],
     "sheetAmount": "",
     "debug": ""
 }
