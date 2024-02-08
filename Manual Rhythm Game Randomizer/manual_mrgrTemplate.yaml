@@ -28,7 +28,7 @@
 name: Player{number}
 
 # Used to describe your yaml. Useful if you have multiple files.
-description: Default Manual_RhythmHeavenFever_Kayay Template
+description: Default Manual_mrgrTemplate_creator Template
 
 game: Manual_mrgrTemplate_creator
 requires:
@@ -58,39 +58,11 @@ Manual_mrgrTemplate_creator:
     items: 50
     minimal: 0
 
-  local_items:
-    # Forces these items to be in their native world.
-    []
-
-  non_local_items:
-    # Forces these items to be outside their native world.
-    []
-
-  start_inventory:
-    # Start with these items.
-    {}
-
   start_hints:
     # Start with these item's locations prefilled into the !hint command.
     # These help with locating both the player's goal song and amount.
     # Do not remove this unless you know what you're doing.
     ["Goal Song", "Goal Amount"]
-
-  start_location_hints:
-    # Start with these locations and their item prefilled into the !hint command
-    []
-
-  exclude_locations:
-    # Prevent these locations from having an important item
-    []
-
-  priority_locations:
-    # Prevent these locations from having an unimportant item
-    []
-
-  item_links:
-    # Share part of your item pool with other players.
-    []
 
   extra_locations:
     # The percent chance for an additional location to be added when you complete a song.
@@ -139,11 +111,10 @@ Manual_mrgrTemplate_creator:
 
   filler_traps:
     # How many fillers will be replaced with traps. 0 means no additional traps, 100 means all fillers are traps.
-    # This shouldn't do anything.
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    0: 50
+    10: 50
     random: 0
     random-low: 0
     random-high: 0
