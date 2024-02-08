@@ -26,6 +26,11 @@ from math import floor
 ## The fill_slot_data method will be used to send data to the Manual client for later use, like deathlink.
 ########################################################################################
 
+#def debugMW(item_pool):
+#    print(str(item_pool))
+#    y = "cool"
+#    while(y == "cool"):
+#        y = str(input("cool?"))
 
 # Called before regions and locations are created. Not clear why you'd want this, but it's here.
 def before_create_regions(world: World, multiworld: MultiWorld, player: int):
@@ -65,49 +70,61 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     addChance = get_option_value(multiworld, player, "extra_locations")
     song_rolled = get_option_value(multiworld, player, "song_total")
     startAmt = get_option_value(multiworld, player, "start_total")
-    #setup song list and sheetname
+
+    #setup song list, trap list, and sheetname
     songList = []
+    traps = []
+    
+    #init all the items for future use.
     for item in item_table:
-        songList.append(item["name"])
-    
-    #the old code DID NOT remove goal song and goal amount. so go go gadget repeating code it is.
-    songList.pop(-1) #removes the manual defined filler item.
-    songList.pop(-1) #removes Goal Amount from the song list.
-    songList.pop(-1) #removes Goal Song from the song list.
-    
-    #this should find the goal lock item as long as its the first in the json. only way this should not be the case
-    #is if the JSON Generator has been tampered with.
-    sheetName = songList[0]
-    songList.pop(0)
+        i = item.get("category", "nuh-uh") #the generic filler has no category.
+        if i[0] == "Songs":
+            songList.append(item["name"])
+        elif i[0] == "(Traps)":
+            traps.append(item["name"])
+        elif i[0] != "(Goal Information Item)":
+            if item.get("progression_skip_balancing"): #the goal mode item
+                sheetName = item["name"]
+                sheetTotal = item["count"]
+        else:
+            pass
 
     #Error checking for song amount
     if (song_rolled > len(songList)):
-        print ("Amount of songs is more than the world can handle! Setting it the amount of songs total.")
+        print ("Amount of songs is more than the world can handle! Setting it to the amount of songs total.")
         song_rolled = len(songList) - startAmt
     
     #get the total amount of sheets needed for the goal. shouldn't need the for item in item_table, but it should guarantee finding it.
     sheetAmt = get_option_value(multiworld, player, "music_sheets")
-    for item in item_table:
-        if item["name"] == sheetName:
-            sheetTotal = item["count"]
-            break
     sheetAmt = (floor((sheetAmt/100)*(sheetTotal)))
     
     #Error checking in case we have too many music sheets.
     if (sheetAmt > (floor((song_rolled+startAmt)*2*(addChance/100)) - (song_rolled + 3))):
         print ("Reducing music sheets since too many were in the pool.")
-        newSheetAmt = (floor((song_rolled+startAmt)*2*(addChance/100)) - (song_rolled + 3))
+        newSheetTotal = (floor((song_rolled+startAmt)*2*(addChance/100)) - (song_rolled + 3))
         # 30 songs rolled + 5 starting songs is 70 locations MAX, multiplied by the addchance percent, then
         # subtracted by 30 potential song items plus the goal information items and one more for a bit of overhead.
-        for x in range(newSheetAmt, sheetAmt):
+        for x in range(newSheetTotal, sheetAmt):
             itemNamesToRemove.append(sheetName)
-        sheetAmt = (floor((sheetAmt/100)*(sheetTotal)))
+        sheetAmt = (floor((sheetAmt/100)*(newSheetTotal)))
+    
     if (sheetAmt == 0):
         sheetAmt = 1
     
     #final prep before removing anything
     songAmt = len(songList)
     shuffle(songList)
+    
+    #place any song near the front of the list, to make sure it does not end up being removed
+    forceList = get_option_value(multiworld, player, "force_song")
+    
+    if (forceList):
+        for song in forceList:
+            try:
+                songList.remove(song)
+                songList.index((1+startAmt),song)
+            except:
+                print ("Song was not found! Skipping...")
     
     #remove any generic Location information
     for i in range(1,sheetTotal+1):
@@ -129,6 +146,7 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     #since we shuffled the list, we can take the first result from the song list for it to be random.
     #the first location will help with telling the player what song is their goal.
     #NOTE: this only works if a starting hint is applied (which it should be in the YAML)
+
     goalSong = songList[0]
     songList.pop(0)
     itemNamesToRemove.append(goalSong)
@@ -151,10 +169,10 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     victory_location = multiworld.get_location("__Manual Game Complete__", player)
     victory_location.access_rule = lambda state: state.has(sheetName, player, sheetAmt)
 
-    #apply the (X) amount of starting songs to the list.
     for i in range(1,startAmt+1):
         startingSongs.append(songList[0])
         songList.pop(0)
+    
     if (startAmt != 10):
         for i in range(startAmt+1,11):
             locationNamesToRemove.append("Starting Song " + str(i))
@@ -201,6 +219,9 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     if hasattr(multiworld, "clear_location_cache"):
         multiworld.clear_location_cache()
 
+    #used to help debug this kinda.
+    item_pool = world.add_filler_items(item_pool, traps)
+    #debugMW(item_pool)
     return item_pool
     
     # Some other useful hook options:
