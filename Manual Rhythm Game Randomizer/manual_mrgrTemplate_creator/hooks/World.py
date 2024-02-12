@@ -8,7 +8,6 @@ from ..Locations import ManualLocation
 
 # Raw JSON data from the Manual apworld, respectively:
 #          data/game.json, data/items.json, data/locations.json, data/regions.json
-#
 from ..Data import game_table, item_table, location_table, region_table
 
 # These helper methods allow you to determine if an option has been set, or what its value is, for any player in the multiworld
@@ -27,10 +26,10 @@ from math import floor
 ########################################################################################
 
 #def debugMW(item_pool):
-#    print(str(item_pool))
-#    y = "cool"
-#    while(y == "cool"):
-#        y = str(input("cool?"))
+#   print(str(item_pool))
+#   y = "cool"
+#   while(y == "cool"):
+#       y = str(input("cool? "))
 
 # Called before regions and locations are created. Not clear why you'd want this, but it's here.
 def before_create_regions(world: World, multiworld: MultiWorld, player: int):
@@ -46,25 +45,14 @@ def before_set_rules(world: World, multiworld: MultiWorld, player: int):
 
 # Called after rules for accessing regions and locations are created, in case you want to see or modify that information.
 def after_set_rules(world: World, multiworld: MultiWorld, player: int):
-    # Use this hook to modify the access rules for a given location
-    
-    ## Common functions:
-    # location = world.get_location(location_name, player)
-    # location.access_rule = Example_Rule
-    
-    ## Combine rules:
-    # old_rule = location.access_rule
-    # location.access_rule = lambda state: old_rule(state) and Example_Rule(state)
-    # OR
-    # location.access_rule = lambda state: old_rule(state) or Example_Rule(state)
     pass
+
 # The complete item pool prior to being set for generation is provided here, in case you want to make changes to it
 def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
     from random import shuffle, randint
-    
-    # Use this hook to remove items from the item pool
+
     #init most variables
-    itemNamesToRemove = [] # List of item names
+    itemNamesToRemove = []
     locationNamesToRemove = []
     startingSongs = []
     addChance = get_option_value(multiworld, player, "extra_locations")
@@ -78,16 +66,23 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     #init all the items for future use.
     for item in item_table:
         i = item.get("category", "nuh-uh") #the generic filler has no category.
-        if i[0] == "Songs":
+        if i[0] == "(Songs)":
             songList.append(item["name"])
         elif i[0] == "(Traps)":
             traps.append(item["name"])
         elif i[0] != "(Goal Information Item)":
             if item.get("progression_skip_balancing"): #the goal mode item
                 sheetName = item["name"]
-                sheetTotal = item["count"]
-        else:
-            pass
+                sheetTotal = item["count"] #Removes any and all filler before re-generating them.
+
+    #remove any songs before we do anything
+    removeList = [] + get_option_value(multiworld, player, "remove_song")
+    if (removeList):
+        for song in removeList:
+            songList.remove(song)
+            itemNamesToRemove.append(song)
+            locationNamesToRemove.append(song = " - 0")
+            locationNamesToRemove.append(song = " - 1")
 
     #Error checking for song amount
     if (song_rolled > len(songList)):
@@ -95,8 +90,7 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
         song_rolled = len(songList) - startAmt
     
     #get the total amount of sheets needed for the goal. shouldn't need the for item in item_table, but it should guarantee finding it.
-    sheetAmt = get_option_value(multiworld, player, "music_sheets")
-    sheetAmt = (floor((sheetAmt/100)*(sheetTotal)))
+    sheetAmt = (floor((get_option_value(multiworld, player, "music_sheets")/100)*(sheetTotal)))
     
     #Error checking in case we have too many music sheets.
     if (sheetAmt > (floor((song_rolled+startAmt)*2*(addChance/100)) - (song_rolled + 3))):
@@ -109,6 +103,8 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
         sheetAmt = (floor((sheetAmt/100)*(newSheetTotal)))
     
     if (sheetAmt == 0):
+        #if somehow we have no sheets, make sure there's at least one.
+        itemNamesToRemove.pop(0)
         sheetAmt = 1
     
     #final prep before removing anything
@@ -116,15 +112,11 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     shuffle(songList)
     
     #place any song near the front of the list, to make sure it does not end up being removed
-    forceList = get_option_value(multiworld, player, "force_song")
-    
+    forceList = [] + get_option_value(multiworld, player, "force_song")
     if (forceList):
         for song in forceList:
-            try:
-                songList.remove(song)
-                songList.index((1+startAmt),song)
-            except:
-                print ("Song was not found! Skipping...")
+            songList.remove(song)
+            songList.insert((1+startAmt),song)
     
     #remove any generic Location information
     for i in range(1,sheetTotal+1):
@@ -169,10 +161,12 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     victory_location = multiworld.get_location("__Manual Game Complete__", player)
     victory_location.access_rule = lambda state: state.has(sheetName, player, sheetAmt)
 
+    #Set up all starting songs.
     for i in range(1,startAmt+1):
         startingSongs.append(songList[0])
         songList.pop(0)
-    
+
+    #Remove any unnecessary locations
     if (startAmt != 10):
         for i in range(startAmt+1,11):
             locationNamesToRemove.append("Starting Song " + str(i))
@@ -209,7 +203,7 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
             if (i.name == itemName):
                 item_pool.remove(i)
                 break
-    
+
     # Use this hook to remove locations from the world
     for region in multiworld.regions:
         if region.player == player:
@@ -219,8 +213,8 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     if hasattr(multiworld, "clear_location_cache"):
         multiworld.clear_location_cache()
 
-    #used to help debug this kinda.
     item_pool = world.add_filler_items(item_pool, traps)
+    #used to help debug this kinda.
     #debugMW(item_pool)
     return item_pool
     

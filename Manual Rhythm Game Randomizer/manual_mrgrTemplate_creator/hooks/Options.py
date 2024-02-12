@@ -1,5 +1,5 @@
 # Object classes from AP that represent different types of options that you can create
-from Options import FreeText, NumericOption, Toggle, DefaultOnToggle, Choice, TextChoice, Range, SpecialRange
+from Options import Range, OptionList
 
 # These helper methods allow you to determine if an option has been set, or what its value is, for any player in the multiworld
 from ..Helpers import is_option_enabled, get_option_value
@@ -44,7 +44,8 @@ class SongAmount(Range):
     """The amount of songs in your world. Does not include Starting Songs and the Goal Song."""
     display_name = "Total Songs"
     range_start = 10
-    range_end = 150
+    range_end = 400
+    #Range_End has been set to an arbitrary value for now. You hopefully should not need to change this.
     default = 40
 
 class StartingSongs(Range):
@@ -54,6 +55,16 @@ class StartingSongs(Range):
     range_end = 10
     default = 5
 
+class ForceSong(OptionList):
+    """Guarantees the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs."""
+    display_name = "Force Songs"
+    verify_item_name = True
+
+class RemoveSong(OptionList):
+    """Removes the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs."""
+    display_name = "Remove Songs"
+    verify_item_name = True
+
 
 # This is called before any manual options are defined, in case you want to define your own with a clean slate or let Manual define over them
 def before_options_defined(options: dict) -> dict:
@@ -61,6 +72,8 @@ def before_options_defined(options: dict) -> dict:
     options["music_sheets"] = MusicSheetAmt
     options["song_total"] = SongAmount
     options["start_total"] = StartingSongs
+    options["force_song"] = ForceSong
+    options["remove_song"] = RemoveSong
     return options
 
 # This is called after any manual options are defined, in case you want to see what options are defined or want to modify the defined options
