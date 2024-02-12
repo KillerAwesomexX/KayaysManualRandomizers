@@ -23,14 +23,17 @@
 #If song.txt is missing, it will now ask for a file - Originally done by superriderth for the
 #previous version of this, I figured I'd add that same functionality for this version
 #song.txt now allows Trap definition! Go crazy if you want.
+#Song Items will now add the category associated with it.
 
 #Replaced options from the original Randomizer into YAML options.
 #These are: Extra Location Percent, Sheet Amount Percent, Song Amount, and Starting Songs
+#New options have been added: Force Song/Remove Song, and Filler/Trap percent (added by Manual by default)
 
 #Added some error checking just in case for both song amount and sheet amount
 #Sheets and Goal song are now set and told to the player through the multiworld
 ##While this needs two items, they're set as filler so it shouldn't mess around with it too much
 #Redid the item removal hook since the next() method had me running into errors left and right.
+#Ability to force a song into the pool as well as remove one.
 #Additional song items have been removed until I can get it working.
 
 from json import dumps
@@ -58,7 +61,7 @@ def addLocations(songList: list[str], musicSheet, config: dict[str,str]):
         }
         addLocate.append(dictJSON)
 
-    #Generate goal information for later
+    #Generate Victory location
     dictJSON = {
             "name": "Finished " + config.get("game"),
             "category": [],
@@ -144,11 +147,14 @@ def addItems(songList,musicSheet,config):
     itemFile = open("items.json", "w")
 
     while (y != len(songList)):
-        name = songList[y].split("|")[0]
+        if "|" in songList[y]:
+            name, categories = songList[y].split("|", 1)
+        else:
+            name, categories = songList[y], ""
         dictJSON = {
             "name": name,
             "count": 1,
-            "category": ["Songs"],
+            "category": ["(Songs)"] + (categories.split("|") if categories else []),
             "progression": True
             }
         addItem.append(dictJSON)
@@ -261,7 +267,8 @@ for songName in songFile:
 if not songListFile:
     print ("song.txt has no songs!")
     exitProg()
-
+# Sort list for ease of finding songs in the client
+songListFile.sort()
 #Check if there's at least 10 songs within the list
 
 if (len(songListFile) < 10):
