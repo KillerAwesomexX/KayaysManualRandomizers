@@ -90,10 +90,9 @@ Manual_mrgrTemplate_creator:
     # The amount of songs in your world. Does not include Starting Songs and the Goal Song.
     #
     # You can define additional values between the minimum and maximum values.
-    # The world will set the max amount of songs if the song total exceeds the amount of songs.
     # Minimum value is 10
-    # Maximum value is 150
-    30: 30
+    # Maximum value is 400
+    40: 50
     random: 0
     random-low: 0
     random-high: 0
@@ -109,12 +108,21 @@ Manual_mrgrTemplate_creator:
     random-low: 0
     random-high: 0
 
+  force_song:
+    # Guarantees the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs.
+    []
+
+  remove_song:
+    # Removes the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs.
+    []
+
   filler_traps:
     # How many fillers will be replaced with traps. 0 means no additional traps, 100 means all fillers are traps.
+    #
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
-    10: 50
+    0: 50
     random: 0
     random-low: 0
     random-high: 0
