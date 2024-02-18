@@ -1,23 +1,26 @@
 Hello and welcome to this program I made cause I wanted a custom song list for Beat Saber lol.
-This is Version Prerelease 2.0.0
+This is Version 2.0.0
 
 # CHANGELOG #
-Version Prerelease 2.0.0
+Version 2.0.0
 - Converted the original Randomizer into the JSONGenerator
 - Removes a lot of the options, as they have been moved to YAML options.
 - Locations and Songs generate the maximum amount every time.
 - New generic locations have been added for use with hooks/Options.py and hooks/World.py
-- New song.txt options, including a debug (now that APWorldGoal.txt has been removed), and sheetAmount
-
-- If song.txt is missing, it will now ask for a file - Originally was done by superriderth for the previous version of this, I figured I'd add that same functionality for this version
+- New song.txt options, including debug (now that APWorldGoal.txt has been removed), sortDisable, and sheetAmount
+- If song.txt is missing, it will now ask for a file - Originally done by superriderth for the previous version of this, I figured I'd add that same functionality for this version
+- song.txt now allows Trap definition! Go crazy if you want.
+- Song Items will now add the category associated with it.
+- Songs are now sorted by default
 
 - Replaced options from the original Randomizer into YAML options.
-- These are: Extra Location Percent, Sheet Amount Percent, Song Amount, and Starting Songs
+- - These are: Extra Location Percent, Sheet Amount Percent, Song Amount, and Starting Songs
+- - New options have been added: Force Song/Remove Song, Filler/Trap percent (added by Manual by default), and Duplicate Song percent
 
 - Added some error checking just in case for both song amount and sheet amount
-- Sheets and Goal song are now set and told to the player through the multiworld
-- - While this needs two items, they're set as filler so it shouldn't mess around with it too much
+- Sheets and Goal song are now set and told to the player through the multiworld. While this needs two items, they're set as filler so it shouldn't mess around with generation too much.
 - Redid the item removal hook since the next() method had me running into errors left and right.
+- Ability to force a song into the pool as well as remove one.
 
 Version 1.1.0 - made by silasary
 - Added support for configuration options within song.txt
@@ -63,7 +66,7 @@ NOTE: The program will automatically remove spaces from the Game name and the pl
 4. (OPTIONAL) Change the options in Options.py
 
 If you want to, you can change the maximum amount of songs in Options.py
-By default, the option is set to 150 maximum songs.
+By default, the option is set to 400 maximum songs.
 
 
 4. Rename the folder to manual_(gamename)_(playername) 
