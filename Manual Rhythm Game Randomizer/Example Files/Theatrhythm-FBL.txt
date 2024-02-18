@@ -1,0 +1,658 @@
+#Any comment in these files start with #.
+#Items here must be on a new line.
+#List Final Fantasy Theatrhythm Final Bar Line - Created By Silasary
+# Note Contains all Deluxe Edition and DLC songs
+
+#$game=Theatrhythm
+#$creator=Silasary
+#$filler_item_name=Gysahl Greens
+#$musicSheet=Rhythmia
+
+## Final Fantasy
+FF1 Main Theme
+FF1 Castle Cornelia
+FF1 Opening Theme
+FF1 Matoya's Cave
+FF1 Mt.Gulg
+FF1 Airship
+FF1 Sunken Shrine
+FF1 Battle
+FF1 Miniboss Battle
+FF1 Final Battle
+FF1 Opening Theme (EMS)
+
+## Final Fantasy II 
+FF2 Town
+FF2 Main Theme
+FF2 Dungeon
+FF2 Imperial Army
+FF2 Chocobo Theme
+FF2 Tower of the Magi
+FF2 Finale
+FF2 Battle Theme 1
+FF2 The Rebel Army
+FF2 Battle Theme A
+FF2 Battle Theme 2
+FF2 The Rebel Army (EMS)
+
+## Final Fantasy III 
+FF3 Zephyr Memories - Legend of the Eternal Wind
+FF3 Crystal Cave
+FF3 Eternal Wind
+FF3 The Boundless Ocean
+FF3 Elia, the Maiden of Water
+FF3 Salonia
+FF3 Let Me Know the Truth
+FF3 The Invincible
+FF3 The Crystal Tower
+FF3 The Dark Crystals
+FF3 Battle 1
+FF3 Battle 2
+FF3 This is the Last Battle 
+FF3 Elia, the Maiden of Water (EMS)
+
+## Final Fantasy IV 
+FF4 The Red Wings
+FF4 Theme of Love
+FF4 Main Theme of Final Fantasy IV
+FF4 The Airship
+FF4 Troian Beauty
+FF4 Tower of Zot
+FF4 Within the Giant
+FF4 Lunar Whale
+FF4 Another Moon 
+FF4 Battle 1
+FF4 Battle 2
+FF4 Battle With the Four Fiends
+FF4 The Final Battle 
+FF4 Theme of Love (EMS)
+
+## Final Fantasy V 
+FF5 Four Hearts
+FF5 Harvest
+FF5 To The North Mountain
+FF5 Library of the Ancients
+FF5 Mambo de Chocobo
+FF5 Home, Sweet Home
+FF5 The Airship
+FF5 A New World
+FF5 In Search of Light 
+FF5 Main Theme of Final Fantasy V
+FF5 Battle 1
+FF5 Battle 2
+FF5 The Dawn Warriors
+FF5 Battle at the Big Bridge
+FF5 The Decisive Battle
+FF5 The Final Battle 
+FF5 Home, Sweet Home (EMS)
+
+## Final Fantasy VI 
+FF6 Terra's Theme
+FF6 Edgar & Sabin's Theme
+FF6 The Airship Blackjack
+FF6 Celes's Theme
+FF6 Searching for Friends
+FF6 Kefka's Tower 
+FF6 Battle
+FF6 Locke's Theme
+FF6 Protect the Espers!
+FF6 Grand Finale
+FF6 The Decisive Battle
+FF6 Battle to the Death
+FF6 Dancing Mad 
+FF6 Celes's Theme (EMS)
+
+## Final Fantasy VII 
+FF7 The Chase
+FF7 Main Theme of Final Fantasy VII
+FF7 Rufus' Welcoming Ceremony
+FF7 Gold Saucer
+FF7 Cosmo Canyon
+FF7 The Highwind Takes to the Skies
+FF7 Judgment Day 
+FF7 Opening - Bombing Mission
+FF7 Let the Battles Begin!
+FF7 Fight On!
+FF7 Aerith's Theme
+FF7 J-E-N-O-V-A
+FF7 Birth of a God
+FF7 One-Winged Angel 
+FF7 Aerith's Theme (EMS)
+
+## Final Fantasy VII Remake 
+FF7R Tifa's Theme - Seventh Heaven
+FF7R Main Theme of FFVII - Sector 7 Undercity
+FF7R Collapsed Expressway
+FF7R Midgar Expressway - The Chase 
+FF7R Bombing Mission
+FF7R Let the Battles Begin! - A Merc's Job
+FF7R Airbuster
+FF7R High Five
+FF7R J-E-N-O-V-A - Quickening
+FF7R One-Winged Angel - Rebirth 
+FF7R Hollow
+
+## Final Fantasy VII Advent Children 
+FF7AC Aerith's Theme (Piano Version)
+FF7AC Cloud Smiles 
+FF7AC Battle in the Forgotten City
+FF7AC Those Who Fight (Piano Version)
+FF7AC Divinity II
+FF7AC J-E-N-O-V-A (AC Version)
+FF7AC Advent One-Winged Angel 
+FF7AC Advent One-Winged Angel (EMS)
+
+## Crisis Core -Final Fantasy VII- 
+FF7CC Timely Ambush (from FFVII 'Let the Battles Begin!')
+FF7CC A Flower Blooming in the Slums (from FFVII 'Aerith's Theme')
+FF7CC Why 
+FF7CC Encounter
+FF7CC The SOLDIER Way
+FF7CC The Price of Freedom 
+FF7CC CRISIS CORE Theme - Dreams and Honor
+
+## Last Order -Final Fantasy VII- 
+FF7LO Last Order 
+
+## Final Fantasy VIII 
+FF8 Balamb Garden
+FF8 Blue Fields
+FF8 Find Your Way
+FF8 Waltz for the Moon
+FF8 Fisherman's Horizon
+FF8 Love Grows
+FF8 Eyes On Me
+FF8 Ride On
+FF8 The Oath
+FF8 The Castle
+FF8 Ending Theme 
+FF8 Liberi Fatali
+FF8 Don't Be Afraid
+FF8 Force Your Way
+FF8 Shuffle or Boogie
+FF8 The Man with the Machine Gun
+FF8 Premonition
+FF8 Maybe I'm a Lion
+FF8 The Extreme 
+FF8 Waltz for the Moon (EMS)
+
+## Final Fantasy IX 
+FF9 A Place to Call Home
+FF9 Vivi's Theme
+FF9 Over the Hill
+FF9 Dark City Treno
+FF9 Roses of May
+FF9 Iifa, the Ancient Tree of Life
+FF9 Aboard the Hilda Garde
+FF9 Ipsen's Castle
+FF9 Not Alone
+FF9 Behind the Door
+FF9 Melodies of Life ~ Final Fantasy 
+FF9 Swords of Fury
+FF9 Battle 1
+FF9 Vamo'alla flamenco
+FF9 Festival of the Hunt
+FF9 Something to Protect
+FF9 Battle 2
+FF9 The Darkness of Eternity
+FF9 The Final Battle 
+FF9 Behind the Door (EMS)
+
+## Final Fantasy X 
+FF10 Zanarkand
+FF10 Spira Unplugged
+FF10 Movement in Green
+FF10 Mi'ihen Highroad
+FF10 Thunder Plains
+FF10 Launch
+FF10 Via Purifico
+FF10 SUTEKI DA NE (Isn't It Wonderful?)
+FF10 Servants of the Mountain
+FF10 A Fleeting Dream 
+FF10 Battle Theme
+FF10 Blitz Off
+FF10 Assault
+FF10 Challenge
+FF10 Fight With Seymour
+FF10 Otherworld
+FF10 A Contest of Aeons
+FF10 Final Battle 
+FF10 SUTEKI DA NE (Isn't It Wonderful?) (EMS)
+
+## Final Fantasy X-2 
+FF10-2 KUON Memories of Waves and Light
+FF10-2 real Emotion
+FF10-2 We're the Gullwings!
+FF10-2 Bevelle Underground
+FF10-2 The Farplane Abyss 
+FF10-2 YRP, Fight! No. 1
+FF10-2 Let Me Blow You a Kiss
+FF10-2 Resting Place 
+FF10-2 1000 Words (FFX-2 Mix)
+
+## Final Fantasy XI 
+FF11 Vana'diel March
+FF11 Ronfaure
+FF11 Gustaberg
+FF11 Heavens Tower
+FF11 Sarutabaruta
+FF11 Voyager
+FF11 Selbina
+FF11 Recollection
+FF11 Distant Worlds
+FF11 The Sanctuary of Zi'Tah
+FF11 A New Horizon - Tavnazian Archipelago 
+FF11 FFXI Opening Theme
+FF11 Battle Theme
+FF11 Awakening
+FF11 Tough Battle #2
+FF11 Fighters of the Crystal
+FF11 Iron Colossus
+FF11 Ragnarok
+FF11 Melodies Errant
+FF11 Shinryu 
+FF11 FFXI Opening Theme (EMS)
+
+## Final Fantasy XII 
+FF12 Symphonic Poem Hope ～FINAL FANTASY XII PV ver.～
+FF12 Streets of Rabanastre
+FF12 The Dalmasca Estersand
+FF12 Heart of a Child
+FF12 Giza Plains
+FF12 The Arcadian Empire
+FF12 Phon Coast
+FF12 The Mosphoran Highwaste
+FF12 Kiss Me Good-Bye -featured in Final Fantasy XII- 
+FF12 FINAL FANTASY (FFXII Version)
+FF12 Boss Battle
+FF12 Battle with an Esper
+FF12 Life and Death
+FF12 Flash of Steel
+FF12 Struggle for Freedom
+FF12 Ending Movie 
+FF12 The Arcadian Empire (EMS)
+
+## Final Fantasy XIII 
+FF13 Eternal Love
+FF13 March of the Dreadnoughts
+FF13 The Gapra Whitewood
+FF13 The Sunleth Waterscape
+FF13 The Archylte Steppe
+FF13 Dust to Dust 
+FF13 Defiers of Fate
+FF13 Saber's Edge
+FF13 Blinded By Light
+FF13 Desperate Struggle
+FF13 Will to Fight
+FF13 Eden Under Siege
+FF13 Fighting Fate
+FF13 Nascent Requiem 
+FF13 Defiers of Fate (EMS)
+
+## Final Fantasy XIII-2 
+FF13-2 Historia Crux
+FF13-2 Eclipse
+FF13-2 Plains of Eternity
+FF13-2 Groovy Chocobo
+FF13-2 Crazy Chocobo
+FF13-2 Noel's Theme - Final Journey - 
+FF13-2 Etro's Champion
+FF13-2 Paradigm Shift
+FF13-2 The Last Hunter
+FF13-2 Full Speed Ahead
+FF13-2 Heart of Chaos 
+FF13-2 Warrior Goddess
+
+## Lightning Returns Final Fantasy XIII 
+FF13LR The Glittering City of Yusnaan
+FF13LR The Dead Dunes 
+FF13LR Lightning Returns
+FF13LR Crimson Blitz
+FF13LR Savior of Souls
+FF13LR Chaos 
+FF13LR Savior of Souls (EMS)
+
+## Final Fantasy XIV 
+FF14 On Westerly Winds
+FF14 Serenity
+FF14 To the Sun
+FF14 Engage
+FF14 A Light in the Storm
+FF14 Ink Long Dry 
+FF14 The Land Breathes
+FF14 Hard to Miss
+FF14 Torn from the Heavens
+FF14 Nemesis
+FF14 Primal Judgement
+FF14 Under the Weight
+FF14 Fallen Angel
+FF14 Good King Moggle Mog XII
+FF14 Ultima
+FF14 Through the Maelstrom
+FF14 Oblivion
+FF14 Ominous Prognisticks
+FF14 Heroes
+FF14 Locus
+FF14 Metal - Brute Justice Mode
+FF14 Exponential Entropy
+FF14 Moebius
+FF14 Rise
+FF14 Truimph
+FF14 The Wyrm's Tail
+FF14 Wayward Daughter
+FF14 Sunrise
+FF14 What Angels Wake Me
+FF14 Who Brings Shadow
+FF14 A Long Fall
+FF14 Promises to Keep 
+FF14 Answers
+
+## Final Fantasy XV 
+FFXV Valse di Fantastica
+FFXV Flying R
+FFXV Somnus
+FFXV Main Theme from FINAL FANTASY
+FFXV NOCTIS
+FFXV Shield of the King - Theme of EPISODE GLADIOLUS
+FFXV Theme of EPISODE IGNIS
+FFXV Home Sweet Home - Theme of EPISODE PROMPTO 
+FFXV Stand Your Ground
+FFXV Veiled in Black
+FFXV The Fight Is On!
+FFXV Apocalypsis Noctis (Uncovered Trailer)
+FFXV Invidia
+FFXV Omnis Lacrima
+FFXV Up for the Challenge
+FFXV Hellfire
+FFXV Magna Insomnia
+FFXV The Dance of Silver and Crimson 
+FFXV Apocalypsis Noctis
+
+## Final Fantasy XVI 
+FF16 Hide, Hideaway
+FF16 My Star
+FF16 Away
+FF16 To Sail Forbidden Seas
+FF16 Control
+FF16 Find the Flame
+FF16 No Risk, No Reward
+FF16 Titan Lost
+FF16 Ascension
+FF16 The Riddle
+FF16 Logos
+
+## Final Fantasy Mystic Quest 
+FFMQ Doom Castle
+FFMQ Hill of Destiny
+FFMQ Battle 1
+FFMQ Battle 2
+FFMQ Battle 3
+
+## Final Fantasy Tactics 
+FFT Prologue
+FFT Ovelia's Theme
+FFT Trisection
+FFT Apoplexy
+FFT Antipyretic
+FFT Clash on the Bridge
+FFT Ultima's Transformation
+FFT Opening
+
+## Final Fantasy Crystal Chronicles 
+FFCC Sound of the Wind
+FFCC Today Arrives, Becoming Tomorrow
+FFCC Promised Grace
+FFCC Across the Divide 
+FFCC Monster Ronde
+FFCC Sad Monster
+FFCC United, Heaven-Sent 
+FFCC Moonless Starry Night
+
+## Final Fantasy Crystal Chronicles The Crystal Bearers 
+FFCCCB This Is the End for You! 
+
+## Dissidia Final Fantasy 
+DFF Keeping the Peace 
+DFF DISSIDIA FINAL FANTASY [FINAL TRAILER]
+DFF The Decisive Battle - arrangement - from FINAL FANTASY VI
+DFF Battle 1 - arrangement - from FINAL FANTASY IX
+DFF The Troops' Advance
+DFF DISSIDIA -ending- from DISSIDIA FINAL FANTASY 
+
+## Dissidia 012 Final Fantasy 
+DFF012 Canto Mortis - An Undocumented Battle- from DISSIDIA 012[duodecim] FINAL FANTASY
+DFF012 Gate to the Rift from DISSIDIA 012[duodecim] FINAL FANTASY 
+DFF012 DISSIDIA 012[duodecim] FINAL FANTASY [FINAL TRAILER]
+DFF012 Cantata Mortis from DISSIDIA 012[duodecim] FINAL FANTASY 
+DFF012 Lux Concordiae from DISSIDIA 012[duodecim] FINAL FANTASY
+
+## Dissidia Final Fantasy -Arcade- 
+DFFA The Rebel Army -arrange- from FINAL FANTASY II
+DFFA Eternal Wind -DFF arrange- from FINAL FANTASY III
+DFFA Dancing Mad -arrange- from FINAL FANTASY VI
+DFFA Ominous Prognisticks -arrange- from FINAL FANTASY XIV
+DFFA Antipyretic -arrange- from FINAL FANTASY TACTICS
+DFFA The Beginning of the End -arrange- from FINAL FANTASY TYPE-0
+DFFA Massive Explosion (Short ver.) DISSIDIA FINAL FANTASY -Arcade-
+DFFA God in Fire -arrange- from DISSIDIA FINAL FANTASY 
+
+## Dissidia Final Fantasy Opera Omnia 
+DFFOO Spark from DISSIDIA FINAL FANTASY OPERA OMNIA 
+
+## Dissidia Final Fantasy NT 
+DFFNT Dare to Defy 
+
+## Final Fantasy Type-0 
+Type-0 The Earth Under Our Feet
+Type-0 Soar
+Type-0 Tempus Finis 
+Type-0 War Warrior Worth a Thousand
+Type-0 War The White Weapon
+Type-0 Vermilion Fire
+Type-0 Zero 
+Type-0 We Have Come
+
+## Theatrhythm Final Fantasy 
+TFF Return of the Warrior -TFF MENU Arrange- from FINAL FANTASY III 
+TFF Chaos Shrine -TFF MENU Arrange- from FINAL FANTASY I
+TFF Battle at the Big Bridge -TFF MENU Arrange- from FINAL FANTASY V 
+
+## Theatrhythm Final Fantasy Curtain Call 
+TFFCC Attack Team -TFFCC MENU Arrange- from FINAL FANTASY TACTICS
+TFFCC THEATRHYTHM FINAL FANTASY CURTAIN CALL Special Arrange Medley (Long Version) 
+TFFCC THEATRHYTHM FINAL FANTASY CURTAIN CALL Special Arrange Medley
+
+## Theatrhythm Final Fantasy All-Star Carnival 
+TFFAC Prelude -TFFAC MENU Arrange- from FINAL FANTASY I
+TFFAC Matoya's Cave -TFFAC Arrange- from FINAL FANTASY I
+TFFAC The Red Wings -TFFAC Arrange- from FFIV
+TFFAC Ahead on Our Way -TFFAC Arrange- from FINAL FANTASY V
+TFFAC Battle at the Big Bridge -TFFAC Arrange- from FINAL FANTASY V
+TFFAC Locke's Theme -TFFAC Arrange- from FINAL FANTASY VI
+TFFAC JENOVA -TFFAC Arrange- from FINAL FANTASY VII
+TFFAC Fight With Seymour -TFFAC Arrange- from FINAL FANTASY X
+TFFAC Special Arrange Medley -TFFAC Arrange- from THEATRHYTHM FINAL FANTASY CURTAIN CALL 
+
+## Theatrhythm Final Bar Line 
+TFFFBL FFVII Special Arrange Medley -Theatrhythm FBL Arrange- from FFVII
+TFFFBL THEATRHYTHM FINAL BAR LINE Special Battle Arrange Medley 
+# Final Fantasy Record Keeper 
+FFRK Chaos Shrine FFRK Ver. arrange from FINAL FANTASY I
+FFRK Battle at the Big Bridge -Ver.2- FFRK Ver. arrange from FINAL FANTASY V
+FFRK The Decisive Battle FFRK Ver. arrange from FINAL FANTASY VI
+FFRK The Chase FFRK Ver. arrange from FINAL FANTASY VII
+FFRK The Man with the Machine Gun -Ver.1- FFRK Ver. arrange from FINAL FANTASY VIII
+FFRK Blinded by Light FFRK Ver. Arrange from FINAL FANTASY XIII
+FFRK Stand Your Ground FFRK Ver. Arrange from FINAL FANTASY XV
+FFRK UTAKATA FFRK Ver. Arrange from FINAL FANTASY TYPE-0 
+
+## Mobius Final Fantasy 
+MOBIUS Warrior of Light - MOBIUS FINAL FANTASY -
+MOBIUS Dancing Edge
+MOBIUS Magic Madness
+MOBIUS Bloodthrist
+MOBIUS Femme Fatale 
+
+## Final Fantasy The 4 Heroes of Light 
+FF4HOL The 4 Heroes of Light 
+FF4HOL Battle with Monsters 
+
+## World of Final Fantasy 
+WOFF World of Battle 
+
+## FINAL FANTASY FABLE CHOCOBO'S DUNGEON
+CHOCOBO Dungeon Hero X's Theme
+CHOCOBO Raffaello Battle
+CHOCOBO Pop-Up Duel
+CHOCOBO Guardian of the Dark II
+CHOCOBO Leviathan Battle
+
+## Stranger of Paradise Final Fantasy Origin 
+FF0SOP Jack's Theme
+FF0SOP Battle Chaos Advent
+FF0SOP Battle False Knight - Motif from Battle 
+
+## Final Fantasy Tribute ~Thanks~ 
+TRIBUTE Opening Theme 
+
+## BRA★BRA Final Fantasy Brass de Bravo 
+BRA★BRA FF Moogles' Theme
+BRA★BRA FF Medley 
+
+## BRA★BRA Final Fantasy Brass de Bravo 2 
+BRA★BRA Mambo de Chocobo 
+BRA★BRA Battle at the Bridge 
+
+## More SQ 
+More SQ FINAL FANTASY Dugem DE Chocobo 
+
+## SQ Chips 
+CHIPS Final Fantasy III Sailing Enterprise ~ The Invincible 
+
+## The Black Mages 
+BLACK MAGES Clash on the Big Bridge from Final Fantasy V 
+
+## Square Enix Acoustic Arrangements 
+ARRANGE Acoustic The Decisive Battle from Final Fantasy VI 
+
+## Super Smash Bros. Ultimate
+SMASH Cosmo Canyon -collabo arrange- 
+SMASH Aerith's Theme -collabo arrange- 
+
+## Battle SQ 
+Battle SQ Not Alone from Final Fantasy IX 
+
+## The Black Mages II The Skies Above 
+BLACK MAGES The Skies Above 
+
+## Sanctuary The Star Onions 
+SANCTUARY Fighters of the Crystal 
+
+## Square Enix Jazz -Final Fantasy- 
+Blinded by Light Jazz Arrangement 
+
+## The Primals 
+PRIMALS Rise ~Mechanical Castle Alexander Heavenly Motions Part~ 
+
+## Scions & Sinners Final Fantasy XIV ~Arrangement Album~ 
+PRIMALS Long Fall ～Otherworldly Ruins Syrcus Twinning～ 
+
+## The Final Fantasy Legend 
+FFL Enraged Battle
+
+## Final Fantasy Legend II 
+FFL2 Struggle to the Death
+
+## Romancing SaGa 
+SaGa Horrible Shadow 
+SaGa The Conflict
+SaGa Beat Them Up!
+SaGa Coup de Grace
+
+## SaGa Frontier 
+SaGaF Alone 
+SaGaF Battle #4
+SaGaF Battle #5
+SaGaF T260G's Last Battle
+
+## SaGa Frontier 2 
+SaGaF2 Feldschlacht III
+SaGaF2 Mißgestalt
+
+## Unlimited SaGa 
+UNLIMITED SaGa Battle Theme I
+
+## Romancing SaGa -Minstrel Song- 
+ROMANCING SaGa Ardent Rhythm
+
+## SaGa Scarlet Grace Ambitions 
+SaGaSG The Celestial Protectors
+
+## Final Fantasy Adventure 
+FFA In Search of the Sword of Mana
+FFA Battle 2
+
+## Trials of Mana 
+TRIALS Powell
+TRIALS Meridian Child 
+TRIALS Swivel
+TRIALS Nuclear Fusion
+TRIALS Sacrifice Part Three
+
+## Live A Live 
+LIVEALIVE Birds Fly, Fish Swim 
+LIVEALIVE LIVE · A · LIVE
+LIVEALIVE MEGALOMANIA
+
+## Live A Live HD-2D Remake 
+LIVEALIVE Go! Go! Steel Titan!
+
+## Chrono Trigger 
+CHRONOTRIGGER Wind Scene
+CHRONOTRIGGER Robo's Theme
+CHRONOTRIGGER Corridors of Time
+CHRONOTRIGGER Wings That Cross Time
+CHRONOTRIGGER To Far Away Times 
+CHRONOTRIGGER Chrono Trigger
+CHRONOTRIGGER Frog's Theme
+CHRONOTRIGGER Boss Battle 2
+CHRONOTRIGGER Battle with Magus
+CHRONOTRIGGER World Revolution
+
+## Chrono Cross 
+CHRONOCROSS Radical Dreamers -Le Trésor Interdit- 
+CHRONOCROSS Chrono Cross -Scars of Time-
+
+## The World Ends with You 
+TWEWY Calling 
+TWEWY Twister
+TWEWY Someday
+
+## NEO The World Ends with You 
+NEOTWEWY Your Ocean
+NEOTWEWY Breaking Free
+NEOTWEWY World Is Yours
+
+## NieR 
+NIER Song of the Ancients / Devola
+NIER Kainé / Salvation 
+NIER Hills of Radiant Winds
+NIER Song of the Ancients / Fate
+NIER Shadowlord
+
+## NieRAutomata 
+AUTOMATA Amusement Park
+AUTOMATA Emil's Shop
+AUTOMATA Weight of the World Kowaretasekainouta - Marina Kawano 
+AUTOMATA A Beautiful Song
+AUTOMATA Dependent Weakling
+
+## NieR Replicant ver.1.22474487139... 
+NIERv1 Fleeting Words / Outsider
+
+## Octopath Traveler 
+OCTO Octopath Traveler -Main Theme-
+OCTO Primrose, the Dancer 
+OCTO Decisive Battle II
+OCTO Battle at Journey's End
+OCTO Daughter of the Dark God
