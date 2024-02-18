@@ -81,8 +81,8 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
         for song in removeList:
             songList.remove(song)
             itemNamesToRemove.append(song)
-            locationNamesToRemove.append(song = " - 0")
-            locationNamesToRemove.append(song = " - 1")
+            locationNamesToRemove.append(song + " - 0")
+            locationNamesToRemove.append(song + " - 1")
 
     #Error checking for song amount
     if (song_rolled > len(songList)):
@@ -167,9 +167,9 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
         songList.pop(0)
 
     #Remove any unnecessary locations
-    if (startAmt != 10):
-        for i in range(startAmt+1,11):
-            locationNamesToRemove.append("Starting Song " + str(i))
+    #if (startAmt != 10):
+    #    for i in range(startAmt+1,11):
+    #        locationNamesToRemove.append("Starting Song " + str(i))
     
     #Only remove the extra location if the amount rolled is higher.
     #80 > 75 would get it removed.
@@ -178,24 +178,39 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
             locationNamesToRemove.append(song + " - 1")
 
     #place all of the starting songs
-    for x in range(1, startAmt+1):
-        for l in multiworld.get_unfilled_locations(player=player):
-            if (l.name == ("Starting Song " + str(x))):
-                location = l
-                break
+    #for x in range(1, startAmt+1):
+    #    for l in multiworld.get_unfilled_locations(player=player):
+    #        if (l.name == ("Starting Song " + str(x))):
+    #            location = l
+    #            break
+    #    for i in item_pool:
+    #        if (i.name == (startingSongs[x-1])):
+    #            item_to_place = i
+    #            break
+    #    location.place_locked_item(item_to_place)
+    #    item_pool.remove(item_to_place)
+
+
+    #code below SHOULD do the same thing as the code above
+    for x in range(1,startAmt+1):
         for i in item_pool:
-            if (i.name == (startingSongs[x-1])):
-                item_to_place = i
+            if i.name == startingSongs[x-1]:
+                start_item = i
                 break
-        location.place_locked_item(item_to_place)
-        item_pool.remove(item_to_place)
+        multiworld.push_precollected(start_item)
+        item_pool.remove(start_item)
 
     #remove any song that was not rolled.
     if (songAmt != song_rolled):
+        removeSong = []
         for i in range(song_rolled,songAmt-startAmt-1):
             itemNamesToRemove.append(songList[i-1])
             locationNamesToRemove.append(songList[i-1]+ " - 0")
             locationNamesToRemove.append(songList[i-1]+ " - 1")
+            removeSong.append(songList[i-1])
+        for songName in removeSong:
+            songList.remove(songName)
+
 
     # Use this hook to remove items from the world
     for itemName in itemNamesToRemove:
@@ -212,6 +227,13 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
                     region.locations.remove(location)
     if hasattr(multiworld, "clear_location_cache"):
         multiworld.clear_location_cache()
+
+    #adds additional songs at the end
+    valueThing = len(multiworld.get_unfilled_locations(player=player))-(sheetTotal+song_rolled)
+    if (1 < valueThing):
+        for x in range (1,(floor(valueThing*(get_option_value(multiworld, player, "duplicate_songs")/100)))+1):
+            new_item = world.create_item(songList[x-1])
+            item_pool.append(new_item)
 
     item_pool = world.add_filler_items(item_pool, traps)
     #used to help debug this kinda.

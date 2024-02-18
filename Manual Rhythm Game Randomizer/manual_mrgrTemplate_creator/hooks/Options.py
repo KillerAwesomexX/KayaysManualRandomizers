@@ -36,7 +36,7 @@ class ExtraLocations(Range):
 class MusicSheetAmt(Range):
     """The percentage of goal locking items needed in order to win your game."""
     display_name = "Goal Percentage"
-    range_start = 10
+    range_start = 30
     range_end = 100
     default = 80
 
@@ -45,8 +45,15 @@ class SongAmount(Range):
     display_name = "Total Songs"
     range_start = 10
     range_end = 400
-    #Range_End has been set to an arbitrary value for now. You hopefully should not need to change this.
+    #Range_End has been set to an arbitrary value. If you have more than this value, feel free to change it.
     default = 40
+
+class DuplicateSong(Range):
+    """The percent of your item pool that replaces filler/trap items with additional songs."""
+    display_name = "Duplicate Song Percentage"
+    range_start = 0
+    range_end = 60
+    default = 10
 
 class StartingSongs(Range):
     """The amount of songs you start with."""
@@ -71,6 +78,7 @@ def before_options_defined(options: dict) -> dict:
     options["extra_locations"] = ExtraLocations
     options["music_sheets"] = MusicSheetAmt
     options["song_total"] = SongAmount
+    options["duplicate_songs"] = DuplicateSong
     options["start_total"] = StartingSongs
     options["force_song"] = ForceSong
     options["remove_song"] = RemoveSong
