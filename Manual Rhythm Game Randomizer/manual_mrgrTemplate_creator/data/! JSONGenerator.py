@@ -78,7 +78,7 @@ def addLocations(songList: list[str], musicSheet, config: dict[str,str]):
             name, categories = songList[x], ""
         dictJSON = {
             "name": name + " - 0",
-            "category": ["Song List"] + (categories.split("|") if categories else []),
+            "category": ["(Song List)"] + (categories.split("|") if categories else []),
             "requires": "|" + name +"|"
         }
         addLocate.append(dictJSON)
