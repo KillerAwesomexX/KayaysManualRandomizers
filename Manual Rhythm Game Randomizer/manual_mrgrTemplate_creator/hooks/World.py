@@ -93,14 +93,17 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     sheetAmt = (floor((get_option_value(multiworld, player, "music_sheets")/100)*(sheetTotal)))
     
     #Error checking in case we have too many music sheets.
-    if (sheetAmt > (floor((song_rolled+startAmt)*2*(addChance/100)) - (song_rolled + 3))):
+    maxLoc = (song_rolled*2)-floor((song_rolled*2)*(addChance/100))
+    maxItem = (song_rolled+sheetTotal+2)
+    if (maxItem > maxLoc):
         print ("Reducing music sheets since too many were in the pool.")
-        newSheetTotal = (floor((song_rolled+startAmt)*2*(addChance/100)) - (song_rolled + 3))
+        if maxLoc <= floor((song_rolled+2)*1.2): newSheetTotal = floor(maxLoc-(song_rolled+2))
+        else: newSheetTotal = floor(maxLoc-(song_rolled+2))
         # 30 songs rolled + 5 starting songs is 70 locations MAX, multiplied by the addchance percent, then
-        # subtracted by 30 potential song items plus the goal information items and one more for a bit of overhead.
-        for x in range(newSheetTotal, sheetAmt):
+        # subtracted by 30 potential song items plus the goal information items and if we can, a little bit of overhead.
+        for x in range(newSheetTotal, sheetAmt+1):
             itemNamesToRemove.append(sheetName)
-        sheetAmt = (floor((sheetAmt/100)*(newSheetTotal)))
+        sheetAmt = (floor((get_option_value(multiworld, player, "music_sheets")/100)*(newSheetTotal)))
     
     if (sheetAmt == 0):
         #if somehow we have no sheets, make sure there's at least one.
