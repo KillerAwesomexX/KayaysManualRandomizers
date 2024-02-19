@@ -1,6 +1,6 @@
 # Object classes from AP core, to represent an entire MultiWorld and this individual World that's part of it
 from worlds.AutoWorld import World
-from BaseClasses import MultiWorld, CollectionState, ItemClassification
+from BaseClasses import MultiWorld
 
 # Object classes from Manual -- extending AP core -- representing items and locations that are used in generation
 from ..Items import ManualItem
@@ -93,7 +93,7 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     sheetAmt = (floor((get_option_value(multiworld, player, "music_sheets")/100)*(sheetTotal)))
     
     #Error checking in case we have too many music sheets.
-    maxLoc = (song_rolled*2)-floor((song_rolled*2)*(addChance/100))
+    maxLoc = floor((song_rolled)*(1+(addChance/100)))
     maxItem = (song_rolled+sheetTotal+2)
     if (maxItem > maxLoc):
         print ("Reducing music sheets since too many were in the pool.")
@@ -142,8 +142,14 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     #the first location will help with telling the player what song is their goal.
     #NOTE: this only works if a starting hint is applied (which it should be in the YAML)
 
-    goalSong = songList[0]
-    songList.pop(0)
+    if (get_option_value(multiworld,player,"force_goal")):
+        goalList = [] + get_option_value(multiworld,player,"force_goal")
+        shuffle(goalList)
+        goalSong = goalList[0]
+        songList.remove(goalList[0])
+    else:
+        goalSong = songList[0]
+        songList.pop(0)
     itemNamesToRemove.append(goalSong)
     locationNamesToRemove.append(goalSong + " - 1")
 
@@ -233,7 +239,7 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
 
     #adds additional songs at the end
     valueThing = len(multiworld.get_unfilled_locations(player=player))-(sheetTotal+song_rolled)
-    if (1 < valueThing):
+    if (5 < valueThing):
         for x in range (1,(floor(valueThing*(get_option_value(multiworld, player, "duplicate_songs")/100)))+1):
             new_item = world.create_item(songList[x-1])
             item_pool.append(new_item)
