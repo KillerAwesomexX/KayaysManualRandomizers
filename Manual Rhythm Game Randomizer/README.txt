@@ -1,7 +1,13 @@
 Hello and welcome to this program I made cause I wanted a custom song list for Beat Saber lol.
-This is Version 2.0.0
+This is Version 2.1.0
 
 # CHANGELOG #
+Version 2.1.0
+- Rewrote Sheet Removal Code, the old one was garbage
+- Reverted goal locking item culling code
+- Added Force Goal as an option
+- Added MRGRStartHints to Hooks/Options.py, you should be able to generate a YAML via the Template Generator now
+
 Version 2.0.0
 - Converted the original Randomizer into the JSONGenerator
 - Removes a lot of the options, as they have been moved to YAML options.
