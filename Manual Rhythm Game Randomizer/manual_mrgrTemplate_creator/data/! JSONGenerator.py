@@ -97,9 +97,7 @@ def addLocations(songList: list[str], musicSheet, config: dict[str,str]):
         sheetsMax = (floor(len(songList)/3))
         if (sheetsMax > 50):
             sheetsMax = 50
-    sheetsMin = floor(sheetsMax*0.2) #Limits minimum sheets generated to help cull locations added
-    if sheetsMin == 0: sheetsMin = 1
-    for i in range(sheetsMin,sheetsMax+1):
+    for i in range(1,sheetsMax+1):
         dictJSON = {
             "name": musicSheet + "s Needed - " + str(i),
             "category": ["(!Goal Amount!)"],
