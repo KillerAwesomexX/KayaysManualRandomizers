@@ -12,7 +12,7 @@
 #Added support for category headers with ## before the category name
 #Added support for blank lines in song.txt
 
-#Version Pre 2.0.0
+#Version 2.0.0
 #Changelog
 
 #Converted the original Randomizer into the JSONGenerator
@@ -35,6 +35,17 @@
 #   While this needs two items, they're set as filler so it shouldn't mess around with it too much
 #Redid the item removal hook since the next() method had me running into errors left and right.
 #Ability to force a song into the pool as well as remove one.
+
+#Version 2.1.0 Generator
+#Changelog
+
+#Reverted Goal Locking Item culling
+
+#Version 2.2.0 Generator
+#Changelog
+
+#Music Sheets are now categorized near the top.
+
 
 from json import dumps
 from math import floor
@@ -126,7 +137,7 @@ def addItems(songList,musicSheet,config):
     dictJSON = {
         "count": sheets,
         "name": musicSheet,
-        "category": [musicSheet],
+        "category": ["("+musicSheet+")"],
         "progression_skip_balancing": True
     }
     addItem.append(dictJSON)
@@ -170,13 +181,14 @@ def addItems(songList,musicSheet,config):
         "filler": True
     }
     addItem.append(dictJSON)
-    dictJSON = {
-        "count": 1,
-        "name": "Goal Amount",
-        "category": ["(Goal Information Item)"],
-        "filler": True
-    }
-    addItem.append(dictJSON)
+    #Removed since the item associated with it is now unused
+    #dictJSON = {
+    #    "count": 1,
+    #    "name": "Goal Amount",
+    #    "category": ["(Goal Information Item)"],
+    #    "filler": True
+    #}
+    #addItem.append(dictJSON)
     #dump to JSON
     jsonOutput=dumps(addItem, indent=4)
     itemFile.write(jsonOutput)
@@ -271,12 +283,13 @@ for songName in songFile:
 if not songListFile:
     print ("song.txt has no songs!")
     exitProg()
-# Sort list for ease of finding songs in the client
-sortOn = config.get("sort_disable")
-if (not sortOn):
-    songListFile.sort()
-#Check if there's at least 10 songs within the list
 
+# Sort list for ease of finding songs in the client
+sortOff = config.get("sort_disable")
+if (not sortOff):
+    songListFile.sort()
+
+#Check if there's at least 10 songs within the list
 if (len(songListFile) < 10):
     print ("song.txt has less than 10 songs! Please make sure there is more than 10 songs within the multiworld.")
     exitProg()
