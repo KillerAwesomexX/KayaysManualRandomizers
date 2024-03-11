@@ -77,10 +77,6 @@ class GoalSong(OptionList):
     display_name = "Force Goal"
     verify_item_name = True
 
-class MRGRStartHints(StartHints):
-    """Default Start Hints for any MRGR-based manual."""
-    default = ["Goal Song", "Goal Amount"]
-
 # This is called before any manual options are defined, in case you want to define your own with a clean slate or let Manual define over them
 def before_options_defined(options: dict) -> dict:
     options["extra_locations"] = ExtraLocations
@@ -91,7 +87,6 @@ def before_options_defined(options: dict) -> dict:
     options["force_song"] = ForceSong
     options["remove_song"] = RemoveSong
     options["force_goal"] = GoalSong
-    options["start_hints"] = MRGRStartHints
     return options
 
 # This is called after any manual options are defined, in case you want to see what options are defined or want to modify the defined options

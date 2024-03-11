@@ -70,10 +70,11 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
             songList.append(item["name"])
         elif i[0] == "(Traps)":
             traps.append(item["name"])
+            itemNamesToRemove.append(item["name"]) #Remove the trap from the pool since we'll be generating them with add_filler_items
         elif i[0] != "(Goal Information Item)":
             if item.get("progression_skip_balancing"): #the goal mode item
                 sheetName = item["name"]
-                sheetTotal = item["count"] #Removes any and all filler before re-generating them.
+                sheetTotal = item["count"]
 
     #remove any songs before we do anything
     removeList = [] + get_option_value(multiworld, player, "remove_song")
@@ -126,17 +127,6 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
         if (i != sheetAmt):
             locationNamesToRemove.append(sheetName + "s Needed - " + str(i))
             
-    #Set the generic Location with a custom item to not mess with the multiworld as much
-    for l in multiworld.get_unfilled_locations(player=player):
-        if (l.name == (sheetName + "s Needed - " + str(sheetAmt))):
-                location = l
-                break
-    for i in item_pool:
-            if (i.name == "Goal Amount"):
-                item_to_place = i
-                break
-    location.place_locked_item(item_to_place)
-    item_pool.remove(item_to_place)
 
     #since we shuffled the list, we can take the first result from the song list for it to be random.
     #the first location will help with telling the player what song is their goal.
@@ -153,7 +143,19 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     itemNamesToRemove.append(goalSong)
     locationNamesToRemove.append(goalSong + " - 1")
 
-    #Set the goal song's location to have a generic item for tracking it, as well as changing the requirements since we removed the item. 
+    #Place the goal song at the SheetAmt location
+    for l in multiworld.get_unfilled_locations(player=player):
+        if (l.name == (sheetName + "s Needed - " + str(sheetAmt))):
+                location = l
+                break
+    for i in item_pool:
+            if (i.name == goalSong):
+                item_to_place = i
+                break
+    location.place_locked_item(item_to_place)
+    item_pool.remove(item_to_place)
+
+    #Set the goal song's location to have a generic item. 
     for l in multiworld.get_unfilled_locations(player=player):
             if (l.name == (goalSong + " - 0")):
                 location = l
@@ -164,7 +166,6 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
                 break
     location.place_locked_item(item_to_place)
     item_pool.remove(item_to_place)
-    location.access_rule = lambda state: state.has(sheetName, player, sheetAmt)
 
     #Make sure the victory location is set up.
     victory_location = multiworld.get_location("__Manual Game Complete__", player)
@@ -245,6 +246,7 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
             item_pool.append(new_item)
 
     item_pool = world.add_filler_items(item_pool, traps)
+
     #used to help debug this kinda.
     #debugMW(item_pool)
     return item_pool
