@@ -77,6 +77,7 @@ This script will ask you a few questions to generate the game.json, unless its p
 Afterwards it will generate all of the items and locations
 NOTE: The program will automatically remove spaces from the Game name and the player name
 
+
 4. (OPTIONAL) Change the options in Options.py
 
 If you want to, you can change the maximum amount of songs in Options.py
@@ -98,12 +99,10 @@ If you cannot rename the extension, you may have to check your windows settings.
 Place your apworld within C:\ProgramData\Archipelago\lib\worlds.
 
 
-7. Edit the template YAML provided 
+7. Generate template settings via the AP Launcher
 
-This template YAML has a few small things that helps people to find their goal and the amount of sheets they need.
-You can generate the template YAML via the Launcher, but make sure to include the following starting hints:
-
-start_hints: ["Goal Song", "Goal Amount"]
-
+Run the ArchipelagoLauncher within the Archipelago folder. Then, select Generate Template Settings. If you've
+done everything correctly, you should have a YAML file named Manual_(gamename)_(playername). From there, edit
+the YAML file and you're good to go!
 
 All that's left is to generate your game! Have fun!
