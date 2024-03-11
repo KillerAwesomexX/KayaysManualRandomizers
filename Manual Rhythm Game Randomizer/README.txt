@@ -1,7 +1,14 @@
 Hello and welcome to this program I made cause I wanted a custom song list for Beat Saber lol.
-This is Version 2.1.0
+This is Version 2.2.0
 
 # CHANGELOG #
+Version 2.2.0
+- Added a temporary fix for leftover Filler items flooding the Multiworld output
+- Changed how Goal Song information is generated, removing any need for the Goal Amount item
+- Changed how Goal McGuffin items are categorized, it should put them near the top rather than somewhere in the middle.
+- Changed a variable in the JSONGenerator so its a little easier to understand what it does
+- Added a new script JSONtoSongFile for those who want to rebuild previous MRGR JSON files back into song lists.
+
 Version 2.1.0
 - Rewrote Sheet Removal Code, the old one was garbage
 - Reverted goal locking item culling code
