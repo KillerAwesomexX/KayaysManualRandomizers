@@ -45,7 +45,8 @@
 #Changelog
 
 #Music Sheets are now categorized near the top.
-
+#Removed the Goal Amount item
+#sortOn variable renamed to sortOff for better understanding of the code.
 
 from json import dumps
 from math import floor
@@ -322,7 +323,7 @@ if (config.get("debug")):
     if (config.get("sheetAmount")):
         newFile.write ("\nAmount of " + musicSheet + ": " + str(config.get("sheetAmount")))
     else:
-        newFile.write ("\nAmount of " + musicSheet + ": " + str(len(songListFile)))
+        newFile.write ("\nAmount of " + musicSheet + ": " + str(floor(len(songListFile)/3)))
     newFile.write ("\n\nSong List: \n")
     for song in songListFile:    
         newFile.write((str(song.split("|")[0])) + " - " + (str(song.split("|")[1])) + "\n")
