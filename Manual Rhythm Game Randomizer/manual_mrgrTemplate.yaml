@@ -25,16 +25,16 @@
 #     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
 #     {number} will be replaced with the counter value of the name.
 #     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
-name: KayayVS
+name: Player{number}
 
 # Used to describe your yaml. Useful if you have multiple files.
-description: Default Manual_RhythmHeavenFever_Kayay Template
+description: Default Manual_mrgrTemplate_creator Template
 
-game: Manual_vividstasis_Kayay
+game: Manual_mrgrTemplate_creator
 requires:
   version: 0.4.4 # Version of Archipelago required for this yaml to work as expected.
 
-Manual_Theatrhythm_Silasary:
+Manual_mrgrTemplate_creator:
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
     # A lower setting means more getting stuck. A higher setting means less getting stuck.
@@ -58,12 +58,6 @@ Manual_Theatrhythm_Silasary:
     items: 50
     minimal: 0
 
-  start_hints:
-    # Start with these item's locations prefilled into the !hint command.
-    # These help with locating both the player's goal song and amount.
-    # Do not remove this unless you know what you're doing.
-    ["Goal Song", "Goal Amount"]
-
   extra_locations:
     # The percent chance for an additional location to be added when you complete a song.
     #
@@ -81,7 +75,7 @@ Manual_Theatrhythm_Silasary:
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 10
     # Maximum value is 100
-    60: 50
+    80: 50
     random: 0
     random-low: 0
     random-high: 0
@@ -90,10 +84,9 @@ Manual_Theatrhythm_Silasary:
     # The amount of songs in your world. Does not include Starting Songs and the Goal Song.
     #
     # You can define additional values between the minimum and maximum values.
-    # The world will set the max amount of songs if the song total exceeds the amount of songs.
     # Minimum value is 10
-    # Maximum value is 150
-    40: 30
+    # Maximum value is 400
+    40: 50
     random: 0
     random-low: 0
     random-high: 0
@@ -109,9 +102,21 @@ Manual_Theatrhythm_Silasary:
     random-low: 0
     random-high: 0
 
+  force_song:
+    # Guarantees the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs.
+    []
+
+  remove_song:
+    # Removes the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs.
+    []
+
+  force_goal:
+    # Guarantees a song specified will be your goal song. Song name must be identical to the one in the list of songs.
+    []
+
   filler_traps:
     # How many fillers will be replaced with traps. 0 means no additional traps, 100 means all fillers are traps.
-    # This shouldn't do anything.
+    #
     # You can define additional values between the minimum and maximum values.
     # Minimum value is 0
     # Maximum value is 100
