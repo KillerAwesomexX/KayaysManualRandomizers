@@ -5,6 +5,7 @@ This is Version 2.2.0
 Version 2.2.0
 - Added a temporary fix for leftover Filler items flooding the Multiworld output
 - Changed how Goal Song information is generated, removing any need for the Goal Amount item
+- Added categories.json, only currently used to hide the Goal Information Item category from the client
 - Removed MRGRStartHints, now that the Goal Song information is trimmed down.
 - Changed how Goal McGuffin items are categorized, it should put them near the top rather than somewhere in the middle.
 - Changed a variable in the JSONGenerator so its a little easier to understand what it does
