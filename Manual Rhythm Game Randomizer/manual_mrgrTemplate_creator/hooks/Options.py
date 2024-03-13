@@ -63,17 +63,17 @@ class StartingSongs(Range):
     default = 5
 
 class ForceSong(OptionList):
-    """Guarantees the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs."""
+    """Guarantees the song(s) specifed will be generated in the multiworld. Song name must be identical to the one in the list of songs."""
     display_name = "Force Songs"
     verify_item_name = True
 
 class RemoveSong(OptionList):
-    """Removes the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs."""
+    """Removes the song(s) specifed will NOT be generated in the multiworld. Song name must be identical to the one in the list of songs."""
     display_name = "Remove Songs"
     verify_item_name = True
 
 class GoalSong(OptionList):
-    """Guarantees a song specified will be your goal song. Song name must be identical to the one in the list of songs."""
+    """Guarantees one of the songs specified will be your goal song. Song name must be identical to the one in the list of songs."""
     display_name = "Force Goal"
     verify_item_name = True
 
