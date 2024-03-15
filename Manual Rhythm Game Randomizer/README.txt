@@ -1,7 +1,24 @@
 Hello and welcome to this program I made cause I wanted a custom song list for Beat Saber lol.
-This is Version 2.0.0
+This is Version 2.2.0
 
 # CHANGELOG #
+Version 2.2.0
+- Added a temporary fix for leftover Filler items flooding the Multiworld output
+- Changed how Goal Song information is generated, removing any need for the Goal Amount item
+- Added categories.json, only used to hide the Goal Information Item category from the client
+- Removed MRGRStartHints, now that the Goal Song information is trimmed down
+- Changed how Goal McGuffin items are categorized, it should put them near the top rather than somewhere in the middle
+- Changed a variable in the JSONGenerator so its a little easier to understand what it does
+- Added a new script JSONtoSongFile for those who want to rebuild previous MRGR JSON files back into song lists
+- Reworded some descriptions for options related to forcing songs
+- Added a passthrough for Universal Tracker, which should fix locations not being in logic despite having the items for them while using UT
+
+Version 2.1.0
+- Rewrote Sheet Removal Code, the old one was garbage
+- Reverted goal locking item culling code
+- Added Force Goal as an option
+- Added MRGRStartHints to Hooks/Options.py, you should be able to generate a YAML via the Template Generator now
+
 Version 2.0.0
 - Converted the original Randomizer into the JSONGenerator
 - Removes a lot of the options, as they have been moved to YAML options.
@@ -63,6 +80,7 @@ This script will ask you a few questions to generate the game.json, unless its p
 Afterwards it will generate all of the items and locations
 NOTE: The program will automatically remove spaces from the Game name and the player name
 
+
 4. (OPTIONAL) Change the options in Options.py
 
 If you want to, you can change the maximum amount of songs in Options.py
@@ -84,12 +102,10 @@ If you cannot rename the extension, you may have to check your windows settings.
 Place your apworld within C:\ProgramData\Archipelago\lib\worlds.
 
 
-7. Edit the template YAML provided 
+7. Generate template settings via the AP Launcher
 
-This template YAML has a few small things that helps people to find their goal and the amount of sheets they need.
-You can generate the template YAML via the Launcher, but make sure to include the following starting hints:
-
-start_hints: ["Goal Song", "Goal Amount"]
-
+Run the ArchipelagoLauncher within the Archipelago folder. Then, select Generate Template Settings. If you've
+done everything correctly, you should have a YAML file named Manual_(gamename)_(playername). From there, edit
+the YAML file and you're good to go!
 
 All that's left is to generate your game! Have fun!

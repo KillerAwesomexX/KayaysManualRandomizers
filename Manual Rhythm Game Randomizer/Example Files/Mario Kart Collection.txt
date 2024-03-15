@@ -8,6 +8,7 @@
 #$filler_item_name=Item Box
 #$musicSheet=Gold Star
 #$traps=Item Malfunction, Max CC
+#$sort_diable=True
 
 ##Super Mario Kart Mushroom Cup
 SNES Mario Circuit 1

@@ -1,5 +1,5 @@
 # Object classes from AP that represent different types of options that you can create
-from Options import Range, OptionList
+from Options import Range, OptionList, StartHints
 
 # These helper methods allow you to determine if an option has been set, or what its value is, for any player in the multiworld
 from ..Helpers import is_option_enabled, get_option_value
@@ -63,15 +63,19 @@ class StartingSongs(Range):
     default = 5
 
 class ForceSong(OptionList):
-    """Guarantees the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs."""
+    """Guarantees the song(s) specifed will be generated in the multiworld. Song name must be identical to the one in the list of songs."""
     display_name = "Force Songs"
     verify_item_name = True
 
 class RemoveSong(OptionList):
-    """Removes the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs."""
+    """Removes the song(s) specifed will NOT be generated in the multiworld. Song name must be identical to the one in the list of songs."""
     display_name = "Remove Songs"
     verify_item_name = True
 
+class GoalSong(OptionList):
+    """Guarantees one of the songs specified will be your goal song. Song name must be identical to the one in the list of songs."""
+    display_name = "Force Goal"
+    verify_item_name = True
 
 # This is called before any manual options are defined, in case you want to define your own with a clean slate or let Manual define over them
 def before_options_defined(options: dict) -> dict:
@@ -82,6 +86,7 @@ def before_options_defined(options: dict) -> dict:
     options["start_total"] = StartingSongs
     options["force_song"] = ForceSong
     options["remove_song"] = RemoveSong
+    options["force_goal"] = GoalSong
     return options
 
 # This is called after any manual options are defined, in case you want to see what options are defined or want to modify the defined options

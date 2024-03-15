@@ -1,6 +1,6 @@
 # Object classes from AP core, to represent an entire MultiWorld and this individual World that's part of it
 from worlds.AutoWorld import World
-from BaseClasses import MultiWorld, CollectionState, ItemClassification
+from BaseClasses import MultiWorld
 
 # Object classes from Manual -- extending AP core -- representing items and locations that are used in generation
 from ..Items import ManualItem
@@ -51,6 +51,10 @@ def after_set_rules(world: World, multiworld: MultiWorld, player: int):
 def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
     from random import shuffle, randint
 
+    #Universal Tracker bypass
+    if hasattr(multiworld, "generation_is_fake"):
+        return item_pool
+    
     #init most variables
     itemNamesToRemove = []
     locationNamesToRemove = []
@@ -70,10 +74,11 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
             songList.append(item["name"])
         elif i[0] == "(Traps)":
             traps.append(item["name"])
+            itemNamesToRemove.append(item["name"]) #Remove the trap from the pool since we'll be generating them with add_filler_items
         elif i[0] != "(Goal Information Item)":
             if item.get("progression_skip_balancing"): #the goal mode item
                 sheetName = item["name"]
-                sheetTotal = item["count"] #Removes any and all filler before re-generating them.
+                sheetTotal = item["count"]
 
     #remove any songs before we do anything
     removeList = [] + get_option_value(multiworld, player, "remove_song")
@@ -93,14 +98,17 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
     sheetAmt = (floor((get_option_value(multiworld, player, "music_sheets")/100)*(sheetTotal)))
     
     #Error checking in case we have too many music sheets.
-    if (sheetAmt > (floor((song_rolled+startAmt)*2*(addChance/100)) - (song_rolled + 3))):
+    maxLoc = floor((song_rolled)*(1+(addChance/100)))
+    maxItem = (song_rolled+sheetTotal+2)
+    if (maxItem > maxLoc):
         print ("Reducing music sheets since too many were in the pool.")
-        newSheetTotal = (floor((song_rolled+startAmt)*2*(addChance/100)) - (song_rolled + 3))
+        if maxLoc <= floor((song_rolled+2)*1.2): newSheetTotal = floor(maxLoc-(song_rolled+2))
+        else: newSheetTotal = floor(maxLoc-(song_rolled+2))
         # 30 songs rolled + 5 starting songs is 70 locations MAX, multiplied by the addchance percent, then
-        # subtracted by 30 potential song items plus the goal information items and one more for a bit of overhead.
-        for x in range(newSheetTotal, sheetAmt):
+        # subtracted by 30 potential song items plus the goal information items and if we can, a little bit of overhead.
+        for x in range(newSheetTotal, sheetAmt+1):
             itemNamesToRemove.append(sheetName)
-        sheetAmt = (floor((sheetAmt/100)*(newSheetTotal)))
+        sheetAmt = (floor((get_option_value(multiworld, player, "music_sheets")/100)*(newSheetTotal)))
     
     if (sheetAmt == 0):
         #if somehow we have no sheets, make sure there's at least one.
@@ -123,28 +131,35 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
         if (i != sheetAmt):
             locationNamesToRemove.append(sheetName + "s Needed - " + str(i))
             
-    #Set the generic Location with a custom item to not mess with the multiworld as much
-    for l in multiworld.get_unfilled_locations(player=player):
-        if (l.name == (sheetName + "s Needed - " + str(sheetAmt))):
-                location = l
-                break
-    for i in item_pool:
-            if (i.name == "Goal Amount"):
-                item_to_place = i
-                break
-    location.place_locked_item(item_to_place)
-    item_pool.remove(item_to_place)
 
     #since we shuffled the list, we can take the first result from the song list for it to be random.
     #the first location will help with telling the player what song is their goal.
     #NOTE: this only works if a starting hint is applied (which it should be in the YAML)
 
-    goalSong = songList[0]
-    songList.pop(0)
+    if (get_option_value(multiworld,player,"force_goal")):
+        goalList = [] + get_option_value(multiworld,player,"force_goal")
+        shuffle(goalList)
+        goalSong = goalList[0]
+        songList.remove(goalList[0])
+    else:
+        goalSong = songList[0]
+        songList.pop(0)
     itemNamesToRemove.append(goalSong)
     locationNamesToRemove.append(goalSong + " - 1")
 
-    #Set the goal song's location to have a generic item for tracking it, as well as changing the requirements since we removed the item. 
+    #Place the goal song at the SheetAmt location
+    for l in multiworld.get_unfilled_locations(player=player):
+        if (l.name == (sheetName + "s Needed - " + str(sheetAmt))):
+                location = l
+                break
+    for i in item_pool:
+            if (i.name == goalSong):
+                item_to_place = i
+                break
+    location.place_locked_item(item_to_place)
+    item_pool.remove(item_to_place)
+
+    #Set the goal song's location to have a generic item. 
     for l in multiworld.get_unfilled_locations(player=player):
             if (l.name == (goalSong + " - 0")):
                 location = l
@@ -155,7 +170,6 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
                 break
     location.place_locked_item(item_to_place)
     item_pool.remove(item_to_place)
-    location.access_rule = lambda state: state.has(sheetName, player, sheetAmt)
 
     #Make sure the victory location is set up.
     victory_location = multiworld.get_location("__Manual Game Complete__", player)
@@ -230,12 +244,13 @@ def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld,
 
     #adds additional songs at the end
     valueThing = len(multiworld.get_unfilled_locations(player=player))-(sheetTotal+song_rolled)
-    if (1 < valueThing):
+    if (5 < valueThing):
         for x in range (1,(floor(valueThing*(get_option_value(multiworld, player, "duplicate_songs")/100)))+1):
             new_item = world.create_item(songList[x-1])
             item_pool.append(new_item)
 
     item_pool = world.add_filler_items(item_pool, traps)
+
     #used to help debug this kinda.
     #debugMW(item_pool)
     return item_pool

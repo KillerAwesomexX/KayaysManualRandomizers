@@ -169,7 +169,9 @@ class ManualWorld(World):
                     self.multiworld.push_precollected(starting_item)
                     pool.remove(starting_item)
 
-        pool = self.add_filler_items(pool, traps)
+        #pool = self.add_filler_items(pool, traps) 
+        #Commented out since this gens filler items before I remove locations in before_gen_basic.
+        #Reminder that when Manual updates to double check this just in case.
 
         pool = before_generate_basic(pool, self, self.multiworld, self.player)
 
