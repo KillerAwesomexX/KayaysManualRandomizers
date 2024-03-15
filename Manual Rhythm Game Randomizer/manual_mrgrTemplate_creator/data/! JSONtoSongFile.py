@@ -1,3 +1,10 @@
+def exitProg():
+    print ("Exiting...")
+    y="wuh oh"
+    while (y == "wuh oh"):
+        y = input("Press enter to leave the program: ")
+        quit()
+
 from json import load
 
 #All of the values
@@ -10,9 +17,24 @@ playerName = ""
 fillerName = ""
 
 #Set up item json
-itemFile = open("items.json", "r")
+try:
+    itemFile = open("items.json", "r")
+except:
+    print("items.json File Not Found!")
+    exitProg()
+
 jsonInput = load(itemFile)
 itemFile.close()
+
+#setup game json
+try:
+    gameFile = open("game.json", "r")
+except:
+    print("game.json File Not Found!")
+    exitProg()
+
+jsonGameInput = load(gameFile)
+gameFile.close()
 
 for i in jsonInput:
     catList = i["category"]
@@ -31,11 +53,6 @@ for i in jsonInput:
                 categories.append(catList[1])              
         except:
             pass
-
-#setup game json
-gameFile = open("game.json", "r")
-jsonGameInput = load(gameFile)
-gameFile.close()
 
 gameName = jsonGameInput["game"]
 playerName = jsonGameInput["player"]
