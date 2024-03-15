@@ -50,10 +50,11 @@ def after_set_rules(world: World, multiworld: MultiWorld, player: int):
 # The complete item pool prior to being set for generation is provided here, in case you want to make changes to it
 def before_generate_basic(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
     from random import shuffle, randint
+
+    #Universal Tracker bypass
     if hasattr(multiworld, "generation_is_fake"):
         return item_pool
-    #if (world.generation_is_fake):
-    #    return item_pool
+    
     #init most variables
     itemNamesToRemove = []
     locationNamesToRemove = []
