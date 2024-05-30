@@ -1,5 +1,5 @@
 # Object classes from AP that represent different types of options that you can create
-from Options import Range, OptionList, StartHints
+from Options import Range, OptionList
 
 # These helper methods allow you to determine if an option has been set, or what its value is, for any player in the multiworld
 from ..Helpers import is_option_enabled, get_option_value
