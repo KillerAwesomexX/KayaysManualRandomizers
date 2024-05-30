@@ -2,6 +2,11 @@ Hello and welcome to this program I made cause I wanted a custom song list for B
 This is Version 2.2.0
 
 # CHANGELOG #
+Version 2.2.1
+- Updated to version 20240528 of Manual
+- Removed leftover filler fix due to the new update
+- World now runs at before_create_items_filler, due to the Manual update changing which hooks run where
+
 Version 2.2.0
 - Added a temporary fix for leftover Filler items flooding the Multiworld output
 - Changed how Goal Song information is generated, removing any need for the Goal Amount item
