@@ -1,20 +1,28 @@
 Hello and welcome to this program I made cause I wanted a custom song list for Beat Saber lol.
-This is Version 2.2.0
+This is Version 2.2.1
 
 # CHANGELOG #
-Version 2.2.1
-- Updated to version 20240528 of Manual
+Version 2.2.1 PR 2
 - Removed leftover filler fix due to the new update
 - World now runs at before_create_items_filler, due to the Manual update changing which hooks run where
+- Updated to 7/9/24 version of Manual
+- Changed meta.json to include a generic apworld decription, a small comment for what version MRGR is, and two option presets
+- Goal now uses a static Victory name, since looking for the Manual Game Completion location results in an error
+- Added an error check in case the song file would error out
+- Added an ASCII check to ensure that Archipelago can handle text provided by the user
+- Added a new setting, asciiTest
+- Added an ASCII passthrough as well as an ASCII replacement just in case
+- World.py looks for the static Victoy name rather than Manual Game Completion
+- Included a brief example and explanation of all the configurations you can add to your song file
 
 Version 2.2.0
 - Added a temporary fix for leftover Filler items flooding the Multiworld output
 - Changed how Goal Song information is generated, removing any need for the Goal Amount item
 - Added categories.json, only used to hide the Goal Information Item category from the client
-- Removed MRGRStartHints, now that the Goal Song information is trimmed down
-- Changed how Goal McGuffin items are categorized, it should put them near the top rather than somewhere in the middle
+- Removed MRGRStartHints, now that the Goal Song information is trimmed down.
+- Changed how Goal McGuffin items are categorized, it should put them near the top rather than somewhere in the middle.
 - Changed a variable in the JSONGenerator so its a little easier to understand what it does
-- Added a new script JSONtoSongFile for those who want to rebuild previous MRGR JSON files back into song lists
+- Added a new script JSONtoSongFile for those who want to rebuild previous MRGR JSON files back into song lists.
 - Reworded some descriptions for options related to forcing songs
 - Added a passthrough for Universal Tracker, which should fix locations not being in logic despite having the items for them while using UT
 
@@ -104,7 +112,7 @@ If you cannot rename the extension, you may have to check your windows settings.
 
 6. Place the apworld file in your Archipelago installation
 
-Place your apworld within C:\ProgramData\Archipelago\lib\worlds.
+Place your apworld within C:\ProgramData\Archipelago\custom_worlds, or install it via the Install APWorld option in the Archipelago launcher.
 
 
 7. Generate template settings via the AP Launcher
