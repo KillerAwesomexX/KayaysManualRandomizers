@@ -48,11 +48,20 @@
 #Removed the Goal Amount item
 #sortOn variable renamed to sortOff for better understanding of the code.
 
+#Version 2.2.1 Generator
+
+#Added an error check in case the song file would error out
+#Added an ASCII check to ensure that Archipelago can handle text provided by the user
+#Added an ASCII passthrough as well as an ASCII replacement just in case
+#Added a new setting, asciiTest
+#Goal now uses a static Victory name, since looking for the Manual Game Completion location results in an error
+
 from json import dumps
 from math import floor
 
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
+
 #uses for each import
 #json uses dumps for encoding dictionary/arrays to the output
 #floor is needed cause im dumb and i hate floats (sorry anyone named float this comment wasn't for you)
@@ -75,7 +84,7 @@ def addLocations(songList: list[str], musicSheet, config: dict[str,str]):
 
     #Generate Victory location
     dictJSON = {
-            "name": "Finished " + config.get("game"),
+            "name": "Finished Goal Song",
             "category": [],
             "requires": "|" + musicSheet +":1|",
             "victory": True
@@ -227,8 +236,8 @@ def convertIntTest(inp,fail):
 
 def exitProg():
     print ("Exiting...")
-    y="play vivid stasis if you've read this"
-    while (y == "play vivid stasis if you've read this"):
+    y="play F.I.S.H. if you've read this"
+    while (y == "play F.I.S.H. if you've read this"):
         y = input("Press enter to leave the program: ")
         quit()
 
@@ -238,6 +247,7 @@ config = {
     "musicSheet": "",
     "filler_item_name": "",
     "traps":[],
+    "asciiTest": "",
     "sort_disable": "",
     "sheetAmount": "",
     "debug": ""
@@ -248,19 +258,67 @@ category_header = ""
 
 #if we have a song.txt included, open that.
 #if not, ask for one.
-try: 
-    with open("song.txt", "r") as f:
-        songFile = f.readlines()
-    print ("Using song.txt")
+
+try:
+    f=open("song.txt", 'r')
+
 except:
     Tk().withdraw()
-    with open(askopenfilename(title="Select a song file", filetypes=(("Text Files", "*.txt"),("All Files", "*.*"))), "r") as f:
-        songFile = f.readlines()
-    print ("Using provided file")
+    f=open(askopenfilename(title="Select a song file", filetypes=(("Text Files", "*.txt"),("All Files", "*.*"))), "r")
+
+while (True):
+    #Check if file is able to be read
+    try:
+        argString = f.readline()
+    except Exception as e:
+        #Find the trouble maker and print the song before it 
+        print("File contains characters that cannot be parsed!")
+        argString = str(e.args[1])
+        argString = argString.replace('\\r\\n', '\n')
+        argList = argString.split('\n')
+        x2=0
+        for argFind in argList:
+            if (argFind[0:2] == '\\x'):
+                print("Song before error: " + (str(argList[x2-1])))
+                break
+            x2=x2+1
+        exitProg()
+    break
+
+songFile = f.readlines()
+print ("Using provided file")
 
 songListFile = []
 
+#Setup ascii test
+asciiTest = config.get("asciiTest")
+if (asciiTest.isnumeric()):
+    asciiTest = int(asciiTest)
+else:
+    asciiTest = 1
+
 for songName in songFile:
+    # Check if song name is ascii compliant
+    if (asciiTest == 1):
+        try:
+            songName.encode('ascii')
+        except:
+            print ("Song Name: " + songName + " is not supported by ASCII!")
+            print ("If you feel this is an error, add \"asciiTest\"=2 to your configuration to remove non ascii characters from your song list")
+            print ("Or add \"asciiTest\"=0 to your configuration to bypass this test")
+            exitProg()
+    if (asciiTest == 2):
+        try:
+            songName.encode('ascii')
+        except:
+            print ("Song name: " + songName + " is not ascii. Removing non ascii characters...")
+        songName = songName.encode(encoding ='ascii', errors='ignore')
+        songName = str(songName)
+        if songName[-2] == 'n':
+            songName = songName[2:len(songName)-3]
+        else:
+            songName = songName[2:len(songName)-1]
+
     songName = songName.strip()
     if not songName:
             continue

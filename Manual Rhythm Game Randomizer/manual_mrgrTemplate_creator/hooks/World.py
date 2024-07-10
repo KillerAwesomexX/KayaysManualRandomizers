@@ -5,7 +5,7 @@ from BaseClasses import MultiWorld, CollectionState
 # Object classes from Manual -- extending AP core -- representing items and locations that are used in generation
 from ..Items import ManualItem
 from ..Locations import ManualLocation
-from math import floor
+
 # Raw JSON data from the Manual apworld, respectively:
 #          data/game.json, data/items.json, data/locations.json, data/regions.json
 #
@@ -14,8 +14,9 @@ from ..Data import game_table, item_table, location_table, region_table
 # These helper methods allow you to determine if an option has been set, or what its value is, for any player in the multiworld
 from ..Helpers import is_option_enabled, get_option_value
 
-
-
+# calling logging.info("message") anywhere below in this file will output the message to both console and log file
+import logging
+from math import floor
 ########################################################################################
 ## Order of method calls when the world generates:
 ##    1. create_regions - Creates regions and locations
@@ -36,18 +37,7 @@ def before_create_regions(world: World, multiworld: MultiWorld, player: int):
 
 # Called after regions and locations are created, in case you want to see or modify that information. Victory location is included.
 def after_create_regions(world: World, multiworld: MultiWorld, player: int):
-    # Use this hook to remove locations from the world
-    locationNamesToRemove = [] # List of location names
-
-    # Add your code here to calculate which locations to remove
-
-    for region in multiworld.regions:
-        if region.player == player:
-            for location in list(region.locations):
-                if location.name in locationNamesToRemove:
-                    region.locations.remove(location)
-    if hasattr(multiworld, "clear_location_cache"):
-        multiworld.clear_location_cache()
+    pass
 
 # The item pool before starting items are processed, in case you want to see the raw item pool at that stage
 def before_create_items_starting(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
@@ -178,7 +168,8 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     item_pool.remove(item_to_place)
 
     #Make sure the victory location is set up.
-    victory_location = multiworld.get_location("__Manual Game Complete__", player)
+    #victory_location = multiworld.get_location("__Manual Game Complete__", player) - Manual Update made it so you can rename the Goal, this (as of now) is obsolete and will error out.
+    victory_location = multiworld.get_location("Finished Goal Song", player)
     victory_location.access_rule = lambda state: state.has(sheetName, player, sheetAmt)
 
     #Set up all starting songs.

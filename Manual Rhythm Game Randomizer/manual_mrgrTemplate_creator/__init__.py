@@ -8,11 +8,12 @@ import Utils
 from worlds.generic.Rules import forbid_items_for_player
 from worlds.LauncherComponents import Component, SuffixIdentifier, components, Type, launch_subprocess
 
-from .Data import item_table, location_table, region_table, category_table
+from .Data import item_table, location_table, region_table, category_table, meta_table
 from .Game import game_name, filler_item_name, starting_items
-from .Locations import location_id_to_name, location_name_to_id, location_name_to_location, location_name_groups
+from .Meta import world_description, world_webworld, enable_region_diagram
+from .Locations import location_id_to_name, location_name_to_id, location_name_to_location, location_name_groups, victory_names
 from .Items import item_id_to_name, item_name_to_id, item_name_to_item, item_name_groups
-from .DataValidation import runGenerationDataValidation
+from .DataValidation import runGenerationDataValidation, runPreFillDataValidation
 
 from .Regions import create_regions
 from .Items import ManualItem
@@ -33,26 +34,10 @@ from .hooks.World import \
     before_fill_slot_data, after_fill_slot_data, before_write_spoiler
 from .hooks.Data import hook_interpret_slot_data
 
-
-class ManualWeb(WebWorld):
-    tutorials = [Tutorial(
-        "Multiworld Setup Guide",
-        "A guide to setting up manual game integration for Archipelago multiworld games.",
-        "English",
-        "setup_en.md",
-        "setup/en",
-        ["Fuzzy"]
-    )]
-
 class ManualWorld(World):
-    """
-    Manual games allow you to set custom check locations and custom item names that will be rolled into a multiworld.
-    This allows any variety of game -- PC, console, board games, Microsoft Word memes... really anything -- to be part of a multiworld randomizer.
-    The key component to including these games is some level of manual restriction. Since the items are not actually withheld from the player,
-    the player must manually refrain from using these gathered items until the tracker shows that they have been acquired or sent.
-    """
+    __doc__ = world_description
     game: str = game_name
-    web = ManualWeb()
+    web = world_webworld
 
     options_dataclass = manual_options_data
     data_version = 2
@@ -75,6 +60,7 @@ class ManualWorld(World):
     location_name_to_id = location_name_to_id
     location_name_to_location = location_name_to_location
     location_name_groups = location_name_groups
+    victory_names = victory_names
 
     def interpret_slot_data(self, slot_data: dict[str, any]):
         #this is called by tools like UT
@@ -98,8 +84,11 @@ class ManualWorld(World):
 
         create_regions(self, self.multiworld, self.player)
 
-        location_game_complete = self.multiworld.get_location("__Manual Game Complete__", self.player)
+        location_game_complete = self.multiworld.get_location(victory_names[get_option_value(self.multiworld, self.player, 'goal')], self.player)
         location_game_complete.address = None
+
+        for unused_goal in [self.multiworld.get_location(name, self.player) for name in victory_names if name != location_game_complete.name]:
+            unused_goal.parent_region.locations.remove(unused_goal)
 
         location_game_complete.place_locked_item(
             ManualItem("__Victory__", ItemClassification.progression, None, player=self.player))
@@ -303,10 +292,15 @@ class ManualWorld(World):
 
 
         after_generate_basic(self, self.multiworld, self.player)
-        # Uncomment these to generate a diagram of your manual.  Only works on 0.4.4+
 
-        # from Utils import visualize_regions
-        # visualize_regions(self.multiworld.get_region("Menu", self.player), f"{self.game}_{self.player}.puml")
+        # Enable this in Meta.json to generate a diagram of your manual.  Only works on 0.4.4+
+        if enable_region_diagram:
+            from Utils import visualize_regions
+            visualize_regions(self.multiworld.get_region("Menu", self.player), f"{self.game}_{self.player}.puml")
+
+    def pre_fill(self):
+        # DataValidation after all the hooks are done but before fill
+        runPreFillDataValidation(self, self.multiworld)
 
     def fill_slot_data(self):
         slot_data = before_fill_slot_data({}, self, self.multiworld, self.player)
@@ -382,7 +376,7 @@ class ManualWorld(World):
 
     def get_item_counts(self, player: Optional[int] = None, reset: bool = False) -> dict[str, int]:
         """returns the player real item count"""
-        if player == None:
+        if player is None:
             player = self.player
         if not self.item_counts.get(player, {}) or reset:
             real_pool = self.multiworld.get_items()
@@ -396,7 +390,7 @@ class ManualWorld(World):
             'player_id': self.player,
             'items': self.item_name_to_item,
             'locations': self.location_name_to_location,
-            # todo: extract connections out of mutliworld.get_regions() instead, in case hooks have modified the regions.
+            # todo: extract connections out of multiworld.get_regions() instead, in case hooks have modified the regions.
             'regions': region_table,
             'categories': category_table
         }
@@ -415,7 +409,7 @@ class VersionedComponent(Component):
         self.version = version
 
 def add_client_to_launcher() -> None:
-    version = 2024_03_21 # YYYYMMDD
+    version = 2024_07_09 # YYYYMMDD
     found = False
     for c in components:
         if c.display_name == "Manual Client":
