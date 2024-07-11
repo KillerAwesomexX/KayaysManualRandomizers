@@ -55,6 +55,7 @@
 #Added an ASCII passthrough as well as an ASCII replacement just in case
 #Added a new setting, asciiTest
 #Goal now uses a static Victory name, since looking for the Manual Game Completion location results in an error
+#Sort now uses a .lower key, ensuring it's in alphabetical order rather than sorting by ASCII
 
 from json import dumps
 from math import floor
@@ -290,35 +291,7 @@ print ("Using provided file")
 
 songListFile = []
 
-#Setup ascii test
-asciiTest = config.get("asciiTest")
-if (asciiTest.isnumeric()):
-    asciiTest = int(asciiTest)
-else:
-    asciiTest = 1
-
 for songName in songFile:
-    # Check if song name is ascii compliant
-    if (asciiTest == 1):
-        try:
-            songName.encode('ascii')
-        except:
-            print ("Song Name: " + songName + " is not supported by ASCII!")
-            print ("If you feel this is an error, add \"asciiTest\"=2 to your configuration to remove non ascii characters from your song list")
-            print ("Or add \"asciiTest\"=0 to your configuration to bypass this test")
-            exitProg()
-    if (asciiTest == 2):
-        try:
-            songName.encode('ascii')
-        except:
-            print ("Song name: " + songName + " is not ascii. Removing non ascii characters...")
-        songName = songName.encode(encoding ='ascii', errors='ignore')
-        songName = str(songName)
-        if songName[-2] == 'n':
-            songName = songName[2:len(songName)-3]
-        else:
-            songName = songName[2:len(songName)-1]
-
     songName = songName.strip()
     if not songName:
             continue
@@ -334,7 +307,7 @@ for songName in songFile:
             print("Song names cannot contain ':' characters\n" + songName + " contains a ':' character")
             exitProg()
         else:
-            songName = songName.strip()
+            songName = songName.strip()            
             if category_header:
                 songName = songName + "|" + category_header
             songListFile.append(songName)
@@ -343,10 +316,55 @@ if not songListFile:
     print ("song.txt has no songs!")
     exitProg()
 
+#Setup ASCII Check
+if (config.get("asciiTest").isnumeric()):
+    asciiTest = int(config.get("asciiTest"))
+else:
+    asciiTest = 1
+    print("No configuration or invalid configuration detected for ascii checks")
+
+if(asciiTest==0):
+    print("Running without ASCII checks")
+elif(asciiTest==1):
+    print("Running strict ASCII checks")
+elif(asciiTest==2):
+    print("Running replacement ASCII checks")
+
+#Check if song name is ascii compliant
+if (asciiTest > 0):
+    asciiTrack = 0
+    for songName in songListFile:
+        if (asciiTest == 1):
+            try:
+                songName.encode('ascii')
+            except:
+                print ("Song Name: " + songName + " is not supported by ASCII!")
+                #Flag it as an error and keep rolling to notify the user of all songs that aren't in ascii
+                asciiTrack = asciiTrack-100
+        if (asciiTest == 2):
+            try:
+                songName.encode('ascii')
+            except:
+                print ("Song name: " + songName + " is not ascii. Removing non ascii characters...")
+                songName = songName.encode(encoding ='ascii', errors='ignore')
+                songName = str(songName)
+                if songName[-2] == 'n':
+                    songName = songName[2:len(songName)-3]
+                else:
+                    songName = songName[2:len(songName)-1]
+                songListFile[asciiTrack] = songName
+            asciiTrack = asciiTrack+1
+    if (asciiTrack < 0):
+        #Only used in strict mode
+        print ("Please replace the characters within the songs above")
+        print ("If you feel this is an error, add #$asciiTest=2 to your configuration to remove non ascii characters from your song list automatically")
+        print ("Or add #$asciiTest=0 to your configuration to bypass this test")
+        exitProg()
+
 # Sort list for ease of finding songs in the client
 sortOff = config.get("sort_disable")
 if (not sortOff):
-    songListFile.sort()
+    songListFile.sort(key=str.lower)
 
 #Check if there's at least 10 songs within the list
 if (len(songListFile) < 10):
