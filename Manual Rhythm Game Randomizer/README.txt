@@ -1,8 +1,13 @@
 Hello and welcome to this program I made cause I wanted a custom song list for Beat Saber lol.
-This is Version 2.2.1
+This is Version 2.2.1.b PR
 
 # CHANGELOG #
-Version 2.2.1 PR 2
+Version 2.2.1.b PR
+- Fixed ASCII related checks
+- Added a key when sorting to ensure capital letters and lowercase letters get treated the same way
+- Fix various problems with the Configuration example
+
+Version 2.2.1.a PR
 - Removed leftover filler fix due to the new update
 - World now runs at before_create_items_filler, due to the Manual update changing which hooks run where
 - Updated to 7/9/24 version of Manual
