@@ -72,6 +72,21 @@ class RemoveSong(OptionList):
     display_name = "Remove Songs"
     verify_item_name = True
 
+class RemoveCategory(OptionList):
+    """Removes the song(s) in the category(/ies) specifed will NOT be generated in the multiworld."""
+    display_name = "Remove Categories"
+    verify_item_name = False
+
+class RemoveExceptionsSong(OptionList):
+    """Does not remove the song(s) specified even if they are in a to-be-removed category."""
+    display_name = "Remove Exceptions (Songs)"
+    verify_item_name = True
+
+class RemoveExceptionsCategory(OptionList):
+    """Does not remove songs from the category(/ies) specified even if they are in a to-be-removed category."""
+    display_name = "Remove Exceptions (Categories)"
+    verify_item_name = False
+
 class GoalSong(OptionList):
     """Guarantees one of the songs specified will be your goal song. Song name must be identical to the one in the list of songs."""
     display_name = "Force Goal"
@@ -86,6 +101,9 @@ def before_options_defined(options: dict) -> dict:
     options["start_total"] = StartingSongs
     options["force_song"] = ForceSong
     options["remove_song"] = RemoveSong
+    options["remove_category"] = RemoveCategory
+    options["remove_exceptions_song"] = RemoveExceptionsSong
+    options["remove_exceptions_category"] = RemoveExceptionsCategory
     options["force_goal"] = GoalSong
     return options
 
