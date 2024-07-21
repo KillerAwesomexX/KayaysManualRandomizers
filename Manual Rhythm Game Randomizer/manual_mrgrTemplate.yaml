@@ -110,6 +110,18 @@ Manual_mrgrTemplate_creator:
     # Removes the song(s) specifed will be in your world. Song name must be identical to the one in the list of songs.
     []
 
+  remove_category:
+    # Removes the song(s) in the category(/ies) specifed will NOT be generated in the multiworld.
+    []
+
+  remove_exceptions_song:
+    # Does not remove the song(s) specified even if they are in a to-be-removed category.
+    []
+
+  remove_exceptions_category:
+    # Does not remove songs from the category(/ies) specified even if they are in a to-be-removed category.
+    []
+
   force_goal:
     # Guarantees a song specified will be your goal song. Song name must be identical to the one in the list of songs.
     []
