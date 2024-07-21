@@ -1,0 +1,191 @@
+#Any "comment" in these files start with #.
+#Items here must be on a new line.
+#Since I'm using two different games for songs, I've set the game name to something unique.
+#Created By: BlastSlimey
+#Included Songs: A Dance of Fire and Ice (Main game and DLC), vivid/stasis
+
+#$game=A Dance of vivid and stasis
+#$creator=BlastSlimey
+#$filler_item_name=Lantern
+#$musicSheet=Battery
+#$traps=Play VS Shatter with at least D+, Play ADO 2x speed
+#$sortDisable=True
+
+#Here's an example on how to use the different remove and remove exception options:
+# Every song in "remove_song" will be removed from the item and location pool definitely.
+# Songs that have a category specified in the "remove_category" option, will be removed, but ONLY IF the song or one of it's categories are not specified in the "remove_exceptions_song" or "remove_exceptions_category" option.
+# Example situation: You want to play Adofai levels without the Neo Cosmos DLC and only vivid/stasis songs with a difficulty of 8 and "All The Times", but not "PYROMANIA".
+# To do this, you can remove "VS PYROMANIA" using the "remove_song" option and remove "Adofai Neo Cosmos" and "vivid/stasis" categories using the "remove_category" option, but exclude "v/s Opening 8" and "v/s Middle 8" categories and "VS All The Times" song from being removed using the "remove_exceptions_song" and "remove_exceptions_category" options.
+
+## A Dance of Fire and Ice
+#Subcategories:
+# Adofai Main Worlds
+# Adofai Crown Island
+# Adofai Muse Dash Collab
+# Adofai Extra Worlds
+# Adofai Neo Cosmos
+# Adofai Neo Cosmos EX
+
+ADO 1-X A Dance of Fire and Ice|Adofai Main Worlds
+ADO 2-X Offbeats|Adofai Main Worlds
+ADO 3-X THE WIND-UP|Adofai Main Worlds
+ADO 4-X Love Letters|Adofai Main Worlds
+ADO 5-X The Midnight Train|Adofai Main Worlds
+ADO 6-X PULSE|Adofai Main Worlds
+ADO B-X Thanks For Playing My Game|Adofai Main Worlds
+ADO 7-X Spin 2 Win|Adofai Main Worlds
+ADO 8-X Jungle City|Adofai Main Worlds
+ADO 9-X Classic Pursuit|Adofai Main Worlds
+ADO 10-X Butterfly Planet|Adofai Main Worlds
+ADO 11-X Heracles|Adofai Main Worlds
+ADO 12-X Artificial Chariot|Adofai Main Worlds
+
+ADO XO-X One Forgotten Night|Adofai Crown Island
+ADO XI-X It Go|Adofai Crown Island
+ADO XT-X Options|Adofai Crown Island
+
+ADO MN-X Night Wander (cnsouka Remix)|Adofai Muse Dash Collab
+ADO ML-X La nuit de vif|Adofai Muse Dash Collab
+ADO MO-X EMOMOMO|Adofai Muse Dash Collab
+
+ADO XF-X Third Wave Flip-Flop|Adofai Extra Worlds
+ADO XC-X Credits|Adofai Extra Worlds
+ADO XH-X Final Hope|Adofai Extra Worlds
+ADO PA-X Distance|Adofai Extra Worlds
+ADO XR-X Rose Garden|Adofai Extra Worlds
+ADO RJ-X Fear Grows|Adofai Extra Worlds
+ADO XN-X Trans-Neptunian Object|Adofai Extra Worlds
+ADO XM-X Miko Skip|Adofai Extra Worlds
+
+ADO T1-X NEW LIFE|Adofai Neo Cosmos
+ADO T2-X sing sing red indigo|Adofai Neo Cosmos
+ADO T3-X No Hints Here!|Adofai Neo Cosmos
+ADO T4-X Third Sun|Adofai Neo Cosmos
+ADO T5-X Divine Intervention|Adofai Neo Cosmos
+
+ADO T1-EX NEW LIFE|Adofai Neo Cosmos EX|Adofai Neo Cosmos
+ADO T2-EX sing sing red indigo|Adofai Neo Cosmos EX|Adofai Neo Cosmos
+ADO T3-EX No Hints Here!|Adofai Neo Cosmos EX|Adofai Neo Cosmos
+ADO T4-EX Third Sun|Adofai Neo Cosmos EX|Adofai Neo Cosmos
+
+## vivid/stasis
+#Subcategories:
+# v/s Opening [0-8]
+# v/s Middle [0, 6-12+]
+# v/s Finale [0, 9-15+]
+# v/s Encore [11-15+]
+# v/s Chapter [0-4]
+# v/s Shop
+# v/s Final Landing
+# v/s Soundscan
+
+VS MARENOL|v/s Opening 0|v/s Middle 0|v/s Finale 0|v/s Chapter 0
+
+VS FULi AUTO SHOOTER|v/s Opening 1|v/s Middle 8|v/s Finale 10+|v/s Shop
+VS Proper Rhythm|v/s Opening 1|v/s Middle 6|v/s Finale 11|v/s Encore 12|v/s Soundscan
+VS ASTELLION|v/s Opening 1|v/s Middle 8|v/s Finale 12|v/s Encore 15+|v/s Final Landing
+VS Star Dream -Millenium Vision-|v/s Opening 1|v/s Middle 6|v/s Finale 9+|v/s Soundscan
+VS Luminaria|v/s Opening 1|v/s Middle 6|v/s Finale 12|v/s Encore 13|v/s Shop
+VS Lost City|v/s Opening 1|v/s Middle 6|v/s Finale 10+|v/s Chapter 0
+VS grode|v/s Opening 1|v/s Middle 6|v/s Finale 9|v/s Encore 11|v/s Chapter 1
+VS Acolyte|v/s Opening 1|v/s Middle 7|v/s Finale 11+|v/s Chapter 0
+
+VS Options|v/s Opening 2|v/s Middle 6|v/s Finale 10|v/s Shop
+VS Tormented World|v/s Opening 2|v/s Middle 10+|v/s Finale 13+|v/s Chapter 0
+VS All The Times|v/s Opening 2|v/s Middle 6|v/s Finale 10|v/s Encore 11+|v/s Soundscan
+VS INFiNiTE ENERZY -Overdoze-|v/s Opening 2|v/s Middle 6|v/s Finale 13|v/s Chapter 0
+VS Signals Afar|v/s Opening 2|v/s Middle 8|v/s Finale 12+|v/s Chapter 1
+VS Angel's Window|v/s Opening 2|v/s Middle 6|v/s Finale 12+|v/s Chapter 3
+VS Credits|v/s Opening 2|v/s Middle 9+|v/s Finale 13|v/s Encore 13|v/s Shop
+VS Chronomia|v/s Opening 2|v/s Middle 6|v/s Finale 10+|v/s Encore 13|v/s Chapter 1
+
+VS HTTPS|v/s Opening 3|v/s Middle 11|v/s Finale 13|v/s Shop
+VS There|v/s Opening 3|v/s Middle 8|v/s Finale 10+|v/s Shop
+VS Wavetapper|v/s Opening 3|v/s Middle 9|v/s Finale 11+|v/s Shop
+VS NULCTRL|v/s Opening 3|v/s Middle 9|v/s Finale 10+|v/s Encore 11+|v/s Soundscan
+VS Tavgha|v/s Opening 3|v/s Middle 7|v/s Finale 10+|v/s Chapter 1
+VS Courage|v/s Opening 3|v/s Middle 9|v/s Finale 11|v/s Chapter 2
+VS The Last Page|v/s Opening 3|v/s Middle 8|v/s Finale 12|v/s Final Landing
+VS Ops Limone|v/s Opening 3|v/s Middle 8|v/s Finale 13|v/s Chapter 0
+VS Macropolis|v/s Opening 3|v/s Middle 6|v/s Finale 10+|v/s Chapter 1
+VS Asymmetry (takehirotei remix)|v/s Opening 3|v/s Middle 9|v/s Finale 12+|v/s Shop
+VS Octava|v/s Opening 3|v/s Middle 9|v/s Finale 12+|v/s Chapter 3
+VS Faux Real (VIVID REDUX)|v/s Opening 3|v/s Middle 8|v/s Finale 11+|v/s Soundscan
+VS LET THE CREATION BEGIN|v/s Opening 3|v/s Middle 11|v/s Finale 15|v/s Shop
+VS F1055|v/s Opening 3|v/s Middle 9+|v/s Finale 13|v/s Encore 13+|v/s Chapter 0
+
+VS Singularity|v/s Opening 4|v/s Middle 10+|v/s Finale 13|v/s Shop
+VS Trip Coffee|v/s Opening 4|v/s Middle 9+|v/s Finale 13+|v/s Soundscan
+VS Fixations Towards the Stars|v/s Opening 4|v/s Middle 10+|v/s Finale 14|v/s Chapter 1
+VS Shattered Sky After Rain|v/s Opening 4|v/s Middle 8|v/s Finale 12|v/s Chapter 4
+VS WATAGASHI RUSH|v/s Opening 4|v/s Middle 8|v/s Finale 12|v/s Encore 13+|v/s Shop
+VS UTF-8000000000|v/s Opening 4|v/s Middle 11|v/s Finale 13|v/s Chapter 3
+VS nullbreak|v/s Opening 4|v/s Middle 9|v/s Finale 13+|v/s Chapter 4
+VS septima|v/s Opening 4|v/s Middle 9|v/s Finale 12|v/s Chapter 1
+VS Ione|v/s Opening 4|v/s Middle 8|v/s Finale 11+|v/s Chapter 3
+VS A(V)|v/s Opening 4|v/s Middle 10|v/s Finale 12+|v/s Encore 15|v/s Shop
+VS Pictured as Perfect|v/s Opening 4|v/s Middle 10|v/s Finale 13|v/s Shop
+VS BPM|v/s Opening 4|v/s Middle 9+|v/s Finale 13|v/s Chapter 2
+VS safe_state (MANIAQ Sound Team Remix)|v/s Opening 4|v/s Middle 9|v/s Finale 13|v/s Chapter 2
+VS POISON GARDEN|v/s Opening 4|v/s Middle 10|v/s Finale 12|v/s Chapter 2
+VS APO11O|v/s Opening 4|v/s Middle 9|v/s Finale 12+|v/s Chapter 2
+VS GOODRAGE|v/s Opening 4|v/s Middle 9+|v/s Finale 13|v/s Shop
+
+VS ENERGY SYNERGY MATRIX|v/s Opening 5|v/s Middle 10|v/s Finale 11|v/s Encore 14|v/s Shop
+VS Prime|v/s Opening 5|v/s Middle 10|v/s Finale 13|v/s Chapter 2
+VS 3, 2, 1, Let's Go|v/s Opening 5|v/s Middle 10+|v/s Finale 14|v/s Shop
+VS Battle in Enemy Territory|v/s Opening 5|v/s Middle 10+|v/s Finale 13|v/s Soundscan
+VS Crosshatch|v/s Opening 5|v/s Middle 10+|v/s Finale 12|v/s Shop
+VS It Go (Cheryl Stelli remix)|v/s Opening 5|v/s Middle 10+|v/s Finale 12|v/s Soundscan
+VS Spell Diver|v/s Opening 5|v/s Middle 8|v/s Finale 12|v/s Shop
+VS Random|v/s Opening 5|v/s Middle 9+|v/s Finale 12|v/s Shop
+VS Seraphiel|v/s Opening 5|v/s Middle 10|v/s Finale 14|v/s Chapter 0
+VS Cosmogyral|v/s Opening 5|v/s Middle 7|v/s Finale 12|v/s Chapter 2
+VS obair-ghreis|v/s Opening 5|v/s Middle 8|v/s Finale 12+|v/s Encore 13|v/s Chapter 1
+VS Happy Go Lucky!!!|v/s Opening 5|v/s Middle 9+|v/s Finale 14|v/s Encore 14+|v/s Chapter 1
+VS Sternstunde|v/s Opening 5|v/s Middle 9+|v/s Finale 13+|v/s Chapter 4
+VS Candy@-Cracker|v/s Opening 5|v/s Middle 11|v/s Finale 13|v/s Final Landing
+VS A(V)NARCHIC LIGHT|v/s Opening 5|v/s Middle 11|v/s Finale 13|v/s Encore 14|v/s Chapter 3
+VS Nhelv|v/s Opening 5|v/s Middle 11|v/s Finale 13+|v/s Chapter 0
+VS grode(decoherence)|v/s Opening 5|v/s Middle 11|v/s Finale 14|v/s Encore 14+|v/s Chapter 0
+VS grode (Wyvren's Remix)|v/s Opening 5|v/s Middle 8|v/s Finale 13+|v/s Shop
+VS Aleph-0|v/s Opening 5|v/s Middle 9+|v/s Finale 13|v/s Chapter 3
+
+VS -1|v/s Opening 6|v/s Middle 10+|v/s Finale 13+|v/s Shop
+VS ULTIMATE|v/s Opening 6|v/s Middle 10|v/s Finale 12|v/s Encore 13+|v/s Soundscan
+VS The Next Arcady|v/s Opening 6|v/s Middle 10+|v/s Finale 12|v/s Shop
+VS G e n g a o z o|v/s Opening 6|v/s Middle 10|v/s Finale 13|v/s Shop
+VS What You Love|v/s Opening 6|v/s Middle 9|v/s Finale 12|v/s Shop
+VS FULi AUTO BUSTER|v/s Opening 6|v/s Middle 9|v/s Finale 11|v/s Shop
+VS Perfect ConfeCute!!|v/s Opening 6|v/s Middle 10+|v/s Finale 11|v/s Shop
+VS The Night of Fright|v/s Opening 6|v/s Middle 10+|v/s Finale 14|v/s Chapter 4
+VS exterminate()|v/s Opening 6|v/s Middle 10|v/s Finale 14+|v/s Chapter 4
+VS Orphen|v/s Opening 6|v/s Middle 11+|v/s Finale 14+|v/s Final Landing
+VS CLAUDIA -estella-|v/s Opening 6|v/s Middle 11+|v/s Finale 14|v/s Chapter 3
+VS Simulated Reality|v/s Opening 6|v/s Middle 12|v/s Finale 13+|v/s Chapter 3
+VS execution_program|v/s Opening 6|v/s Middle 11|v/s Finale 15+|v/s Chapter 0
+VS Revelation|v/s Opening 6|v/s Middle 12|v/s Finale 14|v/s Chapter 2
+VS QUASAR|v/s Opening 6|v/s Middle 11+|v/s Finale 14+|v/s Chapter 1
+VS The 89's Momentum|v/s Opening 6|v/s Middle 7|v/s Finale 10+|v/s Shop
+
+VS 3.1V.C1|v/s Opening 7|v/s Middle 12|v/s Finale 15|v/s Final Landing
+VS CITY RIDE IN THE JUNGLE|v/s Opening 7|v/s Middle 10+|v/s Finale 12+|v/s Soundscan
+VS Farewell to Syzygia|v/s Opening 7|v/s Middle 12|v/s Finale 14|v/s Shop
+VS Chronoexplorers|v/s Opening 7|v/s Middle 10+|v/s Finale 13|v/s Encore 14+|v/s Chapter 2
+VS BADSECRET|v/s Opening 7|v/s Middle 11|v/s Finale 13|v/s Encore 13|v/s Shop
+VS energy trixxx|v/s Opening 7|v/s Middle 10+|v/s Finale 12|v/s Encore 13|v/s Shop
+VS Dear My Endsummer|v/s Opening 7|v/s Middle 11|v/s Finale 13|v/s Chapter 3
+VS Yamai|v/s Opening 7|v/s Middle 11|v/s Finale 12|v/s Shop
+VS stop-motion|v/s Opening 7|v/s Middle 12|v/s Finale 14+|v/s Encore 15+|v/s Chapter 4
+VS Cyclical Rebellion|v/s Opening 7|v/s Middle 10+|v/s Finale 14|v/s Chapter 3
+VS STARGAZERS|v/s Opening 7|v/s Middle 12+|v/s Finale 15+|v/s Chapter 0
+
+VS SUPERNOVA|v/s Opening 8|v/s Middle 12+|v/s Finale 14+|v/s Encore 15+|v/s Chapter 3
+VS Doppelganger|v/s Opening 8|v/s Middle 12|v/s Finale 14|v/s Chapter 0
+VS CLAUDIA -libertia-|v/s Opening 8|v/s Middle 12+|v/s Finale 15|v/s Encore 15+|v/s Chapter 4
+VS Rafflesia|v/s Opening 8|v/s Middle 12+|v/s Finale 15|v/s Soundscan
+VS Unraveling Stasis|v/s Opening 8|v/s Middle 12|v/s Finale 14+|v/s Encore 15+|v/s Chapter 2
+VS valor/starcross|v/s Opening 8|v/s Middle 12|v/s Finale 14|v/s Encore 15|v/s Chapter 2
+VS +ERABY+E CONNEC+10N|v/s Opening 8|v/s Middle 11+|v/s Finale 14+|v/s Encore 15|v/s Shop
+VS PYROMANIA|v/s Opening 8|v/s Middle 11|v/s Finale 14|v/s Encore 15|v/s Chapter 1
+VS Last Wish (vivid/stasis ver.)|v/s Opening 8|v/s Middle 12+|v/s Finale 14+|v/s Encore 15+|v/s Chapter 3
