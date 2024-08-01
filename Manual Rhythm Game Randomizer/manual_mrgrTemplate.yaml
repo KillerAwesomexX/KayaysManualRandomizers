@@ -32,7 +32,7 @@ description: Default Manual_mrgrTemplate_creator Template
 
 game: Manual_mrgrTemplate_creator
 requires:
-  version: 0.4.4 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.5.0 # Version of Archipelago required for this yaml to work as expected.
 
 Manual_mrgrTemplate_creator:
   progression_balancing:

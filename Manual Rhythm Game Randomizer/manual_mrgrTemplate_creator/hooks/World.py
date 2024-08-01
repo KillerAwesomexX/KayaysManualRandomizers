@@ -45,7 +45,8 @@ def before_create_items_starting(item_pool: list, world: World, multiworld: Mult
 
 # The item pool after starting items are processed but before filler is added, in case you want to see the raw item pool at that stage
 def before_create_items_filler(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
-    logging.info('Running MRGR version 2.1.3')
+    logging.info('Running MRGR version 2.2.1')
+
     from random import shuffle, randint
 
     #Universal Tracker bypass

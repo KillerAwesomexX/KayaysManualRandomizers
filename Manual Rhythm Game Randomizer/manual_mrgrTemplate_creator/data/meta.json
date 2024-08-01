@@ -1,0 +1,50 @@
+{
+    "_comment": [ "remove the _ before a non-comment/info propertie to enable it",
+    "For more info use json schemas to get a description and allowed value for every properties",
+    "https://github.com/ManualForArchipelago/Manual/blob/main/docs/resources/json-schemas-for-world-devs.md",
+	"MRGR Version 2.2.1"],
+    "docs": {
+        "_comment": [ "For more info on the possible documentation properties check schema and/or the github",
+            "https://github.com/ArchipelagoMW/Archipelago/blob/main/docs/world%20api.md#webworld-class"
+        ],
+        "apworld_description": [
+            "Built on the Manual APWorld, this allows for any rhythm game to be randomized.",
+			"Based on DeamonHunter's Muse Dash implementation, play each song you have unlocked in order to get checks!",
+            "Collect your Goal Locking items in order to beat your final song!"
+        ],
+        "web": {
+            "_comment": "for more info check github https://github.com/ArchipelagoMW/Archipelago/blob/main/docs/world%20api.md#webworld-class",
+            "theme": "partyTime",
+            "bug_report_page": "https://discord.gg/T5bcsVHByx",
+            "tutorials": [
+                {
+                    "name": "Multiworld Setup Guide",
+                    "description": "A guide to setting up manual game integration for Archipelago multiworld games.",
+                    "language": "English",
+                    "file_name": "setup_en.md",
+                    "link": "setup/en",
+                    "_authors": ["Fuzzy"],
+                    "_comment": "if you don't include the authors it will use creator from game.json"
+                }
+            ],
+            "options_presets": {
+                "Async":{
+                    "extra_locations": 100,
+                    "music_sheets": 80,
+					"song_total": 100,
+					"start_total": 5,
+					"duplicate_songs": 5
+                },
+				"Sync":{
+                    "extra_locations": 75,
+                    "music_sheets": 65,
+					"song_total": 60,
+					"start_total": 5,
+					"duplicate_songs": 10
+                }
+            }
+        }
+    },
+    "_comment_":"Enable the generation of puml diagram of your apworld region and locations for debug purposes",
+    "enable_region_diagram": false
+}

@@ -1,0 +1,38 @@
+This file is mainly for checking out the various configurations you can use in your song's file.
+
+- - - Manual Game Options - - -
+These are options for automatically filling in various prompts necessary for setting up a Manual APWorld
+
+"game" - Fills in your game's name (string)
+"creator" - Fills in the creator name (string)
+"musicSheet" - Uses the name provided for your goal locking items (string)
+"filler_item_name" - Uses the name provided for your filler items (string)
+
+- - - Additions - - -
+"traps" - Allows for multiple traps to be included when generating the JSON (list, string)
+
+- - - Generator Options - - -
+These are specific generation options related to creating the JSON files
+
+"asciiTest" - Can either bypass or remove various characters related to ASCII checks (integer)
+	- 0, bypasses the check entirely
+	- 1, default, runs ASCII checks in strict mode (If any other input is detected, this will be set by default)
+	- 2, runs the ASCII check by printing the song name that ran into errors as well as removing any characters
+
+"sort_disable" - Disables sorting the songs by alphabetical order (string)
+
+"sheetAmount" - Can either limit the amount of goal locking items possible or bypass the standard 50 goal locking item limit (integer)
+
+"debug" - Adds a small debug file at the end of generation (string)
+
+- - - Reference - - -
+
+#$game=Cool Game
+#$creator=Luigi Mansion
+#$musicSheet=Progressive Dancer
+#$filler_item_name=Backflips
+#$traps=Watch Luigi Is Number One Dan Cer video, Super Mario Trap
+#$asciiTest=2
+#$sort_disable=yes
+#$sheetAmount=10
+#$debug=absolutely
