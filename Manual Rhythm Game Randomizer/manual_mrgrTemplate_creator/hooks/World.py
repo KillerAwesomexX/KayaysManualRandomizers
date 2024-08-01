@@ -9,7 +9,7 @@ from ..Locations import ManualLocation
 # Raw JSON data from the Manual apworld, respectively:
 #          data/game.json, data/items.json, data/locations.json, data/regions.json
 #
-from ..Data import game_table, item_table, location_table, region_table
+from ..Data import item_table, category_table
 
 # These helper methods allow you to determine if an option has been set, or what its value is, for any player in the multiworld
 from ..Helpers import is_option_enabled, get_option_value
@@ -45,12 +45,23 @@ def before_create_items_starting(item_pool: list, world: World, multiworld: Mult
 
 # The item pool after starting items are processed but before filler is added, in case you want to see the raw item pool at that stage
 def before_create_items_filler(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
+    logging.info('Running MRGR version 2.1.3')
     from random import shuffle, randint
 
     #Universal Tracker bypass
     if hasattr(multiworld, "generation_is_fake"):
         return item_pool
     
+    catRemove = []
+    for key in category_table.keys():
+        print(key)
+        if (key == '(Goal Information Item)'):
+            continue
+        else:
+            if (not is_option_enabled(multiworld, player, category_table[key]['yaml_option'][0])):
+                catRemove.append(key)
+    print(str(catRemove))
+
     #init most variables
     itemNamesToRemove = []
     locationNamesToRemove = []
@@ -67,7 +78,8 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     for item in item_table:
         i = item.get("category", "nuh-uh") #the generic filler has no category.
         if i[0] == "(Songs)":
-            songList.append(item["name"])
+            if i[1] not in catRemove:
+                songList.append(item["name"])
         elif i[0] == "(Traps)":
             traps.append(item["name"])
             itemNamesToRemove.append(item["name"]) #Remove the trap from the pool since we'll be generating them with add_filler_items
