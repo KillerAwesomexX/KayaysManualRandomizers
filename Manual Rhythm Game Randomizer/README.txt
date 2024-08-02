@@ -1,11 +1,13 @@
 Hello and welcome to this program I made cause I wanted a custom song list for Beat Saber lol.
-This is Version 2.2.1
+This is Version 2.2.1.a
 
 # CHANGELOG #
+Version 2.2.1.a
+- Fixed category removal crashing the multiworld when a song does not have a category other than (Songs)
+
 Version 2.2.1
 - Removed leftover filler fix due to the new update
 - World now runs at before_create_items_filler, due to the Manual update changing which hooks run where
-
 - Updated to 7/9/24 version of Manual
 - Changed meta.json to include a generic apworld decription, a small comment for what version MRGR is, and two option presets
 - Goal now uses a static Victory name, since looking for the Manual Game Completion location results in an error
@@ -15,7 +17,6 @@ Version 2.2.1
 - Added an ASCII passthrough as well as an ASCII replacement just in case
 - World.py looks for the static Victoy name rather than Manual Game Completion
 - Included a brief example and explanation of all the configurations you can add to your song file
-
 - Fixed ASCII related checks
 - Added a key when sorting to ensure capital letters and lowercase letters get treated the same way
 - Fix various problems with the Configuration example

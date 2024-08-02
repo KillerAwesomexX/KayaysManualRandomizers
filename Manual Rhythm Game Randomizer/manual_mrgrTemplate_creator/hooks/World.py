@@ -45,7 +45,7 @@ def before_create_items_starting(item_pool: list, world: World, multiworld: Mult
 
 # The item pool after starting items are processed but before filler is added, in case you want to see the raw item pool at that stage
 def before_create_items_filler(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
-    logging.info('Running MRGR version 2.2.1')
+    logging.info('Running MRGR version 2.2.1.a')
 
     from random import shuffle, randint
 
@@ -53,15 +53,14 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     if hasattr(multiworld, "generation_is_fake"):
         return item_pool
     
+    #set up category.json support
     catRemove = []
     for key in category_table.keys():
-        print(key)
         if (key == '(Goal Information Item)'):
             continue
         else:
             if (not is_option_enabled(multiworld, player, category_table[key]['yaml_option'][0])):
                 catRemove.append(key)
-    print(str(catRemove))
 
     #init most variables
     itemNamesToRemove = []
@@ -79,7 +78,10 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     for item in item_table:
         i = item.get("category", "nuh-uh") #the generic filler has no category.
         if i[0] == "(Songs)":
-            if i[1] not in catRemove:
+            if (len(i) > 1): 
+                if i[1] not in catRemove:
+                    songList.append(item["name"])
+            else:
                 songList.append(item["name"])
         elif i[0] == "(Traps)":
             traps.append(item["name"])
