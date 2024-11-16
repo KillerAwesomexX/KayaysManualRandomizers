@@ -93,12 +93,31 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
 
     #remove any songs before we do anything
     removeList = [] + get_option_value(multiworld, player, "remove_song")
-    if (removeList):
-        for song in removeList:
-            songList.remove(song)
-            itemNamesToRemove.append(song)
-            locationNamesToRemove.append(song + " - 0")
-            locationNamesToRemove.append(song + " - 1")
+    removeCategoryList = [] + get_option_value(multiworld, player, "remove_category")
+    exceptionsSongList = [] + get_option_value(multiworld, player, "remove_exceptions_song")
+    exceptionsCategoryList = [] + get_option_value(multiworld, player, "remove_exceptions_category")
+    if removeList or removeCategoryList: #if remove lists not empty
+        for item in item_table:
+            if item["name"] in removeList: #single song remove list has priority
+                songList.remove(item["name"])
+                itemNamesToRemove.append(item["name"])
+                locationNamesToRemove.append(item["name"] + " - 0")
+                locationNamesToRemove.append(item["name"] + " - 1")
+                print("Removed song " + item["name"])
+            else:
+                if item["name"] not in exceptionsSongList: #exception lists prevent a song from being removed
+                    cats = item.get("category", "nuh-uh")
+                    for category in cats:
+                        if category in exceptionsCategoryList:
+                            break # == continue "for item in item_table"
+                    else: #if not in an exception list
+                        for category in cats:
+                            if category in removeCategoryList:
+                                songList.remove(item["name"])
+                                itemNamesToRemove.append(item["name"])
+                                locationNamesToRemove.append(item["name"] + " - 0")
+                                locationNamesToRemove.append(item["name"] + " - 1")
+                                print("Removed song " + item["name"] + " as part of category " + category)
 
     #Error checking for song amount
     if (song_rolled > len(songList)):
