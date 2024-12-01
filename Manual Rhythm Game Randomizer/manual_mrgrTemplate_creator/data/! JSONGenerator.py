@@ -57,6 +57,9 @@
 #Goal now uses a static Victory name, since looking for the Manual Game Completion location results in an error
 #Sort now uses a .lower key, ensuring it's in alphabetical order rather than sorting by ASCII
 
+#Version 2.2.2 Generator
+#Minor change to fix a critical logic bug.
+
 from json import dumps
 from math import floor
 
@@ -87,7 +90,7 @@ def addLocations(songList: list[str], musicSheet, config: dict[str,str]):
     dictJSON = {
             "name": "Finished Goal Song",
             "category": [],
-            "requires": "|" + musicSheet +":1|",
+            "requires": "|Goal Song|",
             "victory": True
         }
     addLocate.append(dictJSON)
@@ -185,11 +188,12 @@ def addItems(songList,musicSheet,config):
         addItem.append(dictJSON)
         y = y+1
     #Generate generic Goal items to help the player find information about their world
+    #This item is now Progressive in order to fix a logical error with the base multiworld.
     dictJSON = {
         "count": 1,
         "name": "Goal Song",
         "category": ["(Goal Information Item)"],
-        "filler": True
+        "progressive": True
     }
     addItem.append(dictJSON)
     #Removed since the item associated with it is now unused

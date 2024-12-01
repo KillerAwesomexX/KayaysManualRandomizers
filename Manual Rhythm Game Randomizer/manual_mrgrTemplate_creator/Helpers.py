@@ -34,8 +34,11 @@ def is_category_enabled(multiworld: MultiWorld, player: int, category_name: str)
         return hook_result
 
     category_data = category_table.get(category_name, {})
-    if "yaml_option" in category_data:
-        for option_name in category_data["yaml_option"]:
+    return resolve_yaml_option(multiworld, player, category_data)
+
+def resolve_yaml_option(multiworld: MultiWorld, player: int, data: dict) -> bool:
+    if "yaml_option" in data:
+        for option_name in data["yaml_option"]:
             required = True
             if option_name.startswith("!"):
                 option_name = option_name[1:]
@@ -89,9 +92,12 @@ def _is_manualobject_enabled(multiworld: MultiWorld, player: int, object: any) -
 
     return enabled
 
-def get_items_for_player(multiworld: MultiWorld, player: int) -> List[Item]:
+def get_items_for_player(multiworld: MultiWorld, player: int, includePrecollected: bool = False) -> List[Item]:
     """Return list of items of a player including placed items"""
-    return [i for i in multiworld.get_items() if i.player == player]
+    items = [i for i in multiworld.get_items() if i.player == player]
+    if includePrecollected:
+        items.extend(multiworld.precollected_items.get(player, []))
+    return items
 
 def get_items_with_value(world: World, multiworld: MultiWorld, value: str, player: Optional[int] = None, force: bool = False) -> dict[str, int]:
     """Return a dict of every items with a specific value type present in their respective 'value' dict\n
@@ -101,7 +107,7 @@ def get_items_with_value(world: World, multiworld: MultiWorld, value: str, playe
     if player is None:
         player = world.player
 
-    player_items = get_items_for_player(multiworld, player)
+    player_items = get_items_for_player(multiworld, player, True)
     # Just a small check to prevent caching {} if items don't exist yet
     if not player_items:
         return {value: -1}
