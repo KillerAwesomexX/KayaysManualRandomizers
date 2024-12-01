@@ -31,13 +31,29 @@ from math import floor
 
 
 
+# Use this function to change the valid filler items to be created to replace item links or starting items.
+# Default value is the `filler_item_name` from game.json
+def hook_get_filler_item_name(world: World, multiworld: MultiWorld, player: int) -> str | bool:
+    return False
+
 # Called before regions and locations are created. Not clear why you'd want this, but it's here. Victory location is included, but Victory event is not placed yet.
 def before_create_regions(world: World, multiworld: MultiWorld, player: int):
     pass
 
 # Called after regions and locations are created, in case you want to see or modify that information. Victory location is included.
 def after_create_regions(world: World, multiworld: MultiWorld, player: int):
-    pass
+    # Use this hook to remove locations from the world
+    locationNamesToRemove = [] # List of location names
+
+    # Add your code here to calculate which locations to remove
+
+    for region in multiworld.regions:
+        if region.player == player:
+            for location in list(region.locations):
+                if location.name in locationNamesToRemove:
+                    region.locations.remove(location)
+    if hasattr(multiworld, "clear_location_cache"):
+        multiworld.clear_location_cache()
 
 # The item pool before starting items are processed, in case you want to see the raw item pool at that stage
 def before_create_items_starting(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
@@ -45,7 +61,7 @@ def before_create_items_starting(item_pool: list, world: World, multiworld: Mult
 
 # The item pool after starting items are processed but before filler is added, in case you want to see the raw item pool at that stage
 def before_create_items_filler(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
-    logging.info('Running MRGR version 2.2.1.a')
+    logging.info('Running MRGR version 2.2.2')
 
     from random import shuffle, randint
 
@@ -53,9 +69,9 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     if hasattr(multiworld, "generation_is_fake"):
         return item_pool
     
-    #set up category.json support
     catRemove = []
     for key in category_table.keys():
+        print(key)
         if (key == '(Goal Information Item)'):
             continue
         else:
@@ -78,7 +94,7 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     for item in item_table:
         i = item.get("category", "nuh-uh") #the generic filler has no category.
         if i[0] == "(Songs)":
-            if (len(i) > 1): 
+            if (len(i) > 1):
                 if i[1] not in catRemove:
                     songList.append(item["name"])
             else:
@@ -184,8 +200,8 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
 
     #Make sure the victory location is set up.
     #victory_location = multiworld.get_location("__Manual Game Complete__", player) - Manual Update made it so you can rename the Goal, this (as of now) is obsolete and will error out.
-    victory_location = multiworld.get_location("Finished Goal Song", player)
-    victory_location.access_rule = lambda state: state.has(sheetName, player, sheetAmt)
+    #victory_location = multiworld.get_location("Finished Goal Song", player)
+    #victory_location.access_rule = lambda state: state.has(sheetName, player, sheetAmt)
 
     #Set up all starting songs.
     for i in range(1,startAmt+1):
@@ -329,4 +345,23 @@ def after_fill_slot_data(slot_data: dict, world: World, multiworld: MultiWorld, 
 
 # This is called right at the end, in case you want to write stuff to the spoiler log
 def before_write_spoiler(world: World, multiworld: MultiWorld, spoiler_handle) -> None:
+    pass
+
+# This is called when you want to add information to the hint text
+def before_extend_hint_information(hint_data: dict[int, dict[int, str]], world: World, multiworld: MultiWorld, player: int) -> None:
+    
+    ### Example way to use this hook: 
+    # if player not in hint_data:
+    #     hint_data.update({player: {}})
+    # for location in multiworld.get_locations(player):
+    #     if not location.address:
+    #         continue
+    #
+    #     use this section to calculate the hint string
+    #
+    #     hint_data[player][location.address] = hint_string
+    
+    pass
+
+def after_extend_hint_information(hint_data: dict[int, dict[int, str]], world: World, multiworld: MultiWorld, player: int) -> None:
     pass
