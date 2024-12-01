@@ -1,9 +1,12 @@
 Hello and welcome to this program I made cause I wanted a custom song list for Beat Saber lol.
-This is Version 2.2.1.a
+This is Version 2.2.2
 
 # CHANGELOG #
+Version 2.2.2
+- Contains minor changes to the Goal Song event item in order to fix a critical logic bug.
+
 Version 2.2.1.a
-- Fixed category removal crashing the multiworld when a song does not have a category other than (Songs)
+- Fixed Category Removal Crash
 
 Version 2.2.1
 - Removed leftover filler fix due to the new update
