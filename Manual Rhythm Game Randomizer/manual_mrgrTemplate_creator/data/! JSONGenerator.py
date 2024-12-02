@@ -193,7 +193,7 @@ def addItems(songList,musicSheet,config):
         "count": 1,
         "name": "Goal Song",
         "category": ["(Goal Information Item)"],
-        "progressive": True
+        "progression": True
     }
     addItem.append(dictJSON)
     #Removed since the item associated with it is now unused
