@@ -1,0 +1,56 @@
+# INSTRUCTIONS #
+
+1. Create a list of songs or use a predefined list
+
+Simply open up a text file, and start placing your songs within! All songs must be on a new line.
+You can also check out the Example Files for help with additional things, such as configuration options
+for running the python script and setting up categories.
+
+If you do not have a song list or you want a pre-generated list, there are a few made in the Example Files folder
+If you choose to use a file from the Example Files folder, copy and paste its contents to song.txt
+
+
+2. Copy the template folder
+
+For safety, its beneficial to create a copy of the template apworld folder (named manual_mrgrTemplate_creator)
+
+
+3. Run the Python script in the copied template folder
+
+Run the JSON Generator in the data folder.
+
+If there is no file named song.txt, you will be asked by the script to provide a text file.
+
+This script will ask you a few questions to generate the game.json, unless its provided within the song.txt config values.
+Afterwards it will generate all of the items and locations
+NOTE: The program will automatically remove spaces from the Game name and the player name
+
+
+4. (OPTIONAL) Change the options in Options.py
+
+If you want to, you can change the maximum amount of songs in Options.py
+By default, the option is set to 400 maximum songs.
+
+
+4. Rename the folder to manual_(gamename)_(playername) 
+
+Your game name and player name from step 2 will be used in this step. The gamename and playername must be lowercase.
+
+
+5. Zip up the renamed folder and rename the .zip file to manual_(gamename)_(playername).apworld
+
+If you cannot rename the extension, you may have to check your windows settings.
+
+
+6. Place the apworld file in your Archipelago installation
+
+Place your apworld within C:\ProgramData\Archipelago\custom_worlds, or install it via the Install APWorld option in the Archipelago launcher.
+
+
+7. Generate template settings via the AP Launcher
+
+Run the ArchipelagoLauncher within the Archipelago folder. Then, select Generate Template Settings. If you've
+done everything correctly, you should have a YAML file named Manual_(gamename)_(playername). From there, edit
+the YAML file and you're good to go!
+
+All that's left is to generate your game! Have fun!
