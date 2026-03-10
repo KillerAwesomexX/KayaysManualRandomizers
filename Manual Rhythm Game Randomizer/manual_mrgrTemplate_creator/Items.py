@@ -1,6 +1,6 @@
 from BaseClasses import Item
 from .Data import item_table
-from .Game import filler_item_name, starting_index
+from .Game import filler_item_name, starting_index, game_name
 
 
 ######################
@@ -32,10 +32,13 @@ for key, val in enumerate(item_table):
 
     item_table[key]["id"] = count
     item_table[key]["progression"] = val["progression"] if "progression" in val else False
+    if isinstance(val.get("category", []), str):
+        item_table[key]["category"] = [val["category"]]
+
     count += 1
 
 for item in item_table:
-    item_name = item["name"]
+    item_name = item.get("name", f"Unnamed Item {item['id']}")
     item_id_to_name[item["id"]] = item_name
     item_name_to_item[item_name] = item
 
@@ -47,8 +50,12 @@ for item in item_table:
             item_name_groups[c] = []
         item_name_groups[c].append(item_name)
 
+    #Just lowercase the values here to remove all the .lower.strip down the line
+    item['value'] = {k.lower().strip(): v
+                     for k, v in item.get('value', {}).items()}
+
     for v in item.get("value", {}).keys():
-        group_name = f"has_{v.lower().strip()}_value"
+        group_name = f"has_{v}_value"
         if group_name not in item_name_groups:
             item_name_groups[group_name] = []
         item_name_groups[group_name].append(item_name)
@@ -63,4 +70,4 @@ item_name_to_id = {name: id for id, name in item_id_to_name.items()}
 
 
 class ManualItem(Item):
-    game = "Manual"
+    game = game_name
