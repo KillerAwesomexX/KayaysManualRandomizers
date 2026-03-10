@@ -123,7 +123,7 @@ def addLocations(songList: list[str], musicSheet, config: dict[str,str]):
     dictJSON = {
         "$schema": "https://github.com/ManualForArchipelago/Manual/raw/main/schemas/Manual.events.schema.json",
         "data": [{"name": "Goal Amount Reached",
-        "requires": "|grodefish:1|"}]
+        "requires": "|" + musicSheet + "|"}]
         }
 
     with open("events.json", "w") as eventFile:
@@ -397,3 +397,4 @@ if (config.get("debug")):
 
 print ("\nAll finished!")
 exitProg()
+
