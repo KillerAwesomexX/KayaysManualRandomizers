@@ -1,6 +1,7 @@
 # Object classes from AP core, to represent an entire MultiWorld and this individual World that's part of it
+from typing import Any
 from worlds.AutoWorld import World
-from BaseClasses import MultiWorld, CollectionState
+from BaseClasses import MultiWorld, CollectionState, Item
 
 # Object classes from Manual -- extending AP core -- representing items and locations that are used in generation
 from ..Items import ManualItem
@@ -9,14 +10,14 @@ from ..Locations import ManualLocation
 # Raw JSON data from the Manual apworld, respectively:
 #          data/game.json, data/items.json, data/locations.json, data/regions.json
 #
-from ..Data import item_table, category_table
+from ..Data import game_table, item_table, location_table, region_table, category_table
 
 # These helper methods allow you to determine if an option has been set, or what its value is, for any player in the multiworld
-from ..Helpers import is_option_enabled, get_option_value
+from ..Helpers import is_option_enabled, get_option_value, format_state_prog_items_key, ProgItemsCat, remove_specific_item
 
 # calling logging.info("message") anywhere below in this file will output the message to both console and log file
 import logging
-from math import floor
+
 ########################################################################################
 ## Order of method calls when the world generates:
 ##    1. create_regions - Creates regions and locations
@@ -29,12 +30,17 @@ from math import floor
 ## The fill_slot_data method will be used to send data to the Manual client for later use, like deathlink.
 ########################################################################################
 
-
-
 # Use this function to change the valid filler items to be created to replace item links or starting items.
 # Default value is the `filler_item_name` from game.json
 def hook_get_filler_item_name(world: World, multiworld: MultiWorld, player: int) -> str | bool:
     return False
+
+def before_generate_early(world: World, multiworld: MultiWorld, player: int) -> None:
+    """
+    This is the earliest hook called during generation, before anything else is done.
+    Use it to check or modify incompatible options, or to set up variables for later use.
+    """
+    pass
 
 # Called before regions and locations are created. Not clear why you'd want this, but it's here. Victory location is included, but Victory event is not placed yet.
 def before_create_regions(world: World, multiworld: MultiWorld, player: int):
@@ -42,36 +48,29 @@ def before_create_regions(world: World, multiworld: MultiWorld, player: int):
 
 # Called after regions and locations are created, in case you want to see or modify that information. Victory location is included.
 def after_create_regions(world: World, multiworld: MultiWorld, player: int):
-    # Use this hook to remove locations from the world
-    locationNamesToRemove = [] # List of location names
+    pass
 
-    # Add your code here to calculate which locations to remove
-
-    for region in multiworld.regions:
-        if region.player == player:
-            for location in list(region.locations):
-                if location.name in locationNamesToRemove:
-                    region.locations.remove(location)
-    if hasattr(multiworld, "clear_location_cache"):
-        multiworld.clear_location_cache()
+def before_create_items_all(item_config: dict[str, int|dict], world: World, multiworld: MultiWorld, player: int) -> dict[str, int|dict]:
+    return item_config
 
 # The item pool before starting items are processed, in case you want to see the raw item pool at that stage
 def before_create_items_starting(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
-    return item_pool
-
-# The item pool after starting items are processed but before filler is added, in case you want to see the raw item pool at that stage
-def before_create_items_filler(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
-    logging.info('Running MRGR version 2.2.2')
-
-    from random import shuffle, randint
+    logging.info('Running MRGR version pre 2.3')
 
     #Universal Tracker bypass
-    if hasattr(multiworld, "generation_is_fake"):
+    if hasattr(multiworld, "generation_is_fake") and hasattr(multiworld, "re_gen_passthrough"):
+        if world.game in multiworld.re_gen_passthrough:
+            slot_data = multiworld.re_gen_passthrough[world.game]
+            world.mrgrGoalSong = slot_data["Goal Song"]
+            world.mrgrSheetName = slot_data["Sheet Name"]
+            world.mrgrSheetAmt = slot_data["Sheets Needed"]
         return item_pool
+
+    from random import shuffle, randint
+    from math import floor
     
     catRemove = []
     for key in category_table.keys():
-        print(key)
         if (key == '(Goal Information Item)'):
             continue
         else:
@@ -105,7 +104,9 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
         elif i[0] != "(Goal Information Item)":
             if item.get("progression_skip_balancing"): #the goal mode item
                 sheetName = item["name"]
-                sheetTotal = item["count"]
+
+    # SAVE FOR LATER
+    world.mrgrSheetName = sheetName
 
     #remove any songs before we do anything
     removeList = [] + get_option_value(multiworld, player, "remove_song")
@@ -118,30 +119,9 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
 
     #Error checking for song amount
     if (song_rolled > len(songList)):
-        print ("Amount of songs is more than the world can handle! Setting it to the amount of songs total.")
+        logging.info("Amount of songs is more than the world can handle! Setting it to the amount of songs total.")
         song_rolled = len(songList) - startAmt
-    
-    #get the total amount of sheets needed for the goal. shouldn't need the for item in item_table, but it should guarantee finding it.
-    sheetAmt = (floor((get_option_value(multiworld, player, "music_sheets")/100)*(sheetTotal)))
-    
-    #Error checking in case we have too many music sheets.
-    maxLoc = floor((song_rolled)*(1+(addChance/100)))
-    maxItem = (song_rolled+sheetTotal+2)
-    if (maxItem > maxLoc):
-        print ("Reducing music sheets since too many were in the pool.")
-        if maxLoc <= floor((song_rolled+2)*1.2): newSheetTotal = floor(maxLoc-(song_rolled+2))
-        else: newSheetTotal = floor(maxLoc-(song_rolled+2))
-        # 30 songs rolled + 5 starting songs is 70 locations MAX, multiplied by the addchance percent, then
-        # subtracted by 30 potential song items plus the goal information items and if we can, a little bit of overhead.
-        for x in range(newSheetTotal, sheetAmt+1):
-            itemNamesToRemove.append(sheetName)
-        sheetAmt = (floor((get_option_value(multiworld, player, "music_sheets")/100)*(newSheetTotal)))
-    
-    if (sheetAmt == 0):
-        #if somehow we have no sheets, make sure there's at least one.
-        itemNamesToRemove.pop(0)
-        sheetAmt = 1
-    
+
     #final prep before removing anything
     songAmt = len(songList)
     shuffle(songList)
@@ -152,12 +132,6 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
         for song in forceList:
             songList.remove(song)
             songList.insert((1+startAmt),song)
-    
-    #remove any generic Location information
-    for i in range(1,sheetTotal+1):
-        if (i != sheetAmt):
-            locationNamesToRemove.append(sheetName + "s Needed - " + str(i))
-            
 
     #since we shuffled the list, we can take the first result from the song list for it to be random.
     #the first location will help with telling the player what song is their goal.
@@ -173,19 +147,7 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
         songList.pop(0)
     itemNamesToRemove.append(goalSong)
     locationNamesToRemove.append(goalSong + " - 1")
-
-    #Place the goal song at the SheetAmt location
-    for l in multiworld.get_unfilled_locations(player=player):
-        if (l.name == (sheetName + "s Needed - " + str(sheetAmt))):
-                location = l
-                break
-    for i in item_pool:
-            if (i.name == goalSong):
-                item_to_place = i
-                break
-    location.place_locked_item(item_to_place)
-    item_pool.remove(item_to_place)
-
+    world.mrgrGoalSong = goalSong
     #Set the goal song's location to have a generic item. 
     for l in multiworld.get_unfilled_locations(player=player):
             if (l.name == (goalSong + " - 0")):
@@ -270,26 +232,52 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     if hasattr(multiworld, "clear_location_cache"):
         multiworld.clear_location_cache()
 
+    #add sheets to pool
+    valueThing = floor((len(multiworld.get_unfilled_locations(player=player))-song_rolled)*(get_option_value(multiworld, player, "sheet_percent")/100))
+    for x in range(1,valueThing):
+        new_item = world.create_item(sheetName)
+        item_pool.append(new_item)
+    sheetAmt = floor(valueThing*(get_option_value(multiworld, player, "music_sheets")/100))
+    
+    # SAVE FOR LATER
+    world.mrgrSheetAmt = sheetAmt
+
     #adds additional songs at the end
-    valueThing = len(multiworld.get_unfilled_locations(player=player))-(sheetTotal+song_rolled)
+    valueThing = len(multiworld.get_unfilled_locations(player=player))-(sheetAmt+song_rolled)
     if (5 < valueThing):
         for x in range (1,(floor(valueThing*(get_option_value(multiworld, player, "duplicate_songs")/100)))+1):
             new_item = world.create_item(songList[x-1])
             item_pool.append(new_item)
 
-    item_pool = world.add_filler_items(item_pool, traps)
+    item_pool = world.adjust_filler_items(item_pool, traps)
 
     #used to help debug this kinda.
     #debugMW(item_pool)
     return item_pool
-    
+
+# The item pool after starting items are processed but before filler is added, in case you want to see the raw item pool at that stage
+def before_create_items_filler(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
+    # Use this hook to remove items from the item pool
+    itemNamesToRemove: list[str] = [] # List of item names
+
+    # Add your code here to calculate which items to remove.
+    #
+    # Because multiple copies of an item can exist, you need to add an item name
+    # to the list multiple times if you want to remove multiple copies of it.
+
+    for itemName in itemNamesToRemove:
+        item = next(i for i in item_pool if i.name == itemName)
+        remove_specific_item(item_pool, item)
+
+    return item_pool
+
     # Some other useful hook options:
 
     ## Place an item at a specific location
     # location = next(l for l in multiworld.get_unfilled_locations(player=player) if l.name == "Location Name")
     # item_to_place = next(i for i in item_pool if i.name == "Item Name")
     # location.place_locked_item(item_to_place)
-    # item_pool.remove(item_to_place)
+    # remove_specific_item(item_pool, item_to_place)
 
 # The complete item pool prior to being set for generation is provided here, in case you want to make changes to it
 def after_create_items(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
@@ -303,12 +291,32 @@ def before_set_rules(world: World, multiworld: MultiWorld, player: int):
 def after_set_rules(world: World, multiworld: MultiWorld, player: int):
     # Use this hook to modify the access rules for a given location
 
-    def Example_Rule(state: CollectionState) -> bool:
-        # Calculated rules take a CollectionState object and return a boolean
-        # True if the player can access the location
-        # CollectionState is defined in BaseClasses
-        return True
+    # return values from prev step
+    goalSong = world.mrgrGoalSong
+    sheetName = world.mrgrSheetName
+    sheetAmt = world.mrgrSheetAmt
 
+    # Adjust Goal Song requirements.
+    if hasattr(multiworld, "generation_is_fake"):
+        # Note, we switch to unfilled locations here since we skip placing the Goal Item earlier
+        for l in multiworld.get_unfilled_locations(player=player):
+            if (l.name == (goalSong + " - 0")):
+                location = l
+                break
+    else:
+        for l in multiworld.get_filled_locations(player=player):
+            if (l.name == (goalSong + " - 0")):
+                location = l
+                break
+    location.access_rule = lambda goalState: goalState.has("Goal Amount Reached", player)
+    
+    # Adjust Goal Amount requirements
+    for l in multiworld.get_filled_locations(player=player):
+            if (l.name == ("0_GOAL_AMOUNT_REACHED")):
+                location = l
+                break
+    location.access_rule = lambda goalState: goalState.has(sheetName, player, int(sheetAmt))
+    return
     ## Common functions:
     # location = world.get_location(location_name, player)
     # location.access_rule = Example_Rule
@@ -328,12 +336,29 @@ def after_create_item(item: ManualItem, world: World, multiworld: MultiWorld, pl
     return item
 
 # This method is run towards the end of pre-generation, before the place_item options have been handled and before AP generation occurs
-def before_generate_basic(world: World, multiworld: MultiWorld, player: int) -> list:
+def before_generate_basic(world: World, multiworld: MultiWorld, player: int):
     pass
 
 # This method is run at the very end of pre-generation, once the place_item options have been handled and before AP generation occurs
 def after_generate_basic(world: World, multiworld: MultiWorld, player: int):
     pass
+
+# This method is run every time an item is added to the state, can be used to modify the value of an item.
+# IMPORTANT! Any changes made in this hook must be cancelled/undone in after_remove_item
+def after_collect_item(world: World, state: CollectionState, Changed: bool, item: Item):
+    # the following let you add to the Potato Item Value count
+    # if item.name == "Cooked Potato":
+    #     state.prog_items[item.player][format_state_prog_items_key(ProgItemsCat.VALUE, "Potato")] += 1
+    pass
+
+# This method is run every time an item is removed from the state, can be used to modify the value of an item.
+# IMPORTANT! Any changes made in this hook must be first done in after_collect_item
+def after_remove_item(world: World, state: CollectionState, Changed: bool, item: Item):
+    # the following let you undo the addition to the Potato Item Value count
+    # if item.name == "Cooked Potato":
+    #     state.prog_items[item.player][format_state_prog_items_key(ProgItemsCat.VALUE, "Potato")] -= 1
+    pass
+
 
 # This is called before slot data is set and provides an empty dict ({}), in case you want to modify it before Manual does
 def before_fill_slot_data(slot_data: dict, world: World, multiworld: MultiWorld, player: int) -> dict:
@@ -341,6 +366,16 @@ def before_fill_slot_data(slot_data: dict, world: World, multiworld: MultiWorld,
 
 # This is called after slot data is set and provides the slot data at the time, in case you want to check and modify it after Manual is done with it
 def after_fill_slot_data(slot_data: dict, world: World, multiworld: MultiWorld, player: int) -> dict:
+    # return values from prev step
+    goalSong = world.mrgrGoalSong
+    sheetName = world.mrgrSheetName
+    sheetAmt = world.mrgrSheetAmt
+
+    slot_data["visible_events"]['Goal Amount Reached'] = [("(!" + str(sheetAmt) + " " + str(sheetName)+"s to Unlock Goal!)")]
+    slot_data["Goal Song"] = str(goalSong)
+    slot_data["Sheets Needed"] = str(sheetAmt)
+    slot_data["Sheet Name"] = str(sheetName)
+    logging.info(str(slot_data))
     return slot_data
 
 # This is called right at the end, in case you want to write stuff to the spoiler log
@@ -349,8 +384,8 @@ def before_write_spoiler(world: World, multiworld: MultiWorld, spoiler_handle) -
 
 # This is called when you want to add information to the hint text
 def before_extend_hint_information(hint_data: dict[int, dict[int, str]], world: World, multiworld: MultiWorld, player: int) -> None:
-    
-    ### Example way to use this hook: 
+
+    ### Example way to use this hook:
     # if player not in hint_data:
     #     hint_data.update({player: {}})
     # for location in multiworld.get_locations(player):
@@ -360,8 +395,15 @@ def before_extend_hint_information(hint_data: dict[int, dict[int, str]], world: 
     #     use this section to calculate the hint string
     #
     #     hint_data[player][location.address] = hint_string
-    
+
     pass
 
 def after_extend_hint_information(hint_data: dict[int, dict[int, str]], world: World, multiworld: MultiWorld, player: int) -> None:
     pass
+
+def hook_interpret_slot_data(world: World, player: int, slot_data: dict[str, Any]) -> dict[str, Any]:
+    """
+        Called when Universal Tracker wants to perform a fake generation
+        Use this if you want to use or modify the slot_data for passed into re_gen_passthrough
+    """
+    return slot_data
