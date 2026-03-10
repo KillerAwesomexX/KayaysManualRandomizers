@@ -90,7 +90,7 @@ def addLocations(songList: list[str], musicSheet, config: dict[str,str]):
     dictJSON = {
             "name": "Finished Goal Song",
             "category": [],
-            "requires": "|Goal Song|",
+            "requires": "|Goal Amount Reached|",
             "victory": True
         }
     addLocate.append(dictJSON)
@@ -115,41 +115,31 @@ def addLocations(songList: list[str], musicSheet, config: dict[str,str]):
         addLocate.append(dictJSON)
         x = x+1
     
-    #Generate generic total sheet locations.
-    if (config.get("sheetAmount")):
-        sheetsMax = int(config.get("sheetAmount"))
-    else:
-        sheetsMax = (floor(len(songList)/3))
-        if (sheetsMax > 50):
-            sheetsMax = 50
-    for i in range(1,sheetsMax+1):
-        dictJSON = {
-            "name": musicSheet + "s Needed - " + str(i),
-            "category": ["(!Goal Amount!)"],
-            "requires": "|" + musicSheet + ":" + str(i) + "|"
-        }
-        addLocate.append(dictJSON)
-    
     itemFile = open("locations.json", "w")
     jsonOutput=dumps(addLocate, indent=4)
     itemFile.write(jsonOutput)
     itemFile.close()
 
+    dictJSON = {
+        "$schema": "https://github.com/ManualForArchipelago/Manual/raw/main/schemas/Manual.events.schema.json",
+        "data": [{"name": "Goal Amount Reached",
+        "requires": "|grodefish:1|"}]
+        }
+
+    with open("events.json", "w") as eventFile:
+        jsonOutput=dumps(dictJSON, indent = 4)
+        eventFile.write(jsonOutput)
+        eventFile.close()
+
+
 #Adds Items
 
 def addItems(songList,musicSheet,config):
-    #generate flow needed
-    if (config.get("sheetAmount")):
-        sheets = int(config.get("sheetAmount"))
-    else:
-        sheets = (floor(len(songList)/3))
-        if (sheets > 50):
-            print ("Total sheet amount exceeded 50!")
-            print ("If you want to change this value, please specify it in the config values")
-            sheets = 50
+    #generate sheets needed
+
     addItem = []
     dictJSON = {
-        "count": sheets,
+        "count": 1,
         "name": musicSheet,
         "category": ["("+musicSheet+")"],
         "progression_skip_balancing": True
@@ -193,18 +183,10 @@ def addItems(songList,musicSheet,config):
         "count": 1,
         "name": "Goal Song",
         "category": ["(Goal Information Item)"],
-        "progression": True
+        "filler": True
     }
     addItem.append(dictJSON)
-    #Removed since the item associated with it is now unused
-    #dictJSON = {
-    #    "count": 1,
-    #    "name": "Goal Amount",
-    #    "category": ["(Goal Information Item)"],
-    #    "filler": True
-    #}
-    #addItem.append(dictJSON)
-    #dump to JSON
+
     jsonOutput=dumps(addItem, indent=4)
     itemFile.write(jsonOutput)
     itemFile.close()
@@ -215,13 +197,15 @@ def genGame(config: dict[str,str]) -> str:
     itemFile = open("game.json", "w")
     gName = config.get("game") or str(input("Enter the game's name: "))
     gName = gName.replace(" ","") #formatting for manual
-    pName = config.get("creator") or str(input("Enter the player's name: "))
+    pName = config.get("creator") or str(input("Enter the creator's name: "))
     pName = pName.replace(" ","")
     dictJSON ={
         "game": gName,
-        "player": pName,
-        "filler_item_name": config.get("filler_item_name") or input("Enter the filler item's name: ")
+        "creator": pName,
+        "filler_item_name": config.get("filler_item_name") or input("Enter the filler item's name: "),
+        "death_link": True
     }
+
     jsonOutput=dumps(dictJSON, indent = 4)
     itemFile.write(jsonOutput)
     itemFile.close()
@@ -241,8 +225,8 @@ def convertIntTest(inp,fail):
 
 def exitProg():
     print ("Exiting...")
-    y="play F.I.S.H. if you've read this"
-    while (y == "play F.I.S.H. if you've read this"):
+    y="play UNBEATABLE if you've read this"
+    while (y == "play UNBEATABLE if you've read this"):
         y = input("Press enter to leave the program: ")
         quit()
 
@@ -254,7 +238,6 @@ config = {
     "traps":[],
     "asciiTest": "",
     "sort_disable": "",
-    "sheetAmount": "",
     "debug": ""
 }
 
@@ -296,7 +279,7 @@ print ("Using provided file")
 songListFile = []
 
 for songName in songFile:
-    songName = songName.strip()
+    songName = str(songName.strip())
     if not songName:
             continue
     else:
@@ -314,7 +297,7 @@ for songName in songFile:
             songName = songName.strip()            
             if category_header:
                 songName = songName + "|" + category_header
-            songListFile.append(songName)
+            songListFile.append(str(songName))
 
 if not songListFile:
     print ("song.txt has no songs!")
