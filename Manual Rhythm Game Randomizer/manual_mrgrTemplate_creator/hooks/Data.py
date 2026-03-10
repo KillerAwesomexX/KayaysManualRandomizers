@@ -16,7 +16,12 @@ def after_load_progressive_item_file(progressive_item_table: list) -> list:
 def after_load_location_file(location_table: list) -> list:
     return location_table
 
-# called after the locations.json file has been loaded, before any location loading or processing has occurred
+# called after the events.json file has been loaded, before any processing has occurred
+# If you need access to the events after processing, you should use the hooks in World.py
+def after_load_event_file(event_table: list) -> list:
+    return event_table
+
+# called after the regions.json file has been loaded, before any location loading or processing has occurred
 # if you need access to the locations after processing to add ids, etc., you should use the hooks in World.py
 def after_load_region_file(region_table: dict) -> dict:
     return region_table
@@ -25,13 +30,13 @@ def after_load_region_file(region_table: dict) -> dict:
 def after_load_category_file(category_table: dict) -> dict:
     return category_table
 
+# called after the categories.json file has been loaded
+def after_load_option_file(option_table: dict) -> dict:
+    # option_table["core"] is the dictionary of modification of existing options
+    # option_table["user"] is the dictionary of custom options
+    return option_table
+
 # called after the meta.json file has been loaded and just before the properties of the apworld are defined. You can use this hook to change what is displayed on the webhost
 # for more info check https://github.com/ArchipelagoMW/Archipelago/blob/main/docs/world%20api.md#webworld-class
 def after_load_meta_file(meta_table: dict) -> dict:
     return meta_table
-
-# called when an external tool (eg Univeral Tracker) ask for slot data to be read
-# use this if you want to restore more data
-# return True if you want to trigger a regeneration if you changed anything
-def hook_interpret_slot_data(world, player: int, slot_data: dict[str, any]) -> bool:
-    return False
