@@ -1,7 +1,22 @@
 Hello and welcome to this program I made cause I wanted a custom song list for Beat Saber lol.
-This is Version 2.2.2
+This is Version pre2.3.0
 
 # CHANGELOG #
+
+Version pre2.3.0
+- Updated to the latest unstable build of Manual (01/29/26)
+- Goal locking locations have now been simplified to an Event
+- Goal information is now shown on the Items side of the Manual page
+- Goal locking items are now generated in the APWorld, rather than the JSONGenerator
+- A new option has been added that will take a percent of the available locations instead
+- Goal Song Information Item has been changed to a filler item
+- Goal Song and Victory now share the same goal requirements
+- Proper Universal Tracker support.
+- The YAML will now automatically have the hint for the Goal Song when generating template yamls.
+- Rearranged Options to hopefully be in a better order
+- Added option sheet_percent, a percentage of checks will now be put towards goal locking items, rather than rigidly making and adjusting them in the JSONGenerator
+- Removed the creation of goal locking locations and the restrictions on how many goal items can be placed
+
 Version 2.2.2
 - Contains minor changes to the Goal Song event item in order to fix a critical logic bug.
 
@@ -130,5 +145,6 @@ Place your apworld within C:\ProgramData\Archipelago\custom_worlds, or install i
 Run the ArchipelagoLauncher within the Archipelago folder. Then, select Generate Template Settings. If you've
 done everything correctly, you should have a YAML file named Manual_(gamename)_(playername). From there, edit
 the YAML file and you're good to go!
+
 
 All that's left is to generate your game! Have fun!
