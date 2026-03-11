@@ -100,7 +100,6 @@ def before_options_defined(options: dict[str, Type[Option[Any]]]) -> dict[str, T
 
 # This is called after any manual options are defined, in case you want to see what options are defined or want to modify the defined options
 def after_options_defined(options: Type[PerGameCommonOptions]):
-    options.type_hints["start_hints"].default = ["Goal Song"]
     # To access a modifiable version of options check the dict in options.type_hints
     # For example if you want to change DLC_enabled's display name you would do:
     # options.type_hints["DLC_enabled"].display_name = "New Display Name"
